@@ -1,0 +1,9 @@
+{
+  "name": "ng-core-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/ng-core-e2e/src",
+  "implicitDependencies": ["ng-core"],
+  "// targets": "to see all targets run: nx show project ng-core-e2e --web",
+  "targets": {}
+}
