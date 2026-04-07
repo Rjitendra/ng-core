@@ -1,0 +1,72 @@
+<div class="ng-dialog-container">
+  <div
+    class="ng-dialog-shell"
+    [ngClass]="['dialog-' + dialogType(), 'dialog-' + presentation()]"
+  >
+    <div
+      class="ng-dialog-header"
+      [ngClass]="['dialog-' + dialogType(), 'dialog-' + presentation()]"
+    >
+      <div class="ng-dialog-title-group">
+        <div class="ng-dialog-icon-wrap">
+          <ng-icon [name]="resolvedIcon()" class="dialog-icon" size="lg"></ng-icon>
+        </div>
+        <div class="ng-dialog-title-copy">
+          @if (data.title) {
+            <h2 class="dialog-title">{{ data.title }}</h2>
+          }
+          @if (data.message) {
+            <p class="dialog-message">{{ data.message }}</p>
+          }
+        </div>
+      </div>
+
+      @if (data.showCloseButton !== false) {
+        <button type="button" class="ng-dialog-close" (click)="onClose()" aria-label="Close dialog">
+          <ng-icon name="close" size="sm"></ng-icon>
+        </button>
+      }
+    </div>
+
+    <div class="ng-dialog-content">
+      @if (data.details?.length) {
+        <div class="ng-dialog-details">
+          @for (detail of data.details; track $index) {
+            <div class="ng-dialog-detail-row">
+              <span class="ng-dialog-detail-dot"></span>
+              <span>{{ detail }}</span>
+            </div>
+          }
+        </div>
+      }
+
+      @if (data.contentTemplate) {
+        <ng-container *ngTemplateOutlet="data.contentTemplate"></ng-container>
+      }
+
+      <ng-content></ng-content>
+    </div>
+
+    <div class="ng-dialog-actions" [class.ng-dialog-actions--sidebar]="isSidebar()">
+      @if (data.showCancel !== false) {
+        <ng-button
+          buttonType="button"
+          [type]="resolvedCancelVariant()"
+          [label]="resolvedCancelText()"
+          [icon]="data.cancelAction?.icon"
+          [disabled]="!!data.cancelAction?.disabled"
+          (buttonClick)="onCancel()"
+        ></ng-button>
+      }
+
+      <ng-button
+        buttonType="button"
+        [type]="resolvedConfirmVariant()"
+        [label]="resolvedConfirmText()"
+        [icon]="data.confirmAction?.icon"
+        [disabled]="!!data.confirmAction?.disabled"
+        (buttonClick)="onConfirm()"
+      ></ng-button>
+    </div>
+  </div>
+</div>

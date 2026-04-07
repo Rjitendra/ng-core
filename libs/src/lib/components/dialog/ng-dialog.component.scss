@@ -1,0 +1,183 @@
+:host {
+  display: block;
+}
+
+.ng-dialog-container {
+  padding: 6px;
+}
+
+.ng-dialog-shell {
+  background:
+    radial-gradient(circle at top right, rgba(79, 70, 229, 0.12), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+  min-width: 320px;
+  overflow: hidden;
+}
+
+.dialog-message.ng-dialog-shell,
+.dialog-popover.ng-dialog-shell,
+.dialog-sidebar.ng-dialog-shell {
+  background:
+    radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.dialog-popover.ng-dialog-shell {
+  border-radius: 24px;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.16);
+  min-width: 280px;
+}
+
+.dialog-sidebar.ng-dialog-shell {
+  border-radius: 0;
+  box-shadow: -18px 0 44px rgba(15, 23, 42, 0.18);
+  min-height: 100vh;
+  min-width: min(92vw, 520px);
+}
+
+.ng-dialog-header {
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 24px 24px 18px;
+}
+
+.dialog-sidebar.ng-dialog-header {
+  padding-top: 28px;
+}
+
+.ng-dialog-title-group {
+  display: flex;
+  gap: 14px;
+}
+
+.ng-dialog-icon-wrap {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 18px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  height: 52px;
+  justify-content: center;
+  width: 52px;
+}
+
+.dialog-icon {
+  color: inherit;
+}
+
+.ng-dialog-title-copy {
+  display: grid;
+  gap: 8px;
+}
+
+.dialog-title {
+  color: #0f172a;
+  font-size: 1.22rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.dialog-message {
+  color: #475467;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.ng-dialog-close {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: #667085;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  padding: 6px;
+}
+
+.ng-dialog-content {
+  color: #344054;
+  display: grid;
+  gap: 16px;
+  padding: 20px 24px 8px;
+}
+
+.dialog-sidebar ~ .ng-dialog-content,
+.dialog-sidebar .ng-dialog-content {
+  min-height: calc(100vh - 170px);
+}
+
+.ng-dialog-details {
+  display: grid;
+  gap: 8px;
+}
+
+.ng-dialog-detail-row {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto 1fr;
+  line-height: 1.5;
+}
+
+.ng-dialog-detail-dot {
+  background: currentColor;
+  border-radius: 999px;
+  height: 7px;
+  margin-top: 0.45rem;
+  opacity: 0.75;
+  width: 7px;
+}
+
+.ng-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 18px 24px 24px;
+}
+
+.ng-dialog-actions--sidebar {
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.dialog-info .ng-dialog-icon-wrap {
+  color: #0284c7;
+}
+
+.dialog-success .ng-dialog-icon-wrap {
+  color: #16a34a;
+}
+
+.dialog-warning .ng-dialog-icon-wrap,
+.dialog-confirm .ng-dialog-icon-wrap {
+  color: #d97706;
+}
+
+.dialog-error .ng-dialog-icon-wrap {
+  color: #dc2626;
+}
+
+@media (max-width: 640px) {
+  .ng-dialog-shell {
+    min-width: unset;
+  }
+
+  .ng-dialog-header,
+  .ng-dialog-content,
+  .ng-dialog-actions {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .ng-dialog-actions {
+    justify-content: stretch;
+  }
+}
