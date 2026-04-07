@@ -11,7 +11,7 @@ export type SpinnerMode = 'indeterminate' | 'determinate';
   standalone: true,
   imports: [MatProgressSpinnerModule],
   templateUrl: './ng-spinner.component.html',
-  styleUrl: './ng-spinner.component.css',
+  styleUrl: './ng-spinner.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'ng-spinner-host',

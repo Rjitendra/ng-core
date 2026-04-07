@@ -28,7 +28,7 @@ export type ButtonIconPosition = 'start' | 'end';
   standalone: true,
   imports: [MatButtonModule, MatTooltipModule, IconComponent, SpinnerComponent],
   templateUrl: './ng-button.component.html',
-  styleUrl: './ng-button.component.css',
+  styleUrl: './ng-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {

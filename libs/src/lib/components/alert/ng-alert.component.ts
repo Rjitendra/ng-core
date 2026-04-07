@@ -10,7 +10,7 @@ import { AlertMessageComponent } from '../alert-message/ng-alert-message.compone
   standalone: true,
   imports: [AlertMessageComponent],
   templateUrl: './ng-alert.component.html',
-  styleUrl: './ng-alert.component.css',
+  styleUrl: './ng-alert.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AlertComponent {

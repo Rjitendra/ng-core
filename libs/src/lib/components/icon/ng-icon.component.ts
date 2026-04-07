@@ -18,7 +18,7 @@ export type IconTone =
   standalone: true,
   imports: [MatIconModule],
   templateUrl: './ng-icon.component.html',
-  styleUrl: './ng-icon.component.css',
+  styleUrl: './ng-icon.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'ng-icon-host',

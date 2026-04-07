@@ -9,7 +9,7 @@ import { MessageButton } from '../../models/alert';
   standalone: true,
   imports: [CommonModule, ButtonComponent, IconComponent],
   templateUrl: './ng-alert-message.component.html',
-  styleUrl: './ng-alert-message.component.css',
+  styleUrl: './ng-alert-message.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'ng-alert-message-host',
