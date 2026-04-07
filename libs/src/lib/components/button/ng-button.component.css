@@ -11,9 +11,14 @@
 
 button,
 a[mat-button] {
+  align-items: center;
   border-radius: 14px !important;
+  display: inline-flex !important;
   font-weight: 700 !important;
+  gap: 10px;
+  justify-content: center;
   letter-spacing: 0.01em !important;
+  min-height: 44px;
   padding: 12px 22px !important;
   transition:
     transform 180ms ease,
@@ -26,14 +31,16 @@ a[mat-button] {
 }
 
 button mat-icon,
-a[mat-button] mat-icon {
-  margin-right: 10px !important;
+a[mat-button] mat-icon,
+button mat-spinner,
+a[mat-button] mat-spinner {
   font-size: 18px !important;
   width: 18px !important;
   height: 18px !important;
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
 }
 
 button[mat-button],
@@ -195,6 +202,50 @@ button[mat-fab][extended] {
   padding-inline: 20px !important;
 }
 
+.ng-button--size-sm {
+  border-radius: 12px !important;
+  font-size: 0.875rem !important;
+  min-height: 36px;
+  padding: 8px 16px !important;
+}
+
+.ng-button--size-md {
+  font-size: 0.95rem !important;
+}
+
+.ng-button--size-lg {
+  border-radius: 16px !important;
+  font-size: 1rem !important;
+  min-height: 52px;
+  padding: 14px 28px !important;
+}
+
+.ng-button--size-sm[mat-icon-button],
+.ng-button--size-sm[mat-mini-fab] {
+  width: 36px;
+  height: 36px;
+  padding: 0 !important;
+}
+
+.ng-button--size-md[mat-icon-button],
+.ng-button--size-md[mat-mini-fab] {
+  width: 44px;
+  height: 44px;
+  padding: 0 !important;
+}
+
+.ng-button--size-lg[mat-icon-button],
+.ng-button--size-lg[mat-fab],
+.ng-button--size-lg[mat-mini-fab] {
+  width: 52px;
+  height: 52px;
+  padding: 0 !important;
+}
+
+.ng-button--full-width {
+  width: 100%;
+}
+
 button:disabled,
 a[mat-button][aria-disabled='true'] {
   cursor: not-allowed;
@@ -203,4 +254,8 @@ a[mat-button][aria-disabled='true'] {
 
 a[mat-button] {
   text-decoration: none;
+}
+
+a[mat-button][aria-disabled='true'] {
+  pointer-events: none;
 }
