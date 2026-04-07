@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './ng-button.component';
-import { SharedControlsModule } from '../../shared-controls.module';
 
 describe('ButtonComponent', () => {
   let component: ButtonComponent;
@@ -8,7 +7,7 @@ describe('ButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedControlsModule],
+      imports: [ButtonComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ButtonComponent);

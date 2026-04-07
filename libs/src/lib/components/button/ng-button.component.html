@@ -13,7 +13,12 @@
     [attr.rel]="resolvedRel()"
   >
     @if (loading()) {
-      <mat-spinner diameter="18"></mat-spinner>
+      <ng-spinner
+        size="sm"
+        color="light"
+        label="Loading"
+        [inline]="true"
+      ></ng-spinner>
     } @else if (showLeadingIcon()) {
       <mat-icon>{{ icon() }}</mat-icon>
     }
@@ -36,7 +41,7 @@
     (click)="onClick()"
   >
     @if (loading()) {
-      <mat-spinner diameter="18"></mat-spinner>
+      <ng-spinner size="sm" label="Loading" [inline]="true"></ng-spinner>
     } @else if (showLeadingIcon()) {
       <mat-icon>{{ icon() }}</mat-icon>
     }
@@ -59,7 +64,7 @@
     (click)="onClick()"
   >
     @if (loading()) {
-      <mat-spinner diameter="18"></mat-spinner>
+      <ng-spinner size="sm" label="Loading" [inline]="true"></ng-spinner>
     } @else if (showLeadingIcon()) {
       <mat-icon>{{ icon() }}</mat-icon>
     }
@@ -82,7 +87,7 @@
     (click)="onClick()"
   >
     @if (loading()) {
-      <mat-spinner diameter="18"></mat-spinner>
+      <ng-spinner size="sm" label="Loading" [inline]="true"></ng-spinner>
     } @else if (showLeadingIcon()) {
       <mat-icon>{{ icon() }}</mat-icon>
     }
@@ -105,7 +110,12 @@
     (click)="onClick()"
   >
     @if (loading()) {
-      <mat-spinner diameter="18"></mat-spinner>
+      <ng-spinner
+        size="sm"
+        color="light"
+        label="Loading"
+        [inline]="true"
+      ></ng-spinner>
     } @else if (showLeadingIcon()) {
       <mat-icon>{{ icon() }}</mat-icon>
     }
@@ -128,7 +138,7 @@
     (click)="onClick()"
   >
     @if (loading()) {
-      <mat-spinner diameter="18"></mat-spinner>
+      <ng-spinner size="sm" label="Loading" [inline]="true"></ng-spinner>
     } @else if (showLeadingIcon()) {
       <mat-icon>{{ icon() }}</mat-icon>
     }
@@ -151,7 +161,7 @@
     [attr.aria-label]="label()"
   >
     @if (loading()) {
-      <mat-spinner diameter="18"></mat-spinner>
+      <ng-spinner size="sm" label="Loading" [inline]="true"></ng-spinner>
     } @else {
       <mat-icon>{{ icon() }}</mat-icon>
     }
@@ -170,7 +180,12 @@
     [attr.aria-label]="label()"
   >
     @if (loading()) {
-      <mat-spinner diameter="18"></mat-spinner>
+      <ng-spinner
+        size="sm"
+        color="light"
+        label="Loading"
+        [inline]="true"
+      ></ng-spinner>
     } @else {
       <mat-icon>{{ icon() }}</mat-icon>
     }
@@ -189,7 +204,12 @@
     [attr.aria-label]="label()"
   >
     @if (loading()) {
-      <mat-spinner diameter="18"></mat-spinner>
+      <ng-spinner
+        size="sm"
+        color="light"
+        label="Loading"
+        [inline]="true"
+      ></ng-spinner>
     } @else {
       <mat-icon>{{ icon() }}</mat-icon>
     }
@@ -209,7 +229,12 @@
     (click)="onClick()"
   >
     @if (loading()) {
-      <mat-spinner diameter="18"></mat-spinner>
+      <ng-spinner
+        size="sm"
+        color="light"
+        label="Loading"
+        [inline]="true"
+      ></ng-spinner>
     } @else if (showLeadingIcon()) {
       <mat-icon>{{ icon() }}</mat-icon>
     }

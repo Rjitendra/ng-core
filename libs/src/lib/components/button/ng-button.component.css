@@ -32,8 +32,8 @@ a[mat-button] {
 
 button mat-icon,
 a[mat-button] mat-icon,
-button mat-spinner,
-a[mat-button] mat-spinner {
+button ng-spinner,
+a[mat-button] ng-spinner {
   font-size: 18px !important;
   width: 18px !important;
   height: 18px !important;

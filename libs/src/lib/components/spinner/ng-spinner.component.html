@@ -1,0 +1,30 @@
+<span
+  class="ng-spinner"
+  [class.ng-spinner--overlay]="overlay()"
+  [attr.role]="mode() === 'determinate' ? 'progressbar' : 'status'"
+  [attr.aria-label]="label()"
+  [attr.aria-valuemin]="mode() === 'determinate' ? 0 : null"
+  [attr.aria-valuemax]="mode() === 'determinate' ? 100 : null"
+  [attr.aria-valuenow]="mode() === 'determinate' ? normalizedProgress() : null"
+>
+  @if (variant() === 'circular') {
+    <mat-progress-spinner
+      [diameter]="size() === 'xs' ? 16 : size() === 'sm' ? 20 : size() === 'md' ? 28 : size() === 'lg' ? 40 : 56"
+      [mode]="mode()"
+      [strokeWidth]="strokeWidth()"
+      [value]="normalizedProgress()"
+    ></mat-progress-spinner>
+  } @else if (variant() === 'dots') {
+    <span class="ng-spinner__dots" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  } @else if (variant() === 'pulse') {
+    <span class="ng-spinner__pulse" aria-hidden="true"></span>
+  }
+
+  @if (!inline()) {
+    <span class="ng-spinner__label">{{ label() }}</span>
+  }
+</span>

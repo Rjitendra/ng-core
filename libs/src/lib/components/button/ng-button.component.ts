@@ -4,6 +4,10 @@ import {
   input,
   output,
 } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { SpinnerComponent } from '../spinner/ng-spinner.component';
 
 export type ButtonVariant =
   | 'text'
@@ -21,7 +25,8 @@ export type ButtonIconPosition = 'start' | 'end';
 
 @Component({
   selector: 'ng-button',
-  standalone: false,
+  standalone: true,
+  imports: [MatButtonModule, MatIconModule, MatTooltipModule, SpinnerComponent],
   templateUrl: './ng-button.component.html',
   styleUrl: './ng-button.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
