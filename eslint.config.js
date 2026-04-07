@@ -5,7 +5,7 @@ module.exports = [
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
   {
-    ignores: ['**/dist'],
+    ignores: ['**/dist', '**/vitest.config.*.timestamp*'],
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
@@ -30,4 +30,5 @@ module.exports = [
     // Override or add rules here
     rules: {},
   },
+  { ignores: ['**/vitest.config.*.timestamp*'] },
 ];

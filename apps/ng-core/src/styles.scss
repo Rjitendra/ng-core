@@ -1,1 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons');
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/azure-blue.css';
+
+html,
+body {
+  font-family:
+    Inter,
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+.mat-icon,
+mat-icon {
+  font-family: 'Material Icons' !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+}
