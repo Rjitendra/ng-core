@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "storybook": "nx run ng-core:storybook"
+    "storybook": "nx run ng-core:storybook",
+    "test": "nx test ng-core",
+    "test:ui": "nx test ng-core --ui",
+    "test:run": "nx test ng-core"
   },
   "private": true,
   "dependencies": {
