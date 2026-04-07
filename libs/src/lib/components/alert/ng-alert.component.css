@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.ng-alert-stack {
+  display: grid;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1100;
+}
+
+.ng-alert-message {
+  align-items: center;
+  border-radius: 0.25rem;
+  display: flex;
+  padding-top: 4px;
+}

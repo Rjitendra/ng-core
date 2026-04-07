@@ -1,0 +1,99 @@
+:host {
+  --ng-icon-color: currentColor;
+  color: var(--ng-icon-color);
+  display: inline-flex;
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+:host(.ng-icon--inherit) {
+  --ng-icon-color: currentColor;
+}
+
+:host(.ng-icon--primary) {
+  --ng-icon-color: #4f46e5;
+}
+
+:host(.ng-icon--muted) {
+  --ng-icon-color: #667085;
+}
+
+:host(.ng-icon--success) {
+  --ng-icon-color: #0f9f6e;
+}
+
+:host(.ng-icon--danger) {
+  --ng-icon-color: #dc2626;
+}
+
+:host(.ng-icon--warning) {
+  --ng-icon-color: #d97706;
+}
+
+:host(.ng-icon--light) {
+  --ng-icon-color: #ffffff;
+}
+
+:host(.ng-icon--xs) {
+  font-size: 14px;
+}
+
+:host(.ng-icon--sm) {
+  font-size: 18px;
+}
+
+:host(.ng-icon--md) {
+  font-size: 22px;
+}
+
+:host(.ng-icon--lg) {
+  font-size: 28px;
+}
+
+:host(.ng-icon--xl) {
+  font-size: 36px;
+}
+
+:host(.ng-icon--spin) .ng-icon__material,
+:host(.ng-icon--spin) .ng-icon__custom,
+:host(.ng-icon--spin) .ng-icon__image {
+  animation: ng-icon-spin 1.1s linear infinite;
+}
+
+.ng-icon__material,
+.ng-icon__custom,
+.ng-icon__image {
+  align-items: center;
+  color: inherit;
+  display: inline-flex;
+  font-size: inherit;
+  height: 1em;
+  justify-content: center;
+  line-height: 1;
+  width: 1em;
+}
+
+.ng-icon__custom {
+  overflow: hidden;
+}
+
+.ng-icon__custom :where(svg, img, span, i) {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.ng-icon__image {
+  border-radius: 0;
+  object-fit: contain;
+}
+
+@keyframes ng-icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -9,7 +9,17 @@
 >
   @if (variant() === 'circular') {
     <mat-progress-spinner
-      [diameter]="size() === 'xs' ? 16 : size() === 'sm' ? 20 : size() === 'md' ? 28 : size() === 'lg' ? 40 : 56"
+      [diameter]="
+        size() === 'xs'
+          ? 16
+          : size() === 'sm'
+            ? 20
+            : size() === 'md'
+              ? 28
+              : size() === 'lg'
+                ? 40
+                : 56
+      "
       [mode]="mode()"
       [strokeWidth]="strokeWidth()"
       [value]="normalizedProgress()"

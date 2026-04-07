@@ -1,0 +1,35 @@
+@if (hasImageIcon()) {
+  <img
+    class="ng-icon__image"
+    [src]="src()"
+    [alt]="alt()"
+    [attr.aria-label]="ariaLabel()"
+  />
+} @else if (hasCustomRegistryIcon()) {
+  <span
+    class="ng-icon__custom"
+    [innerHTML]="resolvedCustomIcon()"
+    [attr.aria-label]="ariaLabel()"
+    [attr.aria-hidden]="resolvedAriaHidden()"
+  ></span>
+} @else if (hasMaterialIcon()) {
+  <mat-icon
+    class="ng-icon__material"
+    [fontSet]="resolvedFontSet()"
+    [fontIcon]="resolvedFontIcon()"
+    [svgIcon]="resolvedSvgIcon()"
+    [inline]="inline()"
+    [attr.aria-label]="ariaLabel()"
+    [attr.aria-hidden]="resolvedAriaHidden()"
+  >
+    {{ name() }}
+  </mat-icon>
+} @else {
+  <span
+    class="ng-icon__custom"
+    [attr.aria-label]="ariaLabel()"
+    [attr.aria-hidden]="resolvedAriaHidden()"
+  >
+    <ng-content></ng-content>
+  </span>
+}

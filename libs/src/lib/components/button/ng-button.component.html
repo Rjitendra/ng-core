@@ -20,12 +20,14 @@
         [inline]="true"
       ></ng-spinner>
     } @else if (showLeadingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-leading-icon]"></ng-content>
     {{ label() }}
     @if (showTrailingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-trailing-icon]"></ng-content>
   </a>
 } @else if (type() === 'text') {
   <button
@@ -43,12 +45,14 @@
     @if (loading()) {
       <ng-spinner size="sm" label="Loading" [inline]="true"></ng-spinner>
     } @else if (showLeadingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-leading-icon]"></ng-content>
     {{ label() }}
     @if (showTrailingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-trailing-icon]"></ng-content>
   </button>
 } @else if (type() === 'elevated') {
   <button
@@ -66,12 +70,14 @@
     @if (loading()) {
       <ng-spinner size="sm" label="Loading" [inline]="true"></ng-spinner>
     } @else if (showLeadingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-leading-icon]"></ng-content>
     {{ label() }}
     @if (showTrailingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-trailing-icon]"></ng-content>
   </button>
 } @else if (type() === 'outlined') {
   <button
@@ -89,12 +95,14 @@
     @if (loading()) {
       <ng-spinner size="sm" label="Loading" [inline]="true"></ng-spinner>
     } @else if (showLeadingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-leading-icon]"></ng-content>
     {{ label() }}
     @if (showTrailingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-trailing-icon]"></ng-content>
   </button>
 } @else if (type() === 'filled') {
   <button
@@ -117,12 +125,14 @@
         [inline]="true"
       ></ng-spinner>
     } @else if (showLeadingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-leading-icon]"></ng-content>
     {{ label() }}
     @if (showTrailingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-trailing-icon]"></ng-content>
   </button>
 } @else if (type() === 'tonal') {
   <button
@@ -140,12 +150,14 @@
     @if (loading()) {
       <ng-spinner size="sm" label="Loading" [inline]="true"></ng-spinner>
     } @else if (showLeadingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-leading-icon]"></ng-content>
     {{ label() }}
     @if (showTrailingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-trailing-icon]"></ng-content>
   </button>
 } @else if (type() === 'icon') {
   <button
@@ -163,7 +175,9 @@
     @if (loading()) {
       <ng-spinner size="sm" label="Loading" [inline]="true"></ng-spinner>
     } @else {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()">
+        <ng-content></ng-content>
+      </ng-icon>
     }
   </button>
 } @else if (type() === 'fab') {
@@ -187,7 +201,9 @@
         [inline]="true"
       ></ng-spinner>
     } @else {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()">
+        <ng-content></ng-content>
+      </ng-icon>
     }
   </button>
 } @else if (type() === 'mini-fab') {
@@ -211,7 +227,9 @@
         [inline]="true"
       ></ng-spinner>
     } @else {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()">
+        <ng-content></ng-content>
+      </ng-icon>
     }
   </button>
 } @else if (type() === 'extended') {
@@ -236,11 +254,13 @@
         [inline]="true"
       ></ng-spinner>
     } @else if (showLeadingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-leading-icon]"></ng-content>
     {{ label() }}
     @if (showTrailingIcon()) {
-      <mat-icon>{{ icon() }}</mat-icon>
+      <ng-icon [name]="icon()" size="sm" [tone]="iconToneForVariant()"></ng-icon>
     }
+    <ng-content select="[button-trailing-icon]"></ng-content>
   </button>
 }

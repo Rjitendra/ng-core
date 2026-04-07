@@ -30,8 +30,8 @@ a[mat-button] {
   backdrop-filter: blur(10px);
 }
 
-button mat-icon,
-a[mat-button] mat-icon,
+button ng-icon,
+a[mat-button] ng-icon,
 button ng-spinner,
 a[mat-button] ng-spinner {
   font-size: 18px !important;

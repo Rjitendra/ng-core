@@ -1,0 +1,192 @@
+:host {
+  display: block;
+}
+
+.ng-alert-message {
+  --ng-alert-accent: #2563eb;
+  --ng-alert-bg: #eff6ff;
+  --ng-alert-text: #1e3a8a;
+  --ng-alert-muted: #334155;
+  align-items: flex-start;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ng-alert-bg) 92%, white) 0%, var(--ng-alert-bg) 100%);
+  border: 1px solid color-mix(in srgb, var(--ng-alert-accent) 18%, white);
+  border-radius: 20px;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+  display: grid;
+  gap: 0;
+  height: auto;
+  justify-content: flex-start;
+  min-height: 40px;
+  padding-right: 40px;
+  position: sticky;
+  top: 0;
+  grid-template-columns: 6px 1fr auto;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1100;
+}
+
+:host(.ng-alert-message--success) .ng-alert-message {
+  --ng-alert-accent: #16a34a;
+  --ng-alert-bg: #ecfdf3;
+  --ng-alert-text: #166534;
+}
+
+:host(.ng-alert-message--error) .ng-alert-message {
+  --ng-alert-accent: #dc2626;
+  --ng-alert-bg: #fef2f2;
+  --ng-alert-text: #991b1b;
+}
+
+:host(.ng-alert-message--info) .ng-alert-message {
+  --ng-alert-accent: #0284c7;
+  --ng-alert-bg: #f0f9ff;
+  --ng-alert-text: #0c4a6e;
+}
+
+:host(.ng-alert-message--warning) .ng-alert-message {
+  --ng-alert-accent: #d97706;
+  --ng-alert-bg: #fffbeb;
+  --ng-alert-text: #92400e;
+}
+
+.ng-alert-message__accent {
+  background: linear-gradient(180deg, var(--ng-alert-accent) 0%, color-mix(in srgb, var(--ng-alert-accent) 82%, black) 100%);
+}
+
+.ng-alert-message__body {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: auto 1fr;
+  padding: 18px 18px 18px 16px;
+}
+
+.ng-alert-message__icon-wrap {
+  align-items: center;
+  color: var(--ng-alert-accent);
+  display: inline-flex;
+  justify-content: center;
+  padding-top: 2px;
+}
+
+.ng-alert-message__content {
+  color: var(--ng-alert-muted);
+  display: grid;
+  gap: 10px;
+}
+
+.ng-alert-message__heading {
+  color: var(--ng-alert-text);
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.message-text {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  padding-left: 10px;
+}
+
+.ng-alert-message__details {
+  display: grid;
+  gap: 6px;
+}
+
+.ng-alert-message__detail-row {
+  align-items: flex-start;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: auto 1fr;
+  line-height: 1.45;
+}
+
+.ng-alert-message__bullet {
+  background: currentColor;
+  border-radius: 999px;
+  display: inline-block;
+  height: 7px;
+  margin-top: 0.42rem;
+  opacity: 0.75;
+  width: 7px;
+}
+
+.error-header {
+  color: var(--ng-alert-text);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.error-item {
+  font-weight: 400;
+  margin-bottom: 4px;
+  padding-left: 8px;
+}
+
+.ng-alert-message__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 2px;
+}
+
+.alert-actions {
+  align-items: center;
+  gap: 8px;
+}
+
+.ng-alert-message__link {
+  background: transparent;
+  border: 0;
+  color: var(--ng-alert-accent);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 8px 0;
+}
+
+.link-button {
+  cursor: pointer;
+}
+
+.ng-alert-message__link:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.alert-btn {
+  min-width: auto;
+}
+
+.ng-alert-message__close {
+  align-items: center;
+  align-self: start;
+  background: transparent;
+  border: 0;
+  color: var(--ng-alert-accent);
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  margin: 10px 10px 0 0;
+  padding: 8px;
+  position: absolute;
+  right: 8px;
+  top: -4px;
+}
+
+@media (max-width: 640px) {
+  .ng-alert-message {
+    grid-template-columns: 5px 1fr;
+  }
+
+  .ng-alert-message__close {
+    margin: 0 10px 10px auto;
+  }
+
+  .ng-alert-message__body {
+    grid-column: 2;
+    padding-right: 10px;
+  }
+}

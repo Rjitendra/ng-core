@@ -5,8 +5,8 @@ import {
   output,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { IconComponent } from '../icon/ng-icon.component';
 import { SpinnerComponent } from '../spinner/ng-spinner.component';
 
 export type ButtonVariant =
@@ -26,7 +26,7 @@ export type ButtonIconPosition = 'start' | 'end';
 @Component({
   selector: 'ng-button',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, MatTooltipModule, SpinnerComponent],
+  imports: [MatButtonModule, MatTooltipModule, IconComponent, SpinnerComponent],
   templateUrl: './ng-button.component.html',
   styleUrl: './ng-button.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,6 +46,7 @@ export class ButtonComponent {
   readonly tooltip = input<string>();
   readonly cssClass = input<string>();
   readonly buttonType = input<'button' | 'submit' | 'reset'>('button');
+  readonly iconTone = input<'inherit' | 'primary' | 'muted' | 'success' | 'danger' | 'warning' | 'light'>('inherit');
 
   readonly buttonClick = output<void>();
 
@@ -67,6 +68,16 @@ export class ButtonComponent {
 
   showTrailingIcon() {
     return this.icon() && this.iconPosition() === 'end' && !this.loading();
+  }
+
+  iconToneForVariant() {
+    if (this.iconTone() !== 'inherit') {
+      return this.iconTone();
+    }
+
+    return this.type() === 'filled' || this.type() === 'fab' || this.type() === 'mini-fab' || this.type() === 'extended'
+      ? 'light'
+      : 'inherit';
   }
 
   onClick() {

@@ -259,3 +259,33 @@ export const ButtonShowcase: Story = {
     `,
   }),
 };
+
+export const CustomProjectedIcon: Story = {
+  render: () => ({
+    template: `
+      <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+        <ng-button type="icon" label="Custom alert">
+          <ng-icon tone="danger" ariaLabel="Alert icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2 1 21h22L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z" />
+            </svg>
+          </ng-icon>
+        </ng-button>
+        <ng-button type="filled" label="Upload asset">
+          <ng-icon button-leading-icon tone="light">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 3l5 5h-3v6h-4V8H7l5-5zm-7 13h14v5H5v-5z" />
+            </svg>
+          </ng-icon>
+        </ng-button>
+        <ng-button type="text" label="Next step">
+          <ng-icon button-trailing-icon tone="primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="m13 5 7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6L13 5z" />
+            </svg>
+          </ng-icon>
+        </ng-button>
+      </div>
+    `,
+  }),
+};

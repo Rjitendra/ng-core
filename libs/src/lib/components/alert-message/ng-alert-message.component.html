@@ -1,0 +1,72 @@
+<section
+  class="ng-alert-message alert-card"
+  [attr.data-alert-type]="alertType()"
+  [ngClass]="alertType()"
+  role="alert"
+>
+  <div class="ng-alert-message__accent"></div>
+
+  <div class="ng-alert-message__body alert-content">
+    <div class="ng-alert-message__icon-wrap">
+      <ng-icon [name]="iconName()" size="md"></ng-icon>
+    </div>
+
+    <div class="ng-alert-message__content">
+      @if (heading()) {
+        <div class="ng-alert-message__heading error-header">{{ heading() }}</div>
+      }
+
+      @if (detailLines().length) {
+        <div class="ng-alert-message__details message-text">
+          @for (line of detailLines(); track $index) {
+            <div class="ng-alert-message__detail-row error-item">
+              <span class="ng-alert-message__bullet"> </span>
+              <span>{{ line }}</span>
+            </div>
+          }
+        </div>
+      } @else if (heading()) {
+        <div class="message-text">{{ heading() }}</div>
+      }
+
+      @if (buttons().length) {
+        <div class="ng-alert-message__actions alert-actions">
+          @for (btn of buttons(); track $index) {
+            @if (btn.isButton) {
+              <ng-button
+                class="alert-btn"
+                [type]="buttonVariant(btn)"
+                size="sm"
+                [label]="btn.label"
+                [icon]="btn.iconType"
+                [iconTone]="buttonIconTone(btn)"
+                [disabled]="!!btn.disabled"
+                (buttonClick)="btn.click()"
+              ></ng-button>
+            } @else {
+              <button
+                type="button"
+                class="ng-alert-message__link link-button"
+                [disabled]="!!btn.disabled"
+                (click)="btn.click()"
+              >
+                {{ btn.label }}
+              </button>
+            }
+          }
+        </div>
+      }
+    </div>
+  </div>
+
+  @if (!hideCloseButton()) {
+    <button
+      type="button"
+      class="ng-alert-message__close close-button"
+      (click)="onCloseAlert(id())"
+      aria-label="Close alert"
+    >
+      <ng-icon name="close" size="sm"></ng-icon>
+    </button>
+  }
+</section>
