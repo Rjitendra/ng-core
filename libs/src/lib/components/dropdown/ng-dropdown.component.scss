@@ -11,9 +11,38 @@
   width: 100%;
 }
 
+.ng-dropdown__search-shell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.ng-dropdown__search-input {
+  border: 0;
+  background: transparent;
+  width: 100%;
+  outline: none;
+  font: inherit;
+  color: #0f172a;
+}
+
+.ng-dropdown__search-option {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+}
+
 .ng-dropdown__option {
   display: grid;
   gap: 2px;
+}
+
+.ng-dropdown__option-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .ng-dropdown__option-label {

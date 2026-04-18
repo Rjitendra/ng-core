@@ -7,6 +7,7 @@ import { SharedControlsModule } from '../../shared-controls.module';
 import {
   NgDropdownAppearance,
   NgDropdownComponent,
+  NgDropdownGroup,
   NgDropdownOption,
   NgDropdownSize,
 } from './ng-dropdown.component';
@@ -69,6 +70,23 @@ class StorybookDropdownTemplateComponent {
   value = 'growth';
 }
 
+const groupedOptions: NgDropdownGroup[] = [
+  {
+    label: 'Frontend',
+    options: [
+      { value: 'angular', label: 'Angular', description: 'Design system shell', icon: 'web' },
+      { value: 'react', label: 'React', description: 'Marketing site', icon: 'code' },
+    ],
+  },
+  {
+    label: 'Backend',
+    options: [
+      { value: 'node', label: 'Node.js', description: 'Public API', icon: 'dns' },
+      { value: 'java', label: 'Java', description: 'Core services', icon: 'memory' },
+    ],
+  },
+];
+
 const meta: Meta<NgDropdownComponent> = {
   title: 'Shared/Dropdown',
   component: NgDropdownComponent,
@@ -97,6 +115,9 @@ const meta: Meta<NgDropdownComponent> = {
       control: 'boolean',
     },
     clearable: {
+      control: 'boolean',
+    },
+    searchable: {
       control: 'boolean',
     },
   },
@@ -145,6 +166,28 @@ export const MultiSelectWithSelectAll: Story = {
       { value: 'staging', label: 'Staging' },
       { value: 'prod', label: 'Production' },
     ],
+  },
+};
+
+export const Searchable: Story = {
+  args: {
+    label: 'Search frameworks',
+    searchable: true,
+    options: [
+      { value: 'angular', label: 'Angular', description: 'Signals and Material', keywords: ['typescript', 'spa'] },
+      { value: 'react', label: 'React', description: 'Component-based UI', keywords: ['jsx', 'spa'] },
+      { value: 'vue', label: 'Vue', description: 'Approachable progressive framework', keywords: ['frontend'] },
+      { value: 'svelte', label: 'Svelte', description: 'Compiler-driven UI', keywords: ['frontend', 'compiler'] },
+    ],
+  },
+};
+
+export const GroupedOptions: Story = {
+  args: {
+    label: 'Select technology',
+    searchable: true,
+    groups: groupedOptions,
+    options: [],
   },
 };
 

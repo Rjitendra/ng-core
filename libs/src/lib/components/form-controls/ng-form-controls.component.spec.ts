@@ -23,7 +23,7 @@ import { NgToggleComponent } from '../toggle/ng-toggle.component';
     <form [formGroup]="form">
       <ng-textbox formControlName="name"></ng-textbox>
       <ng-checkbox formControlName="agree" label="Agree"></ng-checkbox>
-      <ng-dropdown formControlName="region" [options]="regionOptions"></ng-dropdown>
+      <ng-dropdown formControlName="region" [options]="regionOptions" [clearable]="true"></ng-dropdown>
       <ng-toggle formControlName="enabled" label="Enabled"></ng-toggle>
       <ng-radio-group formControlName="plan" [options]="options"></ng-radio-group>
     </form>
@@ -128,5 +128,29 @@ describe('Form controls integration', () => {
     expect(component.region).toBe('eu');
     expect(component.enabled).toBe(true);
     expect(component.plan).toBe('basic');
+  });
+
+  it('supports array values for multi select usage', async () => {
+    @Component({
+      standalone: true,
+      imports: [CommonModule, ReactiveFormsModule, NgDropdownComponent],
+      template: `<ng-dropdown [formControl]="control" [multiple]="true" [options]="options"></ng-dropdown>`,
+    })
+    class MultiSelectHostComponent {
+      readonly control = new FormControl(['us']);
+      readonly options = [
+        { value: 'us', label: 'US' },
+        { value: 'eu', label: 'EU' },
+      ];
+    }
+
+    await TestBed.configureTestingModule({
+      imports: [MultiSelectHostComponent],
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(MultiSelectHostComponent);
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.control.value).toEqual(['us']);
   });
 });

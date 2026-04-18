@@ -5,12 +5,15 @@ import {
   computed,
   forwardRef,
   input,
+  output,
   signal,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatOptionModule, MatOptionSelectionChange } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 import { IconComponent } from '../icon/ng-icon.component';
 import { NgErrorComponent, NgErrorValue } from '../error/ng-error.component';
 import { NgLabelComponent } from '../label/ng-label.component';
@@ -20,10 +23,25 @@ export interface NgDropdownOption<T = string> {
   label: string;
   description?: string;
   disabled?: boolean;
+  icon?: string;
+  group?: string;
+  keywords?: string[];
 }
 
 export type NgDropdownAppearance = 'outline' | 'fill';
 export type NgDropdownSize = 'sm' | 'md' | 'lg';
+
+export interface NgDropdownGroup<T = string> {
+  label: string;
+  disabled?: boolean;
+  options: NgDropdownOption<T>[];
+}
+
+interface NgResolvedDropdownGroup<T = string> {
+  label: string | null;
+  disabled: boolean;
+  options: NgDropdownOption<T>[];
+}
 
 const SELECT_ALL_SENTINEL = '__ng_dropdown_select_all__';
 
@@ -36,6 +54,8 @@ const SELECT_ALL_SENTINEL = '__ng_dropdown_select_all__';
     MatFormFieldModule,
     MatSelectModule,
     MatOptionModule,
+    MatInputModule,
+    MatIconModule,
     IconComponent,
     NgErrorComponent,
     NgLabelComponent,
@@ -63,10 +83,12 @@ export class NgDropdownComponent<T = string>
   readonly selectAllSentinel = SELECT_ALL_SENTINEL;
   readonly label = input<string>();
   readonly hint = input<string>();
+  readonly toolTip = input<string>();
   readonly placeholder = input<string>('Select an option');
   readonly helperText = input<string>();
   readonly errorText = input<NgErrorValue>();
   readonly options = input<NgDropdownOption<T>[]>([]);
+  readonly groups = input<NgDropdownGroup<T>[]>([]);
   readonly appearance = input<NgDropdownAppearance>('outline');
   readonly size = input<NgDropdownSize>('md');
   readonly required = input<boolean>(false);
@@ -75,15 +97,81 @@ export class NgDropdownComponent<T = string>
   readonly selectAll = input<boolean>(false);
   readonly clearable = input<boolean>(false);
   readonly prefixIcon = input<string>();
+  readonly suffixIcon = input<string>();
+  readonly searchable = input<boolean>(false);
+  readonly searchPlaceholder = input<string>('Search options');
+  readonly noResultsText = input<string>('No options found');
+  readonly panelClass = input<string | string[]>();
+  readonly compareWith = input<(first: T | null, second: T | null) => boolean>();
   readonly id = input<string>(`ng-dropdown-${Math.random().toString(36).slice(2, 9)}`);
 
   readonly value = signal<T | T[] | null>(null);
   readonly touched = signal<boolean>(false);
   readonly disabledState = signal<boolean>(false);
+  readonly searchTerm = signal<string>('');
+  readonly isOpen = signal<boolean>(false);
+
+  readonly selectionChange = output<T | T[] | null>();
+  readonly openedChange = output<boolean>();
 
   readonly resolvedDisabled = computed(() => this.disabled() || this.disabledState());
+  readonly normalizedGroups = computed<NgResolvedDropdownGroup<T>[]>(() => {
+    if (this.groups().length) {
+      return this.groups().map((group) => ({
+        label: group.label,
+        disabled: !!group.disabled,
+        options: group.options,
+      }));
+    }
+
+    const grouped = new Map<string, NgDropdownOption<T>[]>();
+    const ungrouped: NgDropdownOption<T>[] = [];
+
+    for (const option of this.options()) {
+      if (!option.group) {
+        ungrouped.push(option);
+        continue;
+      }
+
+      grouped.set(option.group, [...(grouped.get(option.group) ?? []), option]);
+    }
+
+    const result: NgResolvedDropdownGroup<T>[] = [];
+    if (ungrouped.length) {
+      result.push({
+        label: null,
+        disabled: false,
+        options: ungrouped,
+      });
+    }
+
+    for (const [label, options] of grouped.entries()) {
+      result.push({
+        label,
+        disabled: false,
+        options,
+      });
+    }
+
+    return result;
+  });
+  readonly filteredGroups = computed<NgResolvedDropdownGroup<T>[]>(() => {
+    const query = this.searchTerm().trim().toLowerCase();
+    if (!query) {
+      return this.normalizedGroups();
+    }
+
+    return this.normalizedGroups()
+      .map((group) => ({
+        ...group,
+        options: group.options.filter((option) => this.matchesSearch(option, query)),
+      }))
+      .filter((group) => group.options.length > 0);
+  });
   readonly selectableOptions = computed(() =>
-    this.options().filter((option) => !option.disabled)
+    this.filteredGroups()
+      .flatMap((group) => group.options)
+      .filter((option) => !option.disabled)
   );
   readonly selectedValues = computed<T[]>(() => {
     const current = this.value();
@@ -94,9 +182,9 @@ export class NgDropdownComponent<T = string>
     return Array.isArray(current) ? current : [];
   });
   readonly selectedLabels = computed(() => {
-    const optionMap = new Map(this.options().map((option) => [option.value, option.label]));
+    const allOptions = this.normalizedGroups().flatMap((group) => group.options);
     return this.selectedValues()
-      .map((value) => optionMap.get(value))
+      .map((value) => allOptions.find((option) => this.isSameValue(option.value, value))?.label)
       .filter((value): value is string => !!value);
   });
   readonly allSelected = computed(() => {
@@ -120,6 +208,10 @@ export class NgDropdownComponent<T = string>
     }
     return ids.join(' ') || null;
   });
+  readonly resolvedCompareWith = computed<(first: T | null, second: T | null) => boolean>(
+    () => this.compareWith() ?? ((first, second) => first === second)
+  );
+  readonly resolvedPanelClass = computed<string | string[]>(() => this.panelClass() ?? []);
 
   private onChange: (value: T | T[] | null) => void = () => undefined;
   private onTouched: () => void = () => undefined;
@@ -153,11 +245,13 @@ export class NgDropdownComponent<T = string>
 
       this.value.set(nextValues);
       this.onChange(nextValues);
+      this.selectionChange.emit(nextValues);
       return;
     }
 
     this.value.set(value);
     this.onChange(value);
+    this.selectionChange.emit(value);
   }
 
   toggleAll() {
@@ -167,6 +261,7 @@ export class NgDropdownComponent<T = string>
 
     this.value.set(nextValue);
     this.onChange(nextValue);
+    this.selectionChange.emit(nextValue);
   }
 
   onSelectAllOptionChange(event: MatOptionSelectionChange<string>) {
@@ -182,6 +277,7 @@ export class NgDropdownComponent<T = string>
     const nextValue = this.multiple() ? [] : null;
     this.value.set(nextValue);
     this.onChange(nextValue);
+    this.selectionChange.emit(nextValue);
   }
 
   markAsTouched() {
@@ -199,11 +295,60 @@ export class NgDropdownComponent<T = string>
     return this.multiple() ? this.selectedValues() : this.value();
   }
 
+  onSearchInput(event: Event) {
+    const target = event.target as HTMLInputElement | null;
+    this.searchTerm.set((target?.value ?? '').toString());
+  }
+
+  onOpenedStateChange(opened: boolean) {
+    this.isOpen.set(opened);
+    if (!opened) {
+      this.searchTerm.set('');
+      this.markAsTouched();
+    }
+    this.openedChange.emit(opened);
+  }
+
+  onSelectionChanged(event: MatSelectChange) {
+    this.updateValue(event.value as T | T[] | null);
+  }
+
+  visibleGroupCount() {
+    return this.filteredGroups().length;
+  }
+
+  hasAnyVisibleOption() {
+    return this.filteredGroups().some((group) => group.options.length > 0);
+  }
+
   selectAllLabel() {
     const total = this.selectableOptions().length;
     const selected = this.selectedValues().length;
     return this.allSelected()
       ? `Clear all (${selected}/${total})`
       : `Select all (${selected}/${total})`;
+  }
+
+  trackGroup(_: number, group: NgResolvedDropdownGroup<T>) {
+    return group.label ?? 'ungrouped';
+  }
+
+  trackOption(_: number, option: NgDropdownOption<T>) {
+    return option.label;
+  }
+
+  private isSameValue(first: T | null, second: T | null) {
+    const compare = this.compareWith();
+    return compare ? compare(first, second) : first === second;
+  }
+
+  private matchesSearch(option: NgDropdownOption<T>, query: string) {
+    const haystacks = [
+      option.label,
+      option.description ?? '',
+      ...(option.keywords ?? []),
+    ];
+
+    return haystacks.some((value) => value.toLowerCase().includes(query));
   }
 }
