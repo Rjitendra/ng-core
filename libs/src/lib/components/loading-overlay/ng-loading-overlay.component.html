@@ -1,0 +1,21 @@
+@if (spinner(); as activeSpinner) {
+  <div
+    class="ng-loading-overlay"
+    [class.ng-loading-overlay--fullscreen]="fullscreen()"
+    [class]="activeSpinner.backdropClass"
+  >
+    <div class="ng-loading-overlay__panel" [class]="activeSpinner.panelClass">
+      <ng-spinner
+        [variant]="activeSpinner.variant ?? 'circular'"
+        [size]="activeSpinner.size ?? 'md'"
+        [color]="activeSpinner.color ?? 'primary'"
+        [mode]="activeSpinner.mode ?? 'indeterminate'"
+        [progress]="activeSpinner.progress ?? 35"
+        [label]="activeSpinner.label ?? 'Loading'"
+        [inline]="activeSpinner.inline ?? false"
+        [overlay]="activeSpinner.overlay ?? true"
+        [strokeWidth]="activeSpinner.strokeWidth ?? 4"
+      ></ng-spinner>
+    </div>
+  </div>
+}

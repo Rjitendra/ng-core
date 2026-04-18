@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+.ng-loading-overlay {
+  display: grid;
+  place-items: center;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ng-loading-overlay--fullscreen {
+  position: fixed;
+  z-index: 1200;
+  background: rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(3px);
+}
+
+.ng-loading-overlay__panel {
+  max-width: min(90vw, 420px);
+  pointer-events: auto;
+}

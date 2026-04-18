@@ -5,6 +5,7 @@ import { AlertMessageComponent } from './components/alert-message/ng-alert-messa
 import { ButtonComponent } from './components/button/ng-button.component';
 import { NgDialogComponent } from './components/dialog/ng-dialog.component';
 import { IconComponent } from './components/icon/ng-icon.component';
+import { NgLoadingOverlayComponent } from './components/loading-overlay/ng-loading-overlay.component';
 import { SpinnerComponent } from './components/spinner/ng-spinner.component';
 import { NgTreeComponent } from './components/tree/ng-tree.component';
 import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
@@ -17,6 +18,7 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     MatDialogModule,
     NgDialogComponent,
     IconComponent,
+    NgLoadingOverlayComponent,
     SpinnerComponent,
     NgTreeComponent,
   ],
@@ -27,6 +29,7 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     MatDialogModule,
     NgDialogComponent,
     IconComponent,
+    NgLoadingOverlayComponent,
     SpinnerComponent,
     NgTreeComponent,
   ],
