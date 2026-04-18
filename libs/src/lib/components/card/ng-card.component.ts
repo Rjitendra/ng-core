@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { ButtonComponent } from '../button/ng-button.component';
 import { IconComponent } from '../icon/ng-icon.component';
 
 export type NgCardVariant = 'elevated' | 'outlined' | 'ghost';
@@ -9,7 +8,7 @@ export type NgCardVariant = 'elevated' | 'outlined' | 'ghost';
 @Component({
   selector: 'ng-card',
   standalone: true,
-  imports: [CommonModule, MatCardModule, IconComponent, ButtonComponent],
+  imports: [CommonModule, MatCardModule, IconComponent],
   templateUrl: './ng-card.component.html',
   styleUrl: './ng-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

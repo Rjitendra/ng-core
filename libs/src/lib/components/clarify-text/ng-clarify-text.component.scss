@@ -1,0 +1,16 @@
+:host {
+  display: inline-flex;
+}
+
+.ng-clarify-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: help;
+}

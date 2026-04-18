@@ -1,0 +1,18 @@
+<mat-chip-set class="ng-chips">
+  @for (item of items(); track item.id) {
+    <mat-chip
+      [highlighted]="isSelected(item)"
+      [disabled]="isDisabled() || item.disabled"
+      [removable]="item.removable ?? removable()"
+      (click)="toggleChip(item)"
+      (removed)="removeChip(item, $event)"
+    >
+      {{ item.label }}
+      @if (item.removable ?? removable()) {
+        <button matChipRemove [attr.aria-label]="'Remove ' + item.label">
+          <ng-icon name="close" size="xs" tone="muted"></ng-icon>
+        </button>
+      }
+    </mat-chip>
+  }
+</mat-chip-set>

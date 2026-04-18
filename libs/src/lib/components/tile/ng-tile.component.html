@@ -1,0 +1,30 @@
+<div class="ng-tile">
+  <div class="ng-tile__header">
+    <div class="ng-tile__copy">
+      @if (icon()) {
+        <span class="ng-tile__icon">
+          <ng-icon [name]="icon()!" size="sm" tone="primary"></ng-icon>
+        </span>
+      }
+      <div>
+        <div class="ng-tile__title">{{ title() }}</div>
+        @if (subtitle()) {
+          <div class="ng-tile__subtitle">{{ subtitle() }}</div>
+        }
+      </div>
+    </div>
+    @if (badge()) {
+      <ng-badge [text]="badge()!" size="sm"></ng-badge>
+    }
+  </div>
+
+  @if (description()) {
+    <div class="ng-tile__description">{{ description() }}</div>
+  }
+
+  @if (metric()) {
+    <div class="ng-tile__metric">{{ metric() }}</div>
+  }
+
+  <ng-content></ng-content>
+</div>

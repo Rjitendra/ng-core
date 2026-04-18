@@ -1,0 +1,9 @@
+<button
+  type="button"
+  class="ng-clarify-text"
+  [matTooltip]="clarifyText()"
+  [attr.aria-label]="clarifyText() || label()"
+>
+  <ng-icon [name]="icon()" size="xs" tone="muted"></ng-icon>
+  <span>{{ label() }}</span>
+</button>

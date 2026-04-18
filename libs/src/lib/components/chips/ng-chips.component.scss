@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.ng-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+:host ::ng-deep .mat-mdc-chip {
+  border-radius: 999px;
+}

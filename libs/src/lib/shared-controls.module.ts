@@ -4,8 +4,12 @@ import { AlertComponent } from './components/alert/ng-alert.component';
 import { AlertMessageComponent } from './components/alert-message/ng-alert-message.component';
 import { NgAccordionComponent } from './components/accordion/ng-accordion.component';
 import { ButtonComponent } from './components/button/ng-button.component';
+import { NgBadgeComponent } from './components/badge/ng-badge.component';
 import { NgCardComponent } from './components/card/ng-card.component';
 import { NgCheckboxComponent } from './components/checkbox/ng-checkbox.component';
+import { NgChipsComponent } from './components/chips/ng-chips.component';
+import { NgClarifyTextComponent } from './components/clarify-text/ng-clarify-text.component';
+import { NgDatepickerComponent } from './components/datepicker/ng-datepicker.component';
 import { NgDialogComponent } from './components/dialog/ng-dialog.component';
 import { NgDropdownComponent } from './components/dropdown/ng-dropdown.component';
 import { NgErrorComponent } from './components/error/ng-error.component';
@@ -17,6 +21,7 @@ import { NgProgressBarComponent } from './components/progress-bar/ng-progress-ba
 import { NgRadioGroupComponent } from './components/radio/ng-radio-group.component';
 import { SpinnerComponent } from './components/spinner/ng-spinner.component';
 import { NgTextboxComponent } from './components/textbox/ng-textbox.component';
+import { NgTileComponent } from './components/tile/ng-tile.component';
 import { NgTreeComponent } from './components/tree/ng-tree.component';
 import { NgToggleComponent } from './components/toggle/ng-toggle.component';
 import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
@@ -26,9 +31,13 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     AlertComponent,
     AlertMessageComponent,
     NgAccordionComponent,
+    NgBadgeComponent,
     ButtonComponent,
     NgCardComponent,
     NgCheckboxComponent,
+    NgChipsComponent,
+    NgClarifyTextComponent,
+    NgDatepickerComponent,
     MatDialogModule,
     NgDialogComponent,
     NgDropdownComponent,
@@ -41,6 +50,7 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     NgRadioGroupComponent,
     SpinnerComponent,
     NgTextboxComponent,
+    NgTileComponent,
     NgTreeComponent,
     NgToggleComponent,
   ],
@@ -48,9 +58,13 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     AlertComponent,
     AlertMessageComponent,
     NgAccordionComponent,
+    NgBadgeComponent,
     ButtonComponent,
     NgCardComponent,
     NgCheckboxComponent,
+    NgChipsComponent,
+    NgClarifyTextComponent,
+    NgDatepickerComponent,
     MatDialogModule,
     NgDialogComponent,
     NgDropdownComponent,
@@ -63,6 +77,7 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     NgRadioGroupComponent,
     SpinnerComponent,
     NgTextboxComponent,
+    NgTileComponent,
     NgTreeComponent,
     NgToggleComponent,
   ],

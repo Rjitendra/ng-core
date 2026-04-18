@@ -1,0 +1,74 @@
+:host {
+  --ng-badge-fg: #1d4ed8;
+  --ng-badge-bg: rgba(37, 99, 235, 0.12);
+  --ng-badge-border: rgba(37, 99, 235, 0.24);
+  display: inline-flex;
+}
+
+:host(.ng-badge--neutral) {
+  --ng-badge-fg: #475569;
+  --ng-badge-bg: rgba(71, 85, 105, 0.12);
+  --ng-badge-border: rgba(71, 85, 105, 0.24);
+}
+
+:host(.ng-badge--success) {
+  --ng-badge-fg: #047857;
+  --ng-badge-bg: rgba(4, 120, 87, 0.12);
+  --ng-badge-border: rgba(4, 120, 87, 0.24);
+}
+
+:host(.ng-badge--warning) {
+  --ng-badge-fg: #b45309;
+  --ng-badge-bg: rgba(217, 119, 6, 0.12);
+  --ng-badge-border: rgba(217, 119, 6, 0.24);
+}
+
+:host(.ng-badge--danger) {
+  --ng-badge-fg: #b91c1c;
+  --ng-badge-bg: rgba(220, 38, 38, 0.12);
+  --ng-badge-border: rgba(220, 38, 38, 0.24);
+}
+
+.ng-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ng-badge-fg);
+  border: 1px solid transparent;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+:host(.ng-badge--filled) .ng-badge {
+  background: var(--ng-badge-fg);
+  color: #fff;
+}
+
+:host(.ng-badge--soft) .ng-badge {
+  background: var(--ng-badge-bg);
+  border-color: transparent;
+}
+
+:host(.ng-badge--outline) .ng-badge {
+  background: transparent;
+  border-color: var(--ng-badge-border);
+}
+
+:host(.ng-badge--pill) .ng-badge {
+  border-radius: 999px;
+}
+
+:host(.ng-badge--sm) .ng-badge {
+  padding: 4px 8px;
+  font-size: 0.72rem;
+}
+
+:host(.ng-badge--md) .ng-badge {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+:host(.ng-badge--lg) .ng-badge {
+  padding: 8px 12px;
+  font-size: 0.88rem;
+}
