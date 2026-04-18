@@ -1,0 +1,34 @@
+:host {
+  display: block;
+}
+
+.ng-label {
+  display: grid;
+  gap: 4px;
+}
+
+.ng-label__row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ng-label__text {
+  color: #0f172a;
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.ng-label__required {
+  color: #dc2626;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.ng-label__optional,
+.ng-label__hint {
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}

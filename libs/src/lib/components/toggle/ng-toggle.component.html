@@ -1,0 +1,16 @@
+<div class="ng-toggle">
+  <div class="ng-toggle__copy">
+    <div class="ng-toggle__label">{{ label() }}</div>
+    @if (description()) {
+      <div class="ng-toggle__description">{{ description() }}</div>
+    }
+  </div>
+
+  <mat-slide-toggle
+    [checked]="checked()"
+    [disabled]="isDisabled()"
+    [hideIcon]="hideIcon()"
+    (change)="onCheckedChange($event)"
+    (blur)="markAsTouched()"
+  ></mat-slide-toggle>
+</div>

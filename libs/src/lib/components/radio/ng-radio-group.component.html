@@ -1,0 +1,27 @@
+<div class="ng-radio">
+  @if (label()) {
+    <ng-label [text]="label()!" [hint]="hint()"></ng-label>
+  }
+
+  <mat-radio-group
+    class="ng-radio__group"
+    [class.ng-radio__group--horizontal]="orientation() === 'horizontal'"
+    [name]="name()"
+    [ngModel]="value()"
+    (ngModelChange)="selectValue($event)"
+    (blur)="markAsTouched()"
+  >
+    @for (option of options(); track trackOption($index, option)) {
+      <mat-radio-button
+        class="ng-radio__option"
+        [value]="option.value"
+        [disabled]="isDisabled(option)"
+      >
+        <span class="ng-radio__label">{{ option.label }}</span>
+        @if (option.description) {
+          <span class="ng-radio__description">{{ option.description }}</span>
+        }
+      </mat-radio-button>
+    }
+  </mat-radio-group>
+</div>

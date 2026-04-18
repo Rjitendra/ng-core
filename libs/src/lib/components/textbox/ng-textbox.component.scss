@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.ng-textbox {
+  display: grid;
+  gap: 8px;
+}
+
+.ng-textbox__field {
+  width: 100%;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  margin-top: 4px;
+}
+
+:host(.ng-textbox--sm) ::ng-deep .mat-mdc-text-field-wrapper {
+  min-height: 42px;
+}
+
+:host(.ng-textbox--md) ::ng-deep .mat-mdc-text-field-wrapper {
+  min-height: 48px;
+}
+
+:host(.ng-textbox--lg) ::ng-deep .mat-mdc-text-field-wrapper {
+  min-height: 56px;
+}

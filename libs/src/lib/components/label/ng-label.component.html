@@ -1,0 +1,15 @@
+<label class="ng-label" [attr.for]="forId() || null">
+  <span class="ng-label__row">
+    <span class="ng-label__text">{{ text() }}</span>
+    @if (required()) {
+      <span class="ng-label__required" aria-hidden="true">*</span>
+    }
+    @if (optional() && !required()) {
+      <span class="ng-label__optional">Optional</span>
+    }
+  </span>
+
+  @if (hint()) {
+    <span class="ng-label__hint">{{ hint() }}</span>
+  }
+</label>

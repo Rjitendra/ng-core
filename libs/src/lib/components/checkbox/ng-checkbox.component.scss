@@ -1,0 +1,20 @@
+:host {
+  display: block;
+}
+
+.ng-checkbox {
+  display: grid;
+  gap: 4px;
+}
+
+.ng-checkbox__label {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.ng-checkbox__description {
+  color: #64748b;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  padding-left: 34px;
+}

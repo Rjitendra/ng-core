@@ -1,0 +1,16 @@
+<div class="ng-checkbox">
+  <mat-checkbox
+    [checked]="checked()"
+    [disabled]="isDisabled()"
+    [required]="required()"
+    [indeterminate]="indeterminate()"
+    (change)="onCheckedChange($event)"
+    (blur)="markAsTouched()"
+  >
+    <span class="ng-checkbox__label">{{ label() }}</span>
+  </mat-checkbox>
+
+  @if (description()) {
+    <div class="ng-checkbox__description">{{ description() }}</div>
+  }
+</div>

@@ -1,0 +1,39 @@
+:host {
+  display: block;
+}
+
+.ng-radio {
+  display: grid;
+  gap: 10px;
+}
+
+.ng-radio__group {
+  display: grid;
+  gap: 10px;
+}
+
+.ng-radio__group--horizontal {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.ng-radio__option {
+  display: block;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.ng-radio__label {
+  display: block;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.ng-radio__description {
+  display: block;
+  color: #64748b;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin-top: 4px;
+}
