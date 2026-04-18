@@ -3,6 +3,8 @@ export * from './lib/components/alert-message/ng-alert-message.component';
 export * from './lib/components/button/ng-button.component';
 export * from './lib/components/checkbox/ng-checkbox.component';
 export * from './lib/components/dialog/ng-dialog.component';
+export * from './lib/components/dropdown/ng-dropdown.component';
+export * from './lib/components/error/ng-error.component';
 export * from './lib/components/icon/ng-icon.component';
 export * from './lib/components/loading-overlay/ng-loading-overlay.component';
 export * from './lib/components/label/ng-label.component';
