@@ -8,12 +8,11 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatOptionModule, MatOptionSelectionChange } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { IconComponent } from '../icon/ng-icon.component';
 import { NgErrorComponent, NgErrorValue } from '../error/ng-error.component';
 import { NgLabelComponent } from '../label/ng-label.component';
@@ -50,12 +49,10 @@ const SELECT_ALL_SENTINEL = '__ng_dropdown_select_all__';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
     MatFormFieldModule,
     MatSelectModule,
     MatOptionModule,
     MatInputModule,
-    MatIconModule,
     IconComponent,
     NgErrorComponent,
     NgLabelComponent,

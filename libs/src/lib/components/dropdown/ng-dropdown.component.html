@@ -34,7 +34,7 @@
       @if (searchable()) {
         <mat-option class="ng-dropdown__search-option" [disabled]="true">
           <div class="ng-dropdown__search-shell" (click)="$event.stopPropagation()">
-            <mat-icon>search</mat-icon>
+            <ng-icon name="search" size="sm" tone="muted"></ng-icon>
             <input
               class="ng-dropdown__search-input"
               [placeholder]="searchPlaceholder()"

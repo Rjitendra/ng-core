@@ -7,7 +7,7 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgErrorComponent, NgErrorValue } from '../error/ng-error.component';
@@ -22,7 +22,6 @@ export type TextboxSize = 'sm' | 'md' | 'lg';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     NgErrorComponent,

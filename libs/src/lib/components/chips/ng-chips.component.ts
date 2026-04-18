@@ -7,7 +7,7 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatChipEvent, MatChipsModule } from '@angular/material/chips';
 import { IconComponent } from '../icon/ng-icon.component';
 
@@ -23,7 +23,7 @@ export interface NgChipItem {
 @Component({
   selector: 'ng-chips',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatChipsModule, IconComponent],
+  imports: [CommonModule, MatChipsModule, IconComponent],
   templateUrl: './ng-chips.component.html',
   styleUrl: './ng-chips.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
