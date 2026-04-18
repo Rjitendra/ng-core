@@ -1,0 +1,74 @@
+<div class="ng-dropdown">
+  @if (label()) {
+    <ng-label
+      [text]="label()!"
+      [forId]="id()"
+      [hint]="hint()"
+      [required]="required()"
+    ></ng-label>
+  }
+
+  <mat-form-field class="ng-dropdown__field" [appearance]="appearance()" [subscriptSizing]="'dynamic'">
+    @if (prefixIcon()) {
+      <ng-icon matPrefix [name]="prefixIcon()!" size="sm" tone="muted"></ng-icon>
+    }
+
+    <mat-select
+      [id]="id()"
+      [placeholder]="placeholder()"
+      [required]="required()"
+      [disabled]="resolvedDisabled()"
+      [multiple]="multiple()"
+      [value]="selectValue()"
+      [attr.aria-describedby]="describedBy()"
+      (selectionChange)="updateValue($event.value)"
+      (blur)="markAsTouched()"
+    >
+      @if (multiple() && selectAll()) {
+        <mat-option
+          [value]="selectAllSentinel"
+          (onSelectionChange)="onSelectAllOptionChange($event)"
+        >
+          {{ selectAllLabel() }}
+        </mat-option>
+      }
+
+      @for (option of options(); track option.value) {
+        <mat-option [value]="option.value" [disabled]="option.disabled">
+          <div class="ng-dropdown__option">
+            <span class="ng-dropdown__option-label">{{ option.label }}</span>
+            @if (option.description) {
+              <span class="ng-dropdown__option-description">{{ option.description }}</span>
+            }
+          </div>
+        </mat-option>
+      }
+
+      <mat-select-trigger>
+        @if (multiple()) {
+          {{ selectedLabels().length ? selectedLabels().join(', ') : placeholder() }}
+        } @else {
+          {{ selectedLabels()[0] || placeholder() }}
+        }
+      </mat-select-trigger>
+    </mat-select>
+
+    @if (clearable() && selectedValues().length) {
+      <button
+        matSuffix
+        type="button"
+        class="ng-dropdown__clear"
+        [disabled]="resolvedDisabled()"
+        (click)="clearValue($event)"
+      >
+        <ng-icon name="close" size="sm" tone="muted"></ng-icon>
+      </button>
+    }
+
+    @if (showError()) {
+      <ng-error [id]="id() + '-error'" [error]="errorText()"></ng-error>
+    } @else if (helperText()) {
+      <mat-hint [id]="id() + '-helper'">{{ helperText() }}</mat-hint>
+    }
+  </mat-form-field>
+</div>

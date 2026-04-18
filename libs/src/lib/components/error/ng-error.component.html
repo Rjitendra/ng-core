@@ -1,0 +1,3 @@
+@for (message of messages(); track message) {
+  <mat-error [attr.id]="id() || null">{{ message }}</mat-error>
+}

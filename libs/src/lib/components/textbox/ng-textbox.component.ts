@@ -10,6 +10,7 @@ import {
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { NgErrorComponent, NgErrorValue } from '../error/ng-error.component';
 import { IconComponent } from '../icon/ng-icon.component';
 import { NgLabelComponent } from '../label/ng-label.component';
 
@@ -24,6 +25,7 @@ export type TextboxSize = 'sm' | 'md' | 'lg';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    NgErrorComponent,
     IconComponent,
     NgLabelComponent,
   ],
@@ -52,7 +54,7 @@ export class NgTextboxComponent implements ControlValueAccessor {
   readonly size = input<TextboxSize>('md');
   readonly appearance = input<TextboxAppearance>('outline');
   readonly helperText = input<string>();
-  readonly errorText = input<string>();
+  readonly errorText = input<NgErrorValue>();
   readonly prefixIcon = input<string>();
   readonly suffixIcon = input<string>();
   readonly required = input<boolean>(false);

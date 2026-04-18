@@ -5,6 +5,8 @@ import { AlertMessageComponent } from './components/alert-message/ng-alert-messa
 import { ButtonComponent } from './components/button/ng-button.component';
 import { NgCheckboxComponent } from './components/checkbox/ng-checkbox.component';
 import { NgDialogComponent } from './components/dialog/ng-dialog.component';
+import { NgDropdownComponent } from './components/dropdown/ng-dropdown.component';
+import { NgErrorComponent } from './components/error/ng-error.component';
 import { NgLabelComponent } from './components/label/ng-label.component';
 import { IconComponent } from './components/icon/ng-icon.component';
 import { NgLoadingOverlayComponent } from './components/loading-overlay/ng-loading-overlay.component';
@@ -23,6 +25,8 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     NgCheckboxComponent,
     MatDialogModule,
     NgDialogComponent,
+    NgDropdownComponent,
+    NgErrorComponent,
     IconComponent,
     NgLabelComponent,
     NgLoadingOverlayComponent,
@@ -39,6 +43,8 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     NgCheckboxComponent,
     MatDialogModule,
     NgDialogComponent,
+    NgDropdownComponent,
+    NgErrorComponent,
     IconComponent,
     NgLabelComponent,
     NgLoadingOverlayComponent,

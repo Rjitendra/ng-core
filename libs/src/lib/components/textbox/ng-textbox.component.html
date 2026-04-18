@@ -56,7 +56,7 @@
     }
 
     @if (showError()) {
-      <mat-error [id]="id() + '-error'">{{ errorText() }}</mat-error>
+      <ng-error [id]="id() + '-error'" [error]="errorText()"></ng-error>
     } @else if (helperText()) {
       <mat-hint [id]="id() + '-helper'">{{ helperText() }}</mat-hint>
     }

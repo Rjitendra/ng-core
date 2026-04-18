@@ -1,0 +1,50 @@
+:host {
+  display: block;
+}
+
+.ng-dropdown {
+  display: grid;
+  gap: 8px;
+}
+
+.ng-dropdown__field {
+  width: 100%;
+}
+
+.ng-dropdown__option {
+  display: grid;
+  gap: 2px;
+}
+
+.ng-dropdown__option-label {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.ng-dropdown__option-description {
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.ng-dropdown__clear {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin-right: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+:host(.ng-dropdown--sm) ::ng-deep .mat-mdc-text-field-wrapper {
+  min-height: 42px;
+}
+
+:host(.ng-dropdown--md) ::ng-deep .mat-mdc-text-field-wrapper {
+  min-height: 48px;
+}
+
+:host(.ng-dropdown--lg) ::ng-deep .mat-mdc-text-field-wrapper {
+  min-height: 56px;
+}
