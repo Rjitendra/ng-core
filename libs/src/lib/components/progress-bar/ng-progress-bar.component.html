@@ -1,0 +1,24 @@
+<div class="ng-progress-bar">
+  @if (label() || (showValue() && mode() !== 'indeterminate' && mode() !== 'query')) {
+    <div class="ng-progress-bar__header">
+      @if (label()) {
+        <span class="ng-progress-bar__label">{{ label() }}</span>
+      }
+      @if (showValue() && mode() !== 'indeterminate' && mode() !== 'query') {
+        <span class="ng-progress-bar__value">{{ displayValue() }}</span>
+      }
+    </div>
+  }
+
+  <mat-progress-bar
+    class="ng-progress-bar__track"
+    [class.ng-progress-bar__track--animated]="animated()"
+    [mode]="mode()"
+    [value]="normalizedValue()"
+    [bufferValue]="normalizedBufferValue()"
+  ></mat-progress-bar>
+
+  @if (caption()) {
+    <div class="ng-progress-bar__caption">{{ caption() }}</div>
+  }
+</div>

@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+
+.ng-accordion {
+  display: grid;
+  gap: 12px;
+}
+
+.ng-accordion__title-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.ng-accordion__content {
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+:host ::ng-deep .mat-expansion-panel {
+  border-radius: 18px !important;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: none !important;
+}

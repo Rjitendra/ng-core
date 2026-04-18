@@ -1,0 +1,108 @@
+:host {
+  display: block;
+}
+
+.ng-card {
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fff;
+}
+
+:host(.ng-card--elevated) .ng-card {
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.1);
+}
+
+:host(.ng-card--outlined) .ng-card {
+  border: 1px solid #e2e8f0;
+  box-shadow: none;
+}
+
+:host(.ng-card--ghost) .ng-card {
+  background: #f8fafc;
+  box-shadow: none;
+}
+
+:host(.ng-card--interactive) .ng-card {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  cursor: pointer;
+}
+
+:host(.ng-card--interactive) .ng-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 50px rgba(15, 23, 42, 0.14);
+}
+
+.ng-card__image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.ng-card__body {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+}
+
+.ng-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ng-card__eyebrow,
+.ng-card__badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ng-card__eyebrow {
+  color: #2563eb;
+}
+
+.ng-card__badge {
+  color: #0f172a;
+  background: #e2e8f0;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.ng-card__copy {
+  display: grid;
+  gap: 6px;
+}
+
+.ng-card__icon {
+  width: 36px;
+  height: 36px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.ng-card__title {
+  color: #0f172a;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.ng-card__subtitle {
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.ng-card__description {
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.ng-card__actions {
+  padding: 0 20px 20px;
+}

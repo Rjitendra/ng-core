@@ -1,0 +1,70 @@
+:host {
+  --ng-progress-color: #2563eb;
+  --ng-progress-track: rgba(37, 99, 235, 0.18);
+  display: block;
+}
+
+:host(.ng-progress-bar--neutral) {
+  --ng-progress-color: #475569;
+  --ng-progress-track: rgba(71, 85, 105, 0.18);
+}
+
+:host(.ng-progress-bar--success) {
+  --ng-progress-color: #059669;
+  --ng-progress-track: rgba(5, 150, 105, 0.18);
+}
+
+:host(.ng-progress-bar--warning) {
+  --ng-progress-color: #d97706;
+  --ng-progress-track: rgba(217, 119, 6, 0.18);
+}
+
+:host(.ng-progress-bar--danger) {
+  --ng-progress-color: #dc2626;
+  --ng-progress-track: rgba(220, 38, 38, 0.18);
+}
+
+.ng-progress-bar {
+  display: grid;
+  gap: 8px;
+}
+
+.ng-progress-bar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ng-progress-bar__label,
+.ng-progress-bar__value {
+  color: #0f172a;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.ng-progress-bar__caption {
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+:host ::ng-deep .mdc-linear-progress__bar-inner {
+  border-color: var(--ng-progress-color) !important;
+}
+
+:host ::ng-deep .mdc-linear-progress__buffer-bar {
+  background-color: var(--ng-progress-track) !important;
+}
+
+:host(.ng-progress-bar--sm) ::ng-deep .mdc-linear-progress {
+  height: 4px;
+}
+
+:host(.ng-progress-bar--md) ::ng-deep .mdc-linear-progress {
+  height: 8px;
+}
+
+:host(.ng-progress-bar--lg) ::ng-deep .mdc-linear-progress {
+  height: 12px;
+}

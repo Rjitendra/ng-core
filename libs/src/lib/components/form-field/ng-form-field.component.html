@@ -1,0 +1,21 @@
+<div class="ng-form-field">
+  @if (label()) {
+    <ng-label
+      [text]="label()!"
+      [forId]="id()"
+      [hint]="hint()"
+      [required]="required()"
+      [optional]="optional()"
+    ></ng-label>
+  }
+
+  <mat-form-field class="ng-form-field__control" [appearance]="appearance()" [subscriptSizing]="'dynamic'">
+    <ng-content></ng-content>
+
+    @if (hasError()) {
+      <ng-error [id]="id() + '-error'" [error]="errorText()"></ng-error>
+    } @else if (helperText()) {
+      <mat-hint [id]="id() + '-helper'">{{ helperText() }}</mat-hint>
+    }
+  </mat-form-field>
+</div>

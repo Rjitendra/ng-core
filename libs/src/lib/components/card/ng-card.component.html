@@ -1,0 +1,45 @@
+<mat-card class="ng-card">
+  @if (image()) {
+    <img class="ng-card__image" [src]="image()!" [alt]="imageAlt()" />
+  }
+
+  <mat-card-content class="ng-card__body">
+    @if (eyebrow() || badge()) {
+      <div class="ng-card__meta">
+        @if (eyebrow()) {
+          <span class="ng-card__eyebrow">{{ eyebrow() }}</span>
+        }
+        @if (badge()) {
+          <span class="ng-card__badge">{{ badge() }}</span>
+        }
+      </div>
+    }
+
+    @if (icon() || title() || subtitle() || description()) {
+      <div class="ng-card__copy">
+        @if (icon()) {
+          <span class="ng-card__icon">
+            <ng-icon [name]="icon()!" size="sm" tone="primary"></ng-icon>
+          </span>
+        }
+        @if (title()) {
+          <div class="ng-card__title">{{ title() }}</div>
+        }
+        @if (subtitle()) {
+          <div class="ng-card__subtitle">{{ subtitle() }}</div>
+        }
+        @if (description()) {
+          <div class="ng-card__description">{{ description() }}</div>
+        }
+      </div>
+    }
+
+    <ng-content></ng-content>
+  </mat-card-content>
+
+  @if (!!(title() || subtitle() || description())) {
+    <mat-card-actions class="ng-card__actions">
+      <ng-content select="[card-actions]"></ng-content>
+    </mat-card-actions>
+  }
+</mat-card>

@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+.ng-form-field {
+  display: grid;
+  gap: 8px;
+}
+
+.ng-form-field__control {
+  width: 100%;
+}

@@ -1,0 +1,23 @@
+<mat-accordion [multi]="multi()" [displayMode]="displayMode()" class="ng-accordion">
+  @for (item of items(); track item.id) {
+    <mat-expansion-panel [disabled]="item.disabled" [expanded]="item.expanded" [hideToggle]="hideToggle()">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span class="ng-accordion__title-row">
+            @if (item.icon) {
+              <ng-icon [name]="item.icon" size="sm" tone="primary"></ng-icon>
+            }
+            <span>{{ item.title }}</span>
+          </span>
+        </mat-panel-title>
+        @if (item.description) {
+          <mat-panel-description>{{ item.description }}</mat-panel-description>
+        }
+      </mat-expansion-panel-header>
+
+      @if (item.content) {
+        <div class="ng-accordion__content">{{ item.content }}</div>
+      }
+    </mat-expansion-panel>
+  }
+</mat-accordion>
