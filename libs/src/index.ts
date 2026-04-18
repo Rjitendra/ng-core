@@ -5,6 +5,7 @@ export * from './lib/components/dialog/ng-dialog.component';
 export * from './lib/components/icon/ng-icon.component';
 export * from './lib/components/icon/ng-icon.registry';
 export * from './lib/components/spinner/ng-spinner.component';
+export * from './lib/components/tree/ng-tree.component';
 export * from './lib/models/alert';
 export * from './lib/models/dialog';
 export * from './lib/services/alert.service';

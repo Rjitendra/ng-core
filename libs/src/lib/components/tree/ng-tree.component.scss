@@ -1,0 +1,100 @@
+:host {
+  display: block;
+}
+
+.ng-tree {
+  display: grid;
+  gap: 4px;
+}
+
+.ng-tree__node {
+  display: grid;
+  gap: 4px;
+}
+
+.ng-tree__row {
+  --ng-tree-level-indent: 0px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px 8px calc(var(--ng-tree-level-indent) + 8px);
+  border-radius: 16px;
+  transition: background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.ng-tree__row:hover {
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.ng-tree__row--disabled {
+  opacity: 0.56;
+}
+
+.ng-tree__toggle,
+.ng-tree__content {
+  border: 0;
+  background: transparent;
+}
+
+.ng-tree__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 999px;
+  color: #475569;
+  cursor: pointer;
+  flex: 0 0 28px;
+}
+
+.ng-tree__toggle:hover:not(:disabled) {
+  background: rgba(37, 99, 235, 0.08);
+  color: #1d4ed8;
+}
+
+.ng-tree__toggle--hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ng-tree__checkbox {
+  margin-top: 1px;
+}
+
+.ng-tree__checkbox-spacer {
+  width: 18px;
+  flex: 0 0 18px;
+}
+
+.ng-tree__content {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  padding: 4px 0;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  flex: 1;
+}
+
+.ng-tree__copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ng-tree__label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #0f172a;
+}
+
+.ng-tree__description {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #64748b;
+}

@@ -6,6 +6,7 @@ import { ButtonComponent } from './components/button/ng-button.component';
 import { NgDialogComponent } from './components/dialog/ng-dialog.component';
 import { IconComponent } from './components/icon/ng-icon.component';
 import { SpinnerComponent } from './components/spinner/ng-spinner.component';
+import { NgTreeComponent } from './components/tree/ng-tree.component';
 import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     NgDialogComponent,
     IconComponent,
     SpinnerComponent,
+    NgTreeComponent,
   ],
   exports: [
     AlertComponent,
@@ -26,6 +28,7 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     NgDialogComponent,
     IconComponent,
     SpinnerComponent,
+    NgTreeComponent,
   ],
   providers: [...APP_DIALOG_PROVIDERS],
 })

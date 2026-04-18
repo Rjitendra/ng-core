@@ -1,0 +1,66 @@
+<div class="ng-tree">
+  <ng-template #treeNodes let-nodes let-level="level">
+    @for (node of nodes; track trackNode($index, node)) {
+      <div class="ng-tree__node">
+        <div
+          class="ng-tree__row"
+          [class.ng-tree__row--disabled]="node.disabled"
+          [style.--ng-tree-level-indent]="levelIndent(level)"
+        >
+          <button
+            type="button"
+            class="ng-tree__toggle"
+            [class.ng-tree__toggle--hidden]="!hasChildren(node)"
+            [attr.aria-label]="isExpanded(node) ? 'Collapse node' : 'Expand node'"
+            [disabled]="!hasChildren(node)"
+            (click)="toggleExpanded(node)"
+          >
+            <ng-icon
+              [name]="isExpanded(node) ? 'expand_more' : 'chevron_right'"
+              size="sm"
+            ></ng-icon>
+          </button>
+
+          @if (showCheckboxes() && node.selectable !== false) {
+            <mat-checkbox
+              class="ng-tree__checkbox"
+              [checked]="isChecked(node)"
+              [disabled]="node.disabled"
+              [indeterminate]="isIndeterminate(node)"
+              (change)="onCheckboxChange(node, $event)"
+            ></mat-checkbox>
+          } @else if (showCheckboxes()) {
+            <span class="ng-tree__checkbox-spacer" aria-hidden="true"></span>
+          }
+
+          <button
+            type="button"
+            class="ng-tree__content"
+            [disabled]="node.disabled"
+            (click)="onNodeLabelClick(node)"
+          >
+            @if (node.icon) {
+              <ng-icon [name]="node.icon" size="sm" tone="primary"></ng-icon>
+            }
+            <span class="ng-tree__copy">
+              <span class="ng-tree__label">{{ node.label }}</span>
+              @if (node.description) {
+                <span class="ng-tree__description">{{ node.description }}</span>
+              }
+            </span>
+          </button>
+        </div>
+
+        @if (hasChildren(node) && isExpanded(node)) {
+          <ng-container
+            *ngTemplateOutlet="treeNodes; context: { $implicit: childNodes(node), level: level + 1 }"
+          ></ng-container>
+        }
+      </div>
+    }
+  </ng-template>
+
+  <ng-container
+    *ngTemplateOutlet="treeNodes; context: { $implicit: nodes(), level: 0 }"
+  ></ng-container>
+</div>
