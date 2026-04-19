@@ -4,6 +4,9 @@
   "license": "MIT",
   "scripts": {
     "storybook": "nx run ng-core:storybook",
+    "build:storybook": "nx run ng-core:build-storybook",
+    "build:shared": "nx run shared:build",
+    "publish:shared": "npm run build:shared && npm publish ./dist/libs --access public",
     "test": "nx test ng-core",
     "test:ui": "nx test ng-core --ui",
     "test:run": "nx test ng-core"

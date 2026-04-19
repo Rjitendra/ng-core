@@ -1,0 +1,51 @@
+# Publish @ng-core/shared to npm (manual + release).
+#
+# Setup:
+#   1. Create an npm automation token: https://docs.npmjs.com/creating-and-viewing-access-tokens
+#   2. Add repository secret NPM_TOKEN
+#   3. Ensure libs/package.json "name" and "version" are correct before release
+name: Publish npm package
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'npm dist-tag (e.g. latest, next)'
+        required: false
+        default: 'latest'
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install
+        run: npm ci
+
+      - name: Build library
+        run: npx nx run shared:build --configuration=production
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ github.event.inputs.tag }}"
+          else
+            TAG=latest
+          fi
+          if [ -z "$TAG" ]; then TAG=latest; fi
+          cd dist/libs
+          npm publish --access public --tag "$TAG"

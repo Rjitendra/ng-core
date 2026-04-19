@@ -25,7 +25,30 @@ To see all available targets to run for a project, run:
 ```sh
 npx nx show project ng-core
 ```
-        
+
+## Shared UI library (`@ng-core/shared`)
+
+- **Catalog (grouped controls, gaps, naming):** [docs/CONTROLS-CATALOG.md](docs/CONTROLS-CATALOG.md)
+- **Build the publishable package:** `npm run build:shared` (output: `dist/libs/`)
+- **Storybook (local):** `npm run storybook`
+- **Storybook (static build):** `npm run build:storybook` (output: `dist/storybook/ng-core/`)
+
+### Publish to npm
+
+1. Log in once: `npm login`
+2. Bump `libs/package.json` **version** (semver).
+3. From the repo root: `npm run publish:shared`
+
+For CI, add an **`NPM_TOKEN`** secret and run the **Publish npm package** workflow (`.github/workflows/npm-publish.yml`). Use an [automation token](https://docs.npmjs.com/creating-and-viewing-access-tokens) with publish rights for the scope.
+
+To use a more **market-facing** package name later (for example `@your-org/angular-controls`), change the `"name"` in `libs/package.json` and publish a **new** major version with a migration note—do not rename lightly if consumers already depend on `@ng-core/shared`.
+
+### Host Storybook on GitHub Pages (static)
+
+1. Ensure the **Deploy Storybook to GitHub Pages** workflow (`.github/workflows/storybook-github-pages.yml`) has run (push to `main`/`master` or run it manually).
+2. In the GitHub repo: **Settings → Pages → Build and deployment → Branch:** `gh-pages` / **folder:** `/ (root)`.
+3. The site URL will be `https://<owner>.github.io/<repository>/`. The workflow runs `tools/patch-storybook-base-href.mjs` so asset URLs resolve under that subpath.
+
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
 [More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)

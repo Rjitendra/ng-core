@@ -1,0 +1,51 @@
+# Build Storybook and deploy static site to branch gh-pages (GitHub Pages).
+#
+# GitHub settings:
+#   Settings → Pages → Build and deployment → Source: Deploy from a branch
+#   Branch: gh-pages / / (root)
+#
+# For a project site (https://<owner>.github.io/<repo>/), the workflow patches
+# index.html with <base href="/<repo>/"> after build.
+name: Deploy Storybook to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master, main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-storybook
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install
+        run: npm ci
+
+      - name: Build Storybook
+        run: npx nx run ng-core:build-storybook --configuration=ci
+
+      - name: Patch base href for GitHub Project Pages
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: node tools/patch-storybook-base-href.mjs dist/storybook/ng-core "$REPO_NAME"
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./dist/storybook/ng-core
+          force_orphan: true

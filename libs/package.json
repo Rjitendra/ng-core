@@ -1,9 +1,27 @@
 {
   "name": "@ng-core/shared",
   "version": "0.0.1",
+  "description": "Angular Material–based UI controls and patterns for line-of-business apps (forms, tables, layout, feedback).",
+  "keywords": [
+    "angular",
+    "angular-material",
+    "components",
+    "design-system",
+    "forms",
+    "storybook"
+  ],
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^21.2.0",
-    "@angular/core": "^21.2.0"
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0",
+    "@angular/cdk": "^21.2.0",
+    "@angular/material": "^21.2.0",
+    "rxjs": "^7.8.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
