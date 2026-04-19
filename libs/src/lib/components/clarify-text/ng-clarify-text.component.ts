@@ -15,4 +15,5 @@ export class NgClarifyTextComponent {
   readonly clarifyText = input<string>('');
   readonly label = input<string>('Why?');
   readonly icon = input<string>('help');
+  readonly isIconDisabled = input(false);
 }

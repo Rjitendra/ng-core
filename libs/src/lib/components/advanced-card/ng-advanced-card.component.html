@@ -1,0 +1,38 @@
+<ng-card
+  [title]="title()"
+  [subtitle]="subtitle()"
+  [icon]="headerIcon()"
+  [variant]="cardVariant()"
+>
+  <div class="card-content">
+    <ng-content></ng-content>
+  </div>
+
+  @if (actions().length > 0) {
+    <ng-divider />
+    <div class="card-actions">
+      @for (action of actions(); track action.action) {
+        <ng-button
+          [buttonType]="'button'"
+          [type]="buttonVariant(action.type)"
+          [label]="action.label"
+          [icon]="action.icon"
+          (buttonClick)="onActionClick(action)"
+        />
+      }
+    </div>
+  }
+
+  @if (showFooter()) {
+    <ng-divider />
+    <div class="card-footer">
+      @if (footerIcon()) {
+        <ng-icon [name]="footerIcon()!" size="sm" tone="muted" class="footer-icon" />
+      }
+      <span class="footer-text">{{ footerText() }}</span>
+      @if (showTimestamp() && timestamp()) {
+        <span class="timestamp">{{ timestamp()! | date: 'short' }}</span>
+      }
+    </div>
+  }
+</ng-card>

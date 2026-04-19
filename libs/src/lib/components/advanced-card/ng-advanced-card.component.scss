@@ -1,0 +1,33 @@
+.card-content {
+  margin-bottom: 16px;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 0 8px;
+  justify-content: flex-end;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.footer-icon {
+  display: inline-flex;
+}
+
+.footer-text {
+  flex: 1;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}

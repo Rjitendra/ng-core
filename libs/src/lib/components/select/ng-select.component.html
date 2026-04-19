@@ -1,0 +1,50 @@
+<mat-form-field
+  [appearance]="appearance()"
+  class="ng-select-field"
+  [class.ng-invalid]="hasValidationError"
+  [class.ng-touched]="isTouched"
+>
+  @if (label()) {
+    <mat-label>
+      <ng-label [text]="label()" [required]="required()" />
+    </mat-label>
+  }
+
+  @if (prefixIcon()) {
+    <mat-icon matPrefix>{{ prefixIcon() }}</mat-icon>
+  }
+
+  <mat-select
+    [formControl]="internalControl"
+    [placeholder]="placeholder()"
+    [multiple]="multiple()"
+    [required]="required()"
+    [id]="uniqueId()"
+    (selectionChange)="onSelectionChange($event)"
+    (openedChange)="onOpenedChange($event)"
+  >
+    @for (option of options(); track option.value) {
+      <mat-option [value]="option.value" [disabled]="option.disabled">
+        {{ option.label }}
+      </mat-option>
+    }
+  </mat-select>
+
+  @if (suffixIcon()) {
+    <mat-icon matSuffix>{{ suffixIcon() }}</mat-icon>
+  }
+
+  @if (clarifyText()) {
+    <div matTextSuffix>
+      <ng-clarify-text [clarifyText]="clarifyText()" />
+    </div>
+  }
+
+  @if (hasValidationError) {
+    <mat-error>{{ displayErrorMessage }}</mat-error>
+  }
+
+  @if (hint() && !hasValidationError) {
+    <mat-hint>{{ hint() }}</mat-hint>
+  }
+</mat-form-field>

@@ -1,0 +1,26 @@
+/* ng-input.component.scss */
+:host {
+  display: block;
+  width: 100%;
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+/* Error styling is now handled by shared-controls.scss */
+/* Component uses .ng-custom-error class which is defined in shared styles */
+.ng-suffix-disabled {
+  opacity: 0.5;
+  color: rgba(
+    0,
+    0,
+    0,
+    0.38
+  ) !important; // match Angular Material disabled color
+  pointer-events: none; // prevent clicking on suffix if interactive
+}

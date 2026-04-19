@@ -1,0 +1,141 @@
+<div class="ng-file-upload">
+  @if (label()) {
+    <div class="upload-label">
+      <ng-label
+        [text]="label()"
+        [required]="required()"
+      />
+      @if (clarifyText()) {
+        <ng-clarify-text
+          [clarifyText]="clarifyText()"
+          [isIconDisabled]="disabled()"
+        />
+      }
+    </div>
+  }
+
+  <div
+    class="upload-area"
+    [class.disabled]="disabled()"
+    [class.dragover]="isDragOver"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+    (click)="onUploadAreaClick($event)"
+    role="button"
+    tabindex="0"
+    (keydown.enter)="onUploadAreaClick($event)"
+    (keydown.space)="onUploadAreaClick($event)"
+  >
+    <input
+      #fileInput
+      type="file"
+      [multiple]="config().allowMultiple"
+      [accept]="acceptedTypesString"
+      [disabled]="disabled()"
+      (change)="onFileSelect($event)"
+      style="
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
+        pointer-events: none;
+      "
+    />
+
+    @if (uploadedFiles.length === 0) {
+      <div class="upload-content">
+        <mat-icon class="upload-icon">cloud_upload</mat-icon>
+        <p class="upload-text">
+          {{ dragText() || "Drag and drop files here or click to browse" }}
+        </p>
+        @if (config().acceptedTypes) {
+          <p class="upload-hint">Accepted: {{ acceptedTypesString }}</p>
+        }
+        @if (config().maxFileSize) {
+          <p class="upload-hint">
+            Max size: {{ formatFileSize(config().maxFileSize || 0) }}
+          </p>
+        }
+      </div>
+    } @else {
+      <!-- Check if files are images for grid preview -->
+      @if (areFilesImages()) {
+        <div class="image-preview-grid">
+          @for (file of uploadedFiles; track file.name) {
+            <div class="image-preview-item">
+              <img [src]="file.url" [alt]="file.name" class="preview-image" />
+              <div class="image-overlay">
+                @if (!disabled() && allowRemove()) {
+                  <button
+                    type="button"
+                    mat-icon-button
+                    class="remove-image-btn"
+                    (click)="removeFile(file, $event)"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                }
+                @if ($first) {
+                  <div class="primary-badge">
+                    <mat-icon>star</mat-icon>
+                    Primary
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <!-- Regular file list for non-images -->
+        <div class="file-list">
+          @for (file of uploadedFiles; track file.name) {
+            <div class="file-item">
+              <div class="file-info">
+                <mat-icon class="file-icon">{{
+                  getFileIcon(file.type)
+                }}</mat-icon>
+                <div class="file-details">
+                  <span class="file-name">{{ file.name }}</span>
+                  <span class="file-size">{{ formatFileSize(file.size) }}</span>
+                  @if (file.error) {
+                    <span class="file-error">{{ file.error }}</span>
+                  }
+                </div>
+              </div>
+
+              @if (file.progress !== undefined && file.progress < 100) {
+                <mat-progress-bar mode="determinate" [value]="file.progress" />
+              }
+
+              @if (!disabled() && allowRemove()) {
+                <button
+                  type="button"
+                  mat-icon-button
+                  (click)="removeFile(file, $event)"
+                >
+                  <mat-icon>close</mat-icon>
+                </button>
+              }
+            </div>
+          }
+        </div>
+      }
+    }
+
+    @if (uploadedFiles.length > 0 && config().allowMultiple && !disabled()) {
+      <button
+        type="button"
+        mat-stroked-button
+        class="add-more-btn"
+        (click)="openFileDialog($event)"
+      >
+        <mat-icon>add</mat-icon>
+        Add More Files
+      </button>
+    }
+  </div>
+
+  @if (hint()) {
+    <div class="hint-text">{{ hint() }}</div>
+  }
+</div>

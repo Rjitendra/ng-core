@@ -47,3 +47,5 @@ Thumbs.db
 .claude/settings.local.json
 vitest.config.*.timestamp*
 __screenshots__/
+
+.nx/polygraph

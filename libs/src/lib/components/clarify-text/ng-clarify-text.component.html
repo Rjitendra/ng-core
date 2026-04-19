@@ -1,6 +1,7 @@
 <button
   type="button"
   class="ng-clarify-text"
+  [disabled]="isIconDisabled()"
   [matTooltip]="clarifyText()"
   [attr.aria-label]="clarifyText() || label()"
 >

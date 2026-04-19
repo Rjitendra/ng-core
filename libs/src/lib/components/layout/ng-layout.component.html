@@ -1,0 +1,251 @@
+<mat-toolbar color="primary" class="header">
+  <div class="header-container">
+    <!-- Left Side: Logo and Menu -->
+    <div class="logo-container">
+      <!-- <img src="icons/ng-learning.svg" class="logo-img" alt="NG Logo" height="100" width="100" /> -->
+      <span class="brand-name">{{ brandTitle() }}</span>
+      @if (navItems().length) {
+        <button type="button" class="menu-button" mat-icon-button (click)="toggleSidenav()">
+          <mat-icon [class.rotate]="isRotated">menu</mat-icon>
+        </button>
+      }
+    </div>
+
+    <!-- Center: Welcome Text -->
+    <div class="center-content">
+      <span>{{ welcomeTitle() }}</span>
+    </div>
+
+    <!-- Right Side: Additional Content -->
+    <div class="right-content">
+      <span class="brand-name">{{ versionLabel() }}</span>
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="profileMenu"
+        class="profile-menu-button"
+      >
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #profileMenu="matMenu" class="profile-menu">
+        <button mat-menu-item (click)="onLogout()">
+          <div class="toolbar-list-item">
+            <mat-icon class="small-icon">logout</mat-icon>
+            <span>Logout</span>
+          </div>
+        </button>
+        <button mat-menu-item (click)="onProfile()">
+          <div class="toolbar-list-item">
+            <mat-icon class="small-icon">person</mat-icon>
+            <span>Profile</span>
+          </div>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
+@if (navItems().length) {
+  <mat-sidenav-container class="container">
+    <mat-sidenav
+      #sidenav
+      mode="side"
+      class="sidenav"
+      [opened]="true"
+      [class.collapsed]="!isExpanded"
+    >
+      <div class="mat-nav-list">
+        <mat-nav-list>
+          @for (item of navItems(); track $index) {
+            <ng-container
+              *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"
+            />
+          }
+        </mat-nav-list>
+      </div>
+      <div
+        #toggleButton
+        class="toggle-button-container"
+        [class.expanded]="isExpanded"
+        [class.collapsed]="!isExpanded"
+        (click)="toggleSidenav()"
+      >
+        <span></span>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content
+      class="content"
+      [ngClass]="{
+        'content-expanded': isExpanded,
+        'content-collapsed': !isExpanded,
+      }"
+    >
+      <ng-content select="ng-alert" />
+      <div class="content-body"><router-outlet /></div>
+
+      <ng-loading-overlay [fullscreen]="true" />
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+} @else {
+  <div class="container">
+    <ng-content select="ng-alert" />
+    <div class="content-body"><router-outlet /></div>
+
+    <ng-loading-overlay [fullscreen]="true" />
+  </div>
+}
+<mat-toolbar color="primary" class="footer">
+  <p>{{ footerNote() }}</p>
+</mat-toolbar>
+
+<!-- Templates -->
+<ng-template #itemTemplate let-item>
+  <div>
+    <!-- Conditionally display icon button for menu trigger when not expanded -->
+    @if (!isExpanded && !item.children) {
+      <div class="list-item">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="appMenu"
+          [matMenuTriggerData]="{ menudata: item }"
+        >
+          <mat-icon class="small-icon">{{
+            item.icon || "help_outline"
+          }}</mat-icon>
+        </button>
+      </div>
+    }
+
+    <!-- Menu item link when expanded -->
+    @if (isExpanded && !item.children) {
+      <a mat-list-item [routerLink]="item.url" [routerLinkActive]="['active']">
+        <div class="list-item">
+          @if (isExpanded) {
+            <mat-icon class="small-icon">{{
+              item.icon || "help_outline"
+            }}</mat-icon>
+          }
+          @if (isExpanded) {
+            <span>{{ item.name }}</span>
+          }
+        </div>
+      </a>
+    }
+  </div>
+
+  @if (item.children) {
+    <div>
+      <!-- Conditionally display icon button for menu trigger when not expanded -->
+      @if (!isExpanded) {
+        <div class="list-item">
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="appMenu"
+            [matMenuTriggerData]="{ menudata: item }"
+          >
+            <mat-icon class="small-icon">{{
+              item.icon || "help_outline"
+            }}</mat-icon>
+          </button>
+        </div>
+      }
+      @if (isExpanded && item.children) {
+        <a
+          mat-list-item
+          mat-list-item
+          [class.expanded]="item.expanded"
+          (click)="toggleSubMenu(item)"
+        >
+          <div class="list-item">
+            <mat-icon class="small-icon">{{
+              item.icon || "help_outline"
+            }}</mat-icon>
+            @if (isExpanded) {
+              <span>{{ item.name }}</span>
+            }
+            @if (item.expanded && isExpanded) {
+              <mat-icon class="small-icon">expand_less</mat-icon>
+            }
+            @if (!item.expanded && isExpanded) {
+              <mat-icon class="small-icon">expand_more</mat-icon>
+            }
+          </div>
+        </a>
+      }
+    </div>
+    @if (item.expanded && isExpanded) {
+      <ng-container
+        *ngTemplateOutlet="childTemplate; context: { children: item.children }"
+      />
+    }
+  }
+</ng-template>
+
+<ng-template #childTemplate let-children="children">
+  @for (child of children; track child; let i = $index) {
+    <div>
+      <a
+        mat-list-item
+        [routerLink]="child.url"
+        [routerLinkActive]="['active']"
+        (click)="toggleSubMenu(child)"
+      >
+        <div class="list-item">
+          <mat-icon class="small-icon">{{ child.icon }}</mat-icon>
+          <span>{{ child.name }}</span>
+          @if (child.expanded && child.children && isExpanded) {
+            <mat-icon class="small-icon">expand_less</mat-icon>
+          }
+          @if (!child.expanded && child.children && isExpanded) {
+            <mat-icon class="small-icon">expand_more</mat-icon>
+          }
+        </div>
+      </a>
+    </div>
+    @if (child.children && child.expanded) {
+      <ng-container
+        *ngTemplateOutlet="childTemplate; context: { children: child.children }"
+      />
+    }
+  }
+</ng-template>
+
+<mat-menu #appMenu="matMenu" class="custom-menu">
+  <ng-template matMenuContent let-menudata="menudata">
+    @if (!menudata.children) {
+      <a
+        mat-list-item
+        [routerLink]="menudata.url"
+        [routerLinkActive]="['active']"
+      >
+        <span class="custom-menu-list-item"> {{ menudata.name }}</span>
+      </a>
+    }
+    @if (menudata.children) {
+      <button
+        class="custom-menu-list-item"
+        mat-menu-item
+        [matMenuTriggerFor]="subMenu"
+        [matMenuTriggerData]="{ menudata: menudata }"
+      >
+        {{ menudata.name }}
+      </button>
+    }
+  </ng-template>
+</mat-menu>
+<mat-menu #subMenu="matMenu" class="custom-menu-submenu">
+  <ng-template matMenuContent let-menudata="menudata">
+    @for (child of menudata.children; track child) {
+      @if (!child.children) {
+        <a
+          mat-menu-item
+          [routerLink]="child?.url"
+          [routerLinkActive]="['active']"
+        >
+          <div class="custom-menu-list-item">
+            <!-- <mat-icon class="small-icon">{{ child.icon }}</mat-icon> -->
+            <span> {{ child.name }}</span>
+          </div>
+        </a>
+      }
+    }
+  </ng-template>
+</mat-menu>

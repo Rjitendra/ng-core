@@ -1,0 +1,51 @@
+<mat-form-field
+  [appearance]="appearance()"
+  [floatLabel]="floatLabel()"
+  class="full-width-input"
+  [class.ng-invalid]="hasValidationError"
+  [class.ng-touched]="isTouched"
+>
+  @if (label()) {
+    <mat-label>{{ label() }}</mat-label>
+  }
+
+  @if (prefixIcon()) {
+    <mat-icon matPrefix>{{ prefixIcon() }}</mat-icon>
+  }
+  @if (prefixText()) {
+    <span matTextPrefix>{{ prefixText() }}</span>
+  }
+
+  <input
+    matInput
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [value]="internalControl.value || ''"
+    [disabled]="disabled"
+    [readonly]="readonly()"
+    [required]="required()"
+    [attr.maxlength]="maxlength()"
+    [attr.minlength]="minlength()"
+    [attr.aria-label]="ariaLabel()"
+    [attr.autocomplete]="autocomplete()"
+    (input)="handleInput($event)"
+    (blur)="handleBlur()"
+  />
+
+  @if (suffixText()) {
+    <span matTextSuffix [class.ng-suffix-disabled]="disabled">{{
+      suffixText()
+    }}</span>
+  }
+  @if (suffixIcon()) {
+    <mat-icon matSuffix>{{ suffixIcon() }}</mat-icon>
+  }
+
+  @if (hasValidationError) {
+    <mat-error>{{ displayErrorMessage }}</mat-error>
+  }
+
+  @if (hint() && !hasValidationError) {
+    <mat-hint>{{ hint() }}</mat-hint>
+  }
+</mat-form-field>
