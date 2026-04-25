@@ -4,7 +4,7 @@ import { SharedControlsModule } from '../../shared-controls.module';
 import { NgAdvancedCardComponent } from './ng-advanced-card.component';
 
 const meta: Meta<NgAdvancedCardComponent> = {
-  title: 'Shared/Advanced card',
+  title: 'Layout/Advanced Card',
   component: NgAdvancedCardComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [SharedControlsModule] })],
@@ -16,7 +16,12 @@ const meta: Meta<NgAdvancedCardComponent> = {
     appearance: 'raised',
     actions: [
       { label: 'Approve', action: 'approve', type: 'primary', icon: 'check' },
-      { label: 'Request changes', action: 'changes', type: 'secondary', icon: 'edit' },
+      {
+        label: 'Request changes',
+        action: 'changes',
+        type: 'secondary',
+        icon: 'edit',
+      },
     ],
     showFooter: true,
     footerIcon: 'schedule',

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { NgLoadingOverlayComponent } from './ng-loading-overlay.component';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { LoadingService } from '../../services/loading.service';
+import { SharedControlsModule } from '../../shared-controls.module';
+import { NgLoadingOverlayComponent } from './ng-loading-overlay.component';
 
 const meta: Meta<NgLoadingOverlayComponent> = {
-  title: 'Shared/Loading Overlay',
+  title: 'Feedback/Loading Overlay',
   component: NgLoadingOverlayComponent,
   tags: ['autodocs'],
   decorators: [
@@ -22,9 +22,7 @@ const meta: Meta<NgLoadingOverlayComponent> = {
       return {
         ...story(),
         applicationConfig: {
-          providers: [
-            { provide: LoadingService, useValue: loadingService },
-          ],
+          providers: [{ provide: LoadingService, useValue: loadingService }],
         },
         moduleMetadata: {
           imports: [SharedControlsModule],

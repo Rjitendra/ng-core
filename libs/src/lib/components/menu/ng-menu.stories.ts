@@ -1,17 +1,24 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { MatButtonModule } from '@angular/material/button';
-import { NgMenuComponent } from './ng-menu.component';
 import { NgMenuItemDirective } from './ng-menu-item.directive';
 import { NgMenuTriggerForDirective } from './ng-menu-trigger.directive';
+import { NgMenuComponent } from './ng-menu.component';
 
 @Component({
   selector: 'storybook-ng-menu-demo',
   standalone: true,
-  imports: [MatButtonModule, NgMenuComponent, NgMenuItemDirective, NgMenuTriggerForDirective],
+  imports: [
+    MatButtonModule,
+    NgMenuComponent,
+    NgMenuItemDirective,
+    NgMenuTriggerForDirective,
+  ],
   template: `
-    <button mat-stroked-button type="button" [ngMenuTriggerFor]="menu">Open menu</button>
+    <button mat-stroked-button type="button" [ngMenuTriggerFor]="menu">
+      Open menu
+    </button>
     <ng-menu #menu="ngMenu">
       <div style="padding:12px 16px; min-width:200px;">
         <div ng-menu-item>First action</div>
@@ -23,7 +30,7 @@ import { NgMenuTriggerForDirective } from './ng-menu-trigger.directive';
 class NgMenuStoryHostComponent {}
 
 const meta: Meta<NgMenuStoryHostComponent> = {
-  title: 'Shared/Menu',
+  title: 'Navigation/Menu',
   component: NgMenuStoryHostComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [NgMenuStoryHostComponent] })],

@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
-import type { Meta, StoryObj } from '@storybook/angular';
-import { moduleMetadata } from '@storybook/angular';
 import { Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import type { Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
 import { SharedControlsModule } from '../../shared-controls.module';
 import { NgLayoutComponent } from './ng-layout.component';
 
 @Component({
   standalone: true,
-  template: `<p style="padding:16px;"> Routed placeholder content </p>`,
+  template: `<p style="padding:16px;">Routed placeholder content</p>`,
 })
 class StoryPlaceholderComponent {}
 
 const routes: Routes = [{ path: '', component: StoryPlaceholderComponent }];
 
 const meta: Meta<NgLayoutComponent> = {
-  title: 'Shared/Layout',
+  title: 'Layout/Layout',
   component: NgLayoutComponent,
   tags: ['autodocs'],
   decorators: [

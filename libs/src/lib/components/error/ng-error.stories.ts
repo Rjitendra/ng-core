@@ -4,7 +4,7 @@ import { SharedControlsModule } from '../../shared-controls.module';
 import { NgErrorComponent } from './ng-error.component';
 
 const meta: Meta<NgErrorComponent> = {
-  title: 'Shared/Error',
+  title: 'Feedback/Error',
   component: NgErrorComponent,
   tags: ['autodocs'],
   decorators: [

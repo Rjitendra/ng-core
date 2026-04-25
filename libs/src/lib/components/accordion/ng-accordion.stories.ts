@@ -8,14 +8,16 @@ const items = [
     id: 'api',
     title: 'API reliability',
     description: 'Status and thresholds',
-    content: 'The public API stayed above 99.95% availability this week, with error-rate alerts remaining below the paging threshold.',
+    content:
+      'The public API stayed above 99.95% availability this week, with error-rate alerts remaining below the paging threshold.',
     icon: 'api',
   },
   {
     id: 'deploy',
     title: 'Deployment process',
     description: 'Rollout and rollback',
-    content: 'Production deploys are released in waves with canary analysis, automatic rollback protection, and a final approval checkpoint.',
+    content:
+      'Production deploys are released in waves with canary analysis, automatic rollback protection, and a final approval checkpoint.',
     icon: 'rocket_launch',
     expanded: true,
   },
@@ -23,13 +25,14 @@ const items = [
     id: 'security',
     title: 'Security checklist',
     description: 'Restricted access',
-    content: 'Secrets rotation, audit logging, and scoped credentials are required before enabling external integrations.',
+    content:
+      'Secrets rotation, audit logging, and scoped credentials are required before enabling external integrations.',
     icon: 'shield',
   },
 ];
 
 const meta: Meta<NgAccordionComponent> = {
-  title: 'Shared/Accordion',
+  title: 'Layout/Accordion',
   component: NgAccordionComponent,
   tags: ['autodocs'],
   decorators: [

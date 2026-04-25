@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { SharedControlsModule } from '../../shared-controls.module';
@@ -17,7 +17,10 @@ import { NgDatepickerComponent } from './ng-datepicker.component';
         label="Release date"
         helperText="Reactive form example"
       ></ng-datepicker>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ control.value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ control.value | json }}</pre
+      >
     </div>
   `,
 })
@@ -26,10 +29,12 @@ class StorybookDatepickerReactiveComponent {
 }
 
 const meta: Meta<NgDatepickerComponent> = {
-  title: 'Shared/Datepicker',
+  title: 'Controls/Datepicker',
   component: NgDatepickerComponent,
   tags: ['autodocs'],
-  decorators: [moduleMetadata({ imports: [SharedControlsModule, FormsModule] })],
+  decorators: [
+    moduleMetadata({ imports: [SharedControlsModule, FormsModule] }),
+  ],
   parameters: { layout: 'padded' },
   args: {
     label: 'Launch date',

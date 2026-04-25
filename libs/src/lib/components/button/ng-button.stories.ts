@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
+import { SharedControlsModule } from '../../shared-controls.module';
 import {
   ButtonComponent,
   ButtonIconPosition,
   ButtonSize,
   ButtonVariant,
 } from './ng-button.component';
-import { SharedControlsModule } from '../../shared-controls.module';
 
 const meta: Meta<ButtonComponent> = {
-  title: 'Shared/Button',
+  title: 'Controls/Button',
   component: ButtonComponent,
   tags: ['autodocs'],
   decorators: [

@@ -1,10 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { SharedControlsModule } from '../../shared-controls.module';
-import { NgTextboxComponent, TextboxAppearance, TextboxSize } from './ng-textbox.component';
+import {
+  NgTextboxComponent,
+  TextboxAppearance,
+  TextboxSize,
+} from './ng-textbox.component';
 
 @Component({
   selector: 'storybook-textbox-reactive',
@@ -18,7 +22,10 @@ import { NgTextboxComponent, TextboxAppearance, TextboxSize } from './ng-textbox
         helperText="Reactive form control"
         prefixIcon="folder"
       ></ng-textbox>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ control.value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ control.value | json }}</pre
+      >
     </div>
   `,
 })
@@ -39,7 +46,10 @@ class StorybookTextboxReactiveComponent {
         helperText="Template-driven example"
         suffixIcon="person"
       ></ng-textbox>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ value | json }}</pre
+      >
     </div>
   `,
 })
@@ -48,7 +58,7 @@ class StorybookTextboxTemplateComponent {
 }
 
 const meta: Meta<NgTextboxComponent> = {
-  title: 'Shared/Textbox',
+  title: 'Controls/Textbox',
   component: NgTextboxComponent,
   tags: ['autodocs'],
   decorators: [

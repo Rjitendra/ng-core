@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { SharedControlsModule } from '../../shared-controls.module';
@@ -17,7 +17,10 @@ import { NgCheckboxComponent } from './ng-checkbox.component';
         label="Enable release approvals"
         description="Require one approver before production deployment."
       ></ng-checkbox>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ control.value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ control.value | json }}</pre
+      >
     </div>
   `,
 })
@@ -37,7 +40,10 @@ class StorybookCheckboxReactiveComponent {
         label="Allow self-service signup"
         description="Visitors can request access without an admin invite."
       ></ng-checkbox>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ value | json }}</pre
+      >
     </div>
   `,
 })
@@ -46,7 +52,7 @@ class StorybookCheckboxTemplateComponent {
 }
 
 const meta: Meta<NgCheckboxComponent> = {
-  title: 'Shared/Checkbox',
+  title: 'Controls/Checkbox',
   component: NgCheckboxComponent,
   tags: ['autodocs'],
   decorators: [
@@ -59,7 +65,8 @@ const meta: Meta<NgCheckboxComponent> = {
   },
   args: {
     label: 'I agree to the deployment checklist',
-    description: 'Confirms rollback, monitoring, and access controls were reviewed.',
+    description:
+      'Confirms rollback, monitoring, and access controls were reviewed.',
   },
 };
 

@@ -21,11 +21,36 @@ import { NgDialogComponent } from './ng-dialog.component';
     </ng-template>
 
     <div style="display:flex; gap:12px; flex-wrap:wrap;">
-      <ng-button type="filled" label="Open Confirm" icon="check_circle" (buttonClick)="openConfirm()"></ng-button>
-      <ng-button type="outlined" label="Open Message" icon="info" (buttonClick)="openMessage()"></ng-button>
-      <ng-button type="outlined" label="Open Popover" icon="notifications" (buttonClick)="openPopover()"></ng-button>
-      <ng-button type="text" label="Open Sidebar" icon="menu_open" (buttonClick)="openSidebar()"></ng-button>
-      <ng-button type="text" label="Open Custom" icon="workspace_premium" (buttonClick)="openCustom()"></ng-button>
+      <ng-button
+        type="filled"
+        label="Open Confirm"
+        icon="check_circle"
+        (buttonClick)="openConfirm()"
+      ></ng-button>
+      <ng-button
+        type="outlined"
+        label="Open Message"
+        icon="info"
+        (buttonClick)="openMessage()"
+      ></ng-button>
+      <ng-button
+        type="outlined"
+        label="Open Popover"
+        icon="notifications"
+        (buttonClick)="openPopover()"
+      ></ng-button>
+      <ng-button
+        type="text"
+        label="Open Sidebar"
+        icon="menu_open"
+        (buttonClick)="openSidebar()"
+      ></ng-button>
+      <ng-button
+        type="text"
+        label="Open Custom"
+        icon="workspace_premium"
+        (buttonClick)="openCustom()"
+      ></ng-button>
     </div>
   `,
 })
@@ -51,7 +76,10 @@ class StorybookDialogDemoComponent {
       type: 'info',
       title: 'Heads up',
       message: 'Your report is still generating in the background.',
-      details: ['You can safely leave this page', 'We will notify you when it is ready'],
+      details: [
+        'You can safely leave this page',
+        'We will notify you when it is ready',
+      ],
       confirmText: 'Understood',
       icon: 'info',
     });
@@ -97,7 +125,7 @@ class StorybookDialogDemoComponent {
 }
 
 const meta: Meta<NgDialogComponent> = {
-  title: 'Shared/Dialog',
+  title: 'Feedback/Dialog',
   component: NgDialogComponent,
   tags: ['autodocs'],
   decorators: [

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { NgTreeComponent, NgTreeNode } from './ng-tree.component';
 import { SharedControlsModule } from '../../shared-controls.module';
+import { NgTreeComponent, NgTreeNode } from './ng-tree.component';
 
 const sampleTree: NgTreeNode[] = [
   {
@@ -56,7 +56,7 @@ const sampleTree: NgTreeNode[] = [
 ];
 
 const meta: Meta<NgTreeComponent> = {
-  title: 'Shared/Tree',
+  title: 'Navigation/Tree',
   component: NgTreeComponent,
   tags: ['autodocs'],
   decorators: [
@@ -100,7 +100,14 @@ export const WithoutCheckboxes: Story = {
 
 export const RootLevelSelection: Story = {
   args: {
-    selectedIds: ['platform', 'design-system', 'buttons', 'forms', 'pipelines', 'observability'],
+    selectedIds: [
+      'platform',
+      'design-system',
+      'buttons',
+      'forms',
+      'pipelines',
+      'observability',
+    ],
   },
 };
 

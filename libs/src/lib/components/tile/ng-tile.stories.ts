@@ -4,7 +4,7 @@ import { SharedControlsModule } from '../../shared-controls.module';
 import { NgTileComponent } from './ng-tile.component';
 
 const meta: Meta<NgTileComponent> = {
-  title: 'Shared/Tile',
+  title: 'Layout/Tile',
   component: NgTileComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [SharedControlsModule] })],

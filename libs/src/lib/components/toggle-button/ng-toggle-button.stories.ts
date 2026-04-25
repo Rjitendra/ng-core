@@ -1,14 +1,16 @@
+import { FormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { FormsModule } from '@angular/forms';
 import { SharedControlsModule } from '../../shared-controls.module';
 import { NgToggleButtonComponent } from './ng-toggle-button.component';
 
 const meta: Meta<NgToggleButtonComponent> = {
-  title: 'Shared/Toggle button',
+  title: 'Controls/Toggle Button',
   component: NgToggleButtonComponent,
   tags: ['autodocs'],
-  decorators: [moduleMetadata({ imports: [SharedControlsModule, FormsModule] })],
+  decorators: [
+    moduleMetadata({ imports: [SharedControlsModule, FormsModule] }),
+  ],
   parameters: { layout: 'padded' },
   args: {
     options: [

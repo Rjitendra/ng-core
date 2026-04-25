@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { SharedControlsModule } from '../../shared-controls.module';
@@ -15,7 +15,11 @@ import {
 const planOptions: NgDropdownOption[] = [
   { value: 'starter', label: 'Starter', description: 'Internal tools' },
   { value: 'growth', label: 'Growth', description: 'Production teams' },
-  { value: 'enterprise', label: 'Enterprise', description: 'Large org rollout' },
+  {
+    value: 'enterprise',
+    label: 'Enterprise',
+    description: 'Large org rollout',
+  },
 ];
 
 @Component({
@@ -33,7 +37,10 @@ const planOptions: NgDropdownOption[] = [
         [selectAll]="true"
         [clearable]="true"
       ></ng-dropdown>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ control.value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ control.value | json }}</pre
+      >
     </div>
   `,
 })
@@ -61,7 +68,10 @@ class StorybookDropdownReactiveComponent {
         [options]="options"
         [clearable]="true"
       ></ng-dropdown>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ value | json }}</pre
+      >
     </div>
   `,
 })
@@ -74,21 +84,41 @@ const groupedOptions: NgDropdownGroup[] = [
   {
     label: 'Frontend',
     options: [
-      { value: 'angular', label: 'Angular', description: 'Design system shell', icon: 'web' },
-      { value: 'react', label: 'React', description: 'Marketing site', icon: 'code' },
+      {
+        value: 'angular',
+        label: 'Angular',
+        description: 'Design system shell',
+        icon: 'web',
+      },
+      {
+        value: 'react',
+        label: 'React',
+        description: 'Marketing site',
+        icon: 'code',
+      },
     ],
   },
   {
     label: 'Backend',
     options: [
-      { value: 'node', label: 'Node.js', description: 'Public API', icon: 'dns' },
-      { value: 'java', label: 'Java', description: 'Core services', icon: 'memory' },
+      {
+        value: 'node',
+        label: 'Node.js',
+        description: 'Public API',
+        icon: 'dns',
+      },
+      {
+        value: 'java',
+        label: 'Java',
+        description: 'Core services',
+        icon: 'memory',
+      },
     ],
   },
 ];
 
 const meta: Meta<NgDropdownComponent> = {
-  title: 'Shared/Dropdown',
+  title: 'Navigation/Dropdown',
   component: NgDropdownComponent,
   tags: ['autodocs'],
   decorators: [
@@ -174,10 +204,30 @@ export const Searchable: Story = {
     label: 'Search frameworks',
     searchable: true,
     options: [
-      { value: 'angular', label: 'Angular', description: 'Signals and Material', keywords: ['typescript', 'spa'] },
-      { value: 'react', label: 'React', description: 'Component-based UI', keywords: ['jsx', 'spa'] },
-      { value: 'vue', label: 'Vue', description: 'Approachable progressive framework', keywords: ['frontend'] },
-      { value: 'svelte', label: 'Svelte', description: 'Compiler-driven UI', keywords: ['frontend', 'compiler'] },
+      {
+        value: 'angular',
+        label: 'Angular',
+        description: 'Signals and Material',
+        keywords: ['typescript', 'spa'],
+      },
+      {
+        value: 'react',
+        label: 'React',
+        description: 'Component-based UI',
+        keywords: ['jsx', 'spa'],
+      },
+      {
+        value: 'vue',
+        label: 'Vue',
+        description: 'Approachable progressive framework',
+        keywords: ['frontend'],
+      },
+      {
+        value: 'svelte',
+        label: 'Svelte',
+        description: 'Compiler-driven UI',
+        keywords: ['frontend', 'compiler'],
+      },
     ],
   },
 };
@@ -194,7 +244,10 @@ export const GroupedOptions: Story = {
 export const ErrorState: Story = {
   args: {
     label: 'Deployment target',
-    errorText: ['Select at least one environment.', 'Production requires approval.'],
+    errorText: [
+      'Select at least one environment.',
+      'Production requires approval.',
+    ],
   },
 };
 

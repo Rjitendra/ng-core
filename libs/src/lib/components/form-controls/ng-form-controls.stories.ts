@@ -1,14 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { SharedControlsModule } from '../../shared-controls.module';
 import { NgRadioOption } from '../radio/ng-radio-group.component';
 
 const billingOptions: NgRadioOption[] = [
-  { value: 'starter', label: 'Starter', description: 'For small internal tools.' },
-  { value: 'growth', label: 'Growth', description: 'For production product teams.' },
-  { value: 'enterprise', label: 'Enterprise', description: 'For large regulated orgs.' },
+  {
+    value: 'starter',
+    label: 'Starter',
+    description: 'For small internal tools.',
+  },
+  {
+    value: 'growth',
+    label: 'Growth',
+    description: 'For production product teams.',
+  },
+  {
+    value: 'enterprise',
+    label: 'Enterprise',
+    description: 'For large regulated orgs.',
+  },
 ];
 
 @Component({
@@ -16,7 +33,10 @@ const billingOptions: NgRadioOption[] = [
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, SharedControlsModule],
   template: `
-    <form [formGroup]="form" style="display:grid; gap:18px; width:min(760px, 100%);">
+    <form
+      [formGroup]="form"
+      style="display:grid; gap:18px; width:min(760px, 100%);"
+    >
       <ng-textbox
         formControlName="name"
         label="Project name"
@@ -55,7 +75,10 @@ const billingOptions: NgRadioOption[] = [
         orientation="horizontal"
       ></ng-radio-group>
 
-      <pre style="margin:0; padding:16px; border-radius:18px; background:#f8fafc;">{{ form.value | json }}</pre>
+      <pre
+        style="margin:0; padding:16px; border-radius:18px; background:#f8fafc;"
+        >{{ form.value | json }}</pre
+      >
     </form>
   `,
 })
@@ -105,7 +128,10 @@ class StorybookReactiveControlsComponent {
         [options]="themeOptions"
       ></ng-radio-group>
 
-      <pre style="margin:0; padding:16px; border-radius:18px; background:#f8fafc;">{{ snapshot() | json }}</pre>
+      <pre
+        style="margin:0; padding:16px; border-radius:18px; background:#f8fafc;"
+        >{{ snapshot() | json }}</pre
+      >
     </div>
   `,
 })
@@ -132,7 +158,7 @@ class StorybookTemplateControlsComponent {
 }
 
 const meta: Meta = {
-  title: 'Shared/Form Controls',
+  title: 'Forms/Form Controls',
   parameters: {
     layout: 'padded',
   },

@@ -3,7 +3,7 @@ import { moduleMetadata } from '@storybook/angular';
 import { NgDividerComponent } from './ng-divider.component';
 
 const meta: Meta<NgDividerComponent> = {
-  title: 'Shared/Divider',
+  title: 'Utils/Divider',
   component: NgDividerComponent,
   tags: ['autodocs'],
   decorators: [

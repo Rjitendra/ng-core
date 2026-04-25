@@ -1,10 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { SharedControlsModule } from '../../shared-controls.module';
-import { NgProgressBarComponent, ProgressBarSize, ProgressBarVariant } from './ng-progress-bar.component';
+import {
+  NgProgressBarComponent,
+  ProgressBarSize,
+  ProgressBarVariant,
+} from './ng-progress-bar.component';
 
 const meta: Meta<NgProgressBarComponent> = {
-  title: 'Shared/Progress Bar',
+  title: 'Feedback/Progress Bar',
   component: NgProgressBarComponent,
   tags: ['autodocs'],
   decorators: [
@@ -18,7 +22,13 @@ const meta: Meta<NgProgressBarComponent> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'neutral', 'success', 'warning', 'danger'] satisfies ProgressBarVariant[],
+      options: [
+        'primary',
+        'neutral',
+        'success',
+        'warning',
+        'danger',
+      ] satisfies ProgressBarVariant[],
     },
     size: {
       control: 'inline-radio',

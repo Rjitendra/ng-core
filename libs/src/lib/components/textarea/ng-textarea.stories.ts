@@ -1,14 +1,16 @@
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { SharedControlsModule } from '../../shared-controls.module';
 import { NgTextareaComponent } from './ng-textarea.component';
 
 const meta: Meta<NgTextareaComponent> = {
-  title: 'Shared/Textarea',
+  title: 'Controls/Textarea',
   component: NgTextareaComponent,
   tags: ['autodocs'],
-  decorators: [moduleMetadata({ imports: [SharedControlsModule, ReactiveFormsModule] })],
+  decorators: [
+    moduleMetadata({ imports: [SharedControlsModule, ReactiveFormsModule] }),
+  ],
   parameters: { layout: 'padded' },
   args: {
     label: 'Release notes',
@@ -31,7 +33,9 @@ export const Default: Story = {};
 
 export const Reactive: Story = {
   render: () => ({
-    props: { control: new FormControl('Initial draft body.', { nonNullable: true }) },
+    props: {
+      control: new FormControl('Initial draft body.', { nonNullable: true }),
+    },
     template: `
       <ng-textarea
         [formControl]="control"

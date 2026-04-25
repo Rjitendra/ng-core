@@ -4,7 +4,7 @@ import { SharedControlsModule } from '../../shared-controls.module';
 import { NgCardComponent } from './ng-card.component';
 
 const meta: Meta<NgCardComponent> = {
-  title: 'Shared/Card',
+  title: 'Layout/Card',
   component: NgCardComponent,
   tags: ['autodocs'],
   decorators: [
@@ -19,7 +19,8 @@ const meta: Meta<NgCardComponent> = {
     eyebrow: 'Workspace',
     title: 'Platform analytics',
     subtitle: 'Weekly reliability snapshot',
-    description: 'Monitor release health, support load, and incident trends from one place.',
+    description:
+      'Monitor release health, support load, and incident trends from one place.',
     badge: 'Healthy',
     icon: 'insights',
     variant: 'elevated',
@@ -32,7 +33,8 @@ type Story = StoryObj<NgCardComponent>;
 export const Default: Story = {};
 export const WithImage: Story = {
   args: {
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+    image:
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
     imageAlt: 'Dashboard graphs',
   },
 };

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { TableColumn } from '../../models/mat-table';
 import { TableRow } from '../../models/table-row.model';
+import { SharedControlsModule } from '../../shared-controls.module';
 import { NgMatTableComponent } from './ng-mat-table.component';
 
 const columns: TableColumn[] = [
@@ -18,7 +18,7 @@ const data: TableRow[] = [
 ];
 
 const meta: Meta<NgMatTableComponent> = {
-  title: 'Shared/Mat table',
+  title: 'Grid/Table',
   component: NgMatTableComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [SharedControlsModule] })],

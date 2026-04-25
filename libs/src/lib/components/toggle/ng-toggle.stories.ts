@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { SharedControlsModule } from '../../shared-controls.module';
@@ -17,7 +17,10 @@ import { NgToggleComponent } from './ng-toggle.component';
         label="Enable audit logging"
         description="Record administrator activity for compliance review."
       ></ng-toggle>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ control.value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ control.value | json }}</pre
+      >
     </div>
   `,
 })
@@ -37,7 +40,10 @@ class StorybookToggleReactiveComponent {
         label="Sync every 15 minutes"
         description="Best for frequently changing dashboards."
       ></ng-toggle>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ value | json }}</pre
+      >
     </div>
   `,
 })
@@ -46,7 +52,7 @@ class StorybookToggleTemplateComponent {
 }
 
 const meta: Meta<NgToggleComponent> = {
-  title: 'Shared/Toggle',
+  title: 'Controls/Toggle',
   component: NgToggleComponent,
   tags: ['autodocs'],
   decorators: [

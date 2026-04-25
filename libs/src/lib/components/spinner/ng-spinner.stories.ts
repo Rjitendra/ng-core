@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
+import { SharedControlsModule } from '../../shared-controls.module';
 import {
   SpinnerColor,
   SpinnerComponent,
@@ -7,10 +8,9 @@ import {
   SpinnerSize,
   SpinnerVariant,
 } from './ng-spinner.component';
-import { SharedControlsModule } from '../../shared-controls.module';
 
 const meta: Meta<SpinnerComponent> = {
-  title: 'Shared/Spinner',
+  title: 'Feedback/Spinner',
   component: SpinnerComponent,
   tags: ['autodocs'],
   decorators: [
@@ -32,7 +32,13 @@ const meta: Meta<SpinnerComponent> = {
     },
     color: {
       control: 'select',
-      options: ['primary', 'neutral', 'light', 'success', 'danger'] satisfies SpinnerColor[],
+      options: [
+        'primary',
+        'neutral',
+        'light',
+        'success',
+        'danger',
+      ] satisfies SpinnerColor[],
     },
     mode: {
       control: 'inline-radio',

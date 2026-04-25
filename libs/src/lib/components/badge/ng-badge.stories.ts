@@ -4,7 +4,7 @@ import { SharedControlsModule } from '../../shared-controls.module';
 import { NgBadgeComponent } from './ng-badge.component';
 
 const meta: Meta<NgBadgeComponent> = {
-  title: 'Shared/Badge',
+  title: 'Utils/Badge',
   component: NgBadgeComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [SharedControlsModule] })],

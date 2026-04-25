@@ -69,7 +69,8 @@ class StorybookAlertDemoComponent implements OnInit {
       timeout: 3500,
       errors: [
         {
-          message: 'Workspace connected successfully.\nEverything is ready to go.',
+          message:
+            'Workspace connected successfully.\nEverything is ready to go.',
           hideCloseButton: false,
         },
       ],
@@ -99,7 +100,8 @@ class StorybookAlertDemoComponent implements OnInit {
     this.alertService.error({
       errors: [
         {
-          message: 'We could not finish checkout.\nVerify your payment details.\nTry again once the card details are updated.',
+          message:
+            'We could not finish checkout.\nVerify your payment details.\nTry again once the card details are updated.',
           buttons: [
             {
               label: 'Retry',
@@ -132,7 +134,7 @@ class StorybookAlertDemoComponent implements OnInit {
 }
 
 const meta: Meta<AlertComponent> = {
-  title: 'Shared/Alert',
+  title: 'Feedback/Alert',
   component: AlertComponent,
   tags: ['autodocs'],
   parameters: {

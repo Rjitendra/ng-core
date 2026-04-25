@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { AlertMessageComponent } from './ng-alert-message.component';
 
 const meta: Meta<AlertMessageComponent> = {
-  title: 'Shared/Alert Message',
+  title: 'Feedback/Alert Message',
   component: AlertMessageComponent,
   tags: ['autodocs'],
   parameters: {
@@ -10,7 +10,8 @@ const meta: Meta<AlertMessageComponent> = {
   },
   args: {
     alertType: 'error',
-    messageText: 'We could not save your changes.\nPlease review the highlighted fields.\nTry again after updating the missing information.',
+    messageText:
+      'We could not save your changes.\nPlease review the highlighted fields.\nTry again after updating the missing information.',
     hideCloseButton: false,
     buttons: [
       {

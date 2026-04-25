@@ -1,11 +1,11 @@
+import { MatInputModule } from '@angular/material/input';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { MatInputModule } from '@angular/material/input';
 import { SharedControlsModule } from '../../shared-controls.module';
 import { NgFormFieldComponent } from './ng-form-field.component';
 
 const meta: Meta<NgFormFieldComponent> = {
-  title: 'Shared/Form Field',
+  title: 'Forms/Form Field',
   component: NgFormFieldComponent,
   tags: ['autodocs'],
   decorators: [

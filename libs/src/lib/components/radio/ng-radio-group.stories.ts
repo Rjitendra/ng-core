@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { SharedControlsModule } from '../../shared-controls.module';
@@ -11,9 +11,21 @@ import {
 } from './ng-radio-group.component';
 
 const options: NgRadioOption[] = [
-  { value: 'starter', label: 'Starter', description: 'Internal tools and prototypes.' },
-  { value: 'growth', label: 'Growth', description: 'Production apps for product teams.' },
-  { value: 'enterprise', label: 'Enterprise', description: 'Security-heavy org deployments.' },
+  {
+    value: 'starter',
+    label: 'Starter',
+    description: 'Internal tools and prototypes.',
+  },
+  {
+    value: 'growth',
+    label: 'Growth',
+    description: 'Production apps for product teams.',
+  },
+  {
+    value: 'enterprise',
+    label: 'Enterprise',
+    description: 'Security-heavy org deployments.',
+  },
 ];
 
 @Component({
@@ -29,7 +41,10 @@ const options: NgRadioOption[] = [
         [options]="options"
         orientation="horizontal"
       ></ng-radio-group>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ control.value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ control.value | json }}</pre
+      >
     </div>
   `,
 })
@@ -51,7 +66,10 @@ class StorybookRadioReactiveComponent {
         hint="Template-driven example"
         [options]="themeOptions"
       ></ng-radio-group>
-      <pre style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;">{{ value | json }}</pre>
+      <pre
+        style="margin:0; padding:14px; border-radius:16px; background:#f8fafc;"
+        >{{ value | json }}</pre
+      >
     </div>
   `,
 })
@@ -65,7 +83,7 @@ class StorybookRadioTemplateComponent {
 }
 
 const meta: Meta<NgRadioGroupComponent> = {
-  title: 'Shared/Radio Group',
+  title: 'Controls/Radio Group',
   component: NgRadioGroupComponent,
   tags: ['autodocs'],
   decorators: [
@@ -106,7 +124,12 @@ export const DisabledOption: Story = {
   args: {
     options: [
       { value: 'starter', label: 'Starter' },
-      { value: 'growth', label: 'Growth', disabled: true, description: 'Unavailable on this workspace.' },
+      {
+        value: 'growth',
+        label: 'Growth',
+        disabled: true,
+        description: 'Unavailable on this workspace.',
+      },
       { value: 'enterprise', label: 'Enterprise' },
     ],
   },

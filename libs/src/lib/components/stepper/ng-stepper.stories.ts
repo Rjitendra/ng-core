@@ -10,7 +10,7 @@ const steps: StepConfig[] = [
 ];
 
 const meta: Meta<NgStepperComponent> = {
-  title: 'Shared/Stepper',
+  title: 'Navigation/Stepper',
   component: NgStepperComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [SharedControlsModule] })],

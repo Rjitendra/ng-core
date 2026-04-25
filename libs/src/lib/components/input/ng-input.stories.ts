@@ -1,15 +1,17 @@
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { InputType } from '../../enums/input-type';
+import { SharedControlsModule } from '../../shared-controls.module';
 import { NgInputComponent } from './ng-input.component';
 
 const meta: Meta<NgInputComponent> = {
-  title: 'Shared/Input',
+  title: 'Controls/Input',
   component: NgInputComponent,
   tags: ['autodocs'],
-  decorators: [moduleMetadata({ imports: [SharedControlsModule, ReactiveFormsModule] })],
+  decorators: [
+    moduleMetadata({ imports: [SharedControlsModule, ReactiveFormsModule] }),
+  ],
   parameters: { layout: 'padded' },
   args: {
     label: 'Workspace slug',
