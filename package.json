@@ -9,7 +9,9 @@
     "publish:shared": "npm run build:shared && npm publish ./dist/libs --access public",
     "test": "nx test ng-core",
     "test:ui": "nx test ng-core --ui",
-    "test:run": "nx test ng-core"
+    "test:run": "nx test ng-core",
+    "predeploy:storybook": "npm run build:storybook",
+    "deploy:storybook": "gh-pages -d dist/storybook/ng-core"
   },
   "private": true,
   "dependencies": {
@@ -58,7 +60,7 @@
     "@swc/core": "^1.15.24",
     "@swc/helpers": "0.5.18",
     "@types/jest": "30.0.0",
-    "@types/node": "18.16.9",
+    "@types/node": "^22.12.0",
     "@typescript-eslint/utils": "^8.40.0",
     "@vitest/coverage-v8": "~4.1.0",
     "@vitest/ui": "~4.1.0",
@@ -73,6 +75,7 @@
     "jest-util": "30.2.0",
     "jsdom": "^27.1.0",
     "jsonc-eslint-parser": "^2.1.0",
+    "gh-pages": "^6.3.0",
     "ng-packagr": "~21.2.0",
     "nx": "22.6.4",
     "postcss": "^8.4.5",

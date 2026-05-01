@@ -5,15 +5,18 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  computed,
   effect,
   inject,
   input,
+  model,
   output,
   signal,
   TemplateRef,
   untracked,
   viewChild,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,13 +25,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { TableColumn, TableOptions } from '../../models/mat-table';
+import { ButtonComponent } from '../button/ng-button.component';
+import { IconComponent } from '../icon/ng-icon.component';
+import { TableAction, TableColumn, TableOptions } from '../../models/mat-table';
 import { TableRow } from '../../models/table-row.model';
 
 @Component({
   selector: 'ng-mat-table',
   standalone: true,
   imports: [
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
@@ -38,6 +44,8 @@ import { TableRow } from '../../models/table-row.model';
     MatIconModule,
     MatButtonModule,
     CommonModule,
+    ButtonComponent,
+    IconComponent,
   ],
   templateUrl: './ng-mat-table.component.html',
   styleUrl: './ng-mat-table.component.scss',
@@ -54,12 +62,14 @@ export class NgMatTableComponent implements AfterViewInit {
   readonly expandedRowTemplate = input<TemplateRef<unknown>>();
   readonly expandKey = input<string>();
   readonly sorting = input(true);
+  readonly search = model('');
 
   readonly rowClick = output<TableRow>();
   readonly selectionChange = output<TableRow[]>();
   readonly columnClick = output<string>();
   readonly rowSelect = output<TableRow>();
   readonly rowExpand = output<TableRow>();
+  readonly rowAction = output<{ action: TableAction; row: TableRow }>();
 
   displayedColumns: string[] = [];
   readonly dataSource = new MatTableDataSource<TableRow>([]);
@@ -68,11 +78,33 @@ export class NgMatTableComponent implements AfterViewInit {
   selectedRow: TableRow | null = null;
 
   readonly expandedRow = signal<unknown | null>(null);
+  readonly visibleColumnKeys = signal<string[]>([]);
 
   readonly paginator = viewChild(MatPaginator);
   readonly sort = viewChild(MatSort);
 
   private readonly liveAnnouncer = inject(LiveAnnouncer);
+
+  readonly visibleColumns = computed(() =>
+    this.columns().filter(
+      (column) =>
+        !column.hidden &&
+        (this.visibleColumnKeys().length === 0 ||
+          this.visibleColumnKeys().includes(column.key)),
+    ),
+  );
+
+  readonly summaryLabel = computed(() => {
+    const total = this.data().length;
+    const filtered = this.dataSource.filteredData.length;
+    if (!total) {
+      return 'No records';
+    }
+    if (filtered === total) {
+      return `${total} records`;
+    }
+    return `${filtered} of ${total} records`;
+  });
 
   constructor() {
     effect(() => {
@@ -82,14 +114,28 @@ export class NgMatTableComponent implements AfterViewInit {
       const headerCheckbox = this.headerCheckbox();
       const rowCheckbox = this.rowCheckbox();
       const expandable = this.expandableRows();
+      const searchTerm = this.search();
       untracked(() => {
+        const initialVisible = cols
+          .filter((column) => !column.hidden)
+          .map((column) => column.key);
+        if (
+          this.visibleColumnKeys().length === 0 ||
+          this.visibleColumnKeys().some((key) => !cols.find((col) => col.key === key))
+        ) {
+          this.visibleColumnKeys.set(initialVisible);
+        }
         this.displayedColumns = [
           ...(headerCheckbox || rowCheckbox ? ['select'] : []),
           ...(expandable ? ['expand'] : []),
-          ...cols.map((c) => c.key),
+          ...this.visibleColumns().map((c) => c.key),
+          ...(opts.rowActions?.length ? ['actions'] : []),
         ];
         this.selection = new SelectionModel<TableRow>(opts.multiSelect ?? true, []);
         this.dataSource.data = [...data];
+        this.dataSource.filterPredicate = (row, filter) =>
+          this.resolveSearchText(row, opts.searchKeys).includes(filter.trim().toLowerCase());
+        this.dataSource.filter = searchTerm.trim().toLowerCase();
       });
     });
   }
@@ -179,6 +225,39 @@ export class NgMatTableComponent implements AfterViewInit {
   toggle(element: TableRow) {
     const key = this.expandKey() ? element[this.expandKey()!] : element;
     this.expandedRow.set(this.isExpanded(element) ? null : key);
+  }
+
+  clearSearch() {
+    this.search.set('');
+  }
+
+  toggleColumnVisibility(columnKey: string) {
+    this.visibleColumnKeys.update((keys) =>
+      keys.includes(columnKey)
+        ? keys.filter((key) => key !== columnKey)
+        : [...keys, columnKey],
+    );
+    this.displayedColumns = [
+      ...(this.headerCheckbox() || this.rowCheckbox() ? ['select'] : []),
+      ...(this.expandableRows() ? ['expand'] : []),
+      ...this.visibleColumns().map((c) => c.key),
+      ...(this.options().rowActions?.length ? ['actions'] : []),
+    ];
+  }
+
+  onRowAction(action: TableAction, row: TableRow) {
+    this.rowAction.emit({ action, row });
+  }
+
+  private resolveSearchText(row: TableRow, searchKeys?: string[]) {
+    const keys = searchKeys?.length ? searchKeys : Object.keys(row);
+    return keys
+      .map((key) => {
+        const value = row[key];
+        return value == null ? '' : String(value);
+      })
+      .join(' ')
+      .toLowerCase();
   }
 
   announceSortChange(sortState: Sort) {

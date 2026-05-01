@@ -7,6 +7,7 @@ export * from './lib/components/badge/ng-badge.component';
 export * from './lib/components/bottom-sheet/ng-bottom-sheet.component';
 export * from './lib/components/button/ng-button.component';
 export * from './lib/components/card/ng-card.component';
+export * from './lib/components/chatbot/ng-chatbot.component';
 export * from './lib/components/checkbox/ng-checkbox.component';
 export * from './lib/components/chips/ng-chips.component';
 export * from './lib/components/clarify-text/ng-clarify-text.component';

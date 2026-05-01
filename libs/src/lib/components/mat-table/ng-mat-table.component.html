@@ -1,171 +1,275 @@
-<div class="table-wrapper" [class.responsive]="options().responsive">
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    matSort
-    (matSortChange)="announceSortChange($event)"
-    class="mat-elevation-z8"
-    [class.auto-width]="options().autoWidth"
-    [class.fixed-layout]="options().fixedLayout"
-    multiTemplateDataRows
-  >
-    <!-- Checkbox Column -->
-    @if (headerCheckbox() || rowCheckbox()) {
-      <ng-container matColumnDef="select">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          style="width: 50px; min-width: 50px"
-        >
-          @if (headerCheckbox()) {
-            <mat-checkbox
-              (change)="toggleAllRows()"
-              [checked]="isAllSelected()"
-              [indeterminate]="selection.hasValue() && !isAllSelected()"
-              [aria-label]="checkboxLabel()"
-            />
-          }
-        </th>
-        <td mat-cell *matCellDef="let row" style="width: 50px; min-width: 50px">
-          @if (rowCheckbox()) {
-            <mat-checkbox
-              (click)="$event.stopPropagation()"
-              (change)="toggleRow(row)"
-              [checked]="selection.isSelected(row)"
-              [aria-label]="checkboxLabel(row)"
-            />
-          }
-        </td>
-      </ng-container>
-    }
+<section class="table-shell" [class.table-shell--dense]="options().dense">
+  @if (options().showToolbar !== false) {
+    <header class="table-toolbar">
+      <div class="table-toolbar__intro">
+        @if (options().title) {
+          <p class="table-toolbar__eyebrow">Advanced grid</p>
+          <h3>{{ options().title }}</h3>
+        }
+        @if (options().subtitle) {
+          <span>{{ options().subtitle }}</span>
+        }
+      </div>
 
-    <!-- Expand/Collapse Column -->
-    @if (expandableRows()) {
-      <ng-container matColumnDef="expand">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          aria-label="row actions"
-          style="width: 50px; min-width: 50px"
-        >
-          &nbsp;
-        </th>
-        <td mat-cell *matCellDef="let row" style="width: 50px; min-width: 50px">
-          <button
-            mat-icon-button
-            aria-label="expand row"
-            (click)="
-              toggleRowExpansion(row, expandKey()); $event.stopPropagation()
-            "
-            class="expand-toggle-button"
-            [class.expand-toggle-button-expanded]="
-              isRowExpanded(row, expandKey())
-            "
-          >
-            <mat-icon>keyboard_arrow_down</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-    }
+      <div class="table-toolbar__controls">
+        @if (options().showSearch !== false) {
+          <mat-form-field appearance="outline" class="table-toolbar__search">
+            <mat-label>{{ options().searchPlaceholder || 'Search rows' }}</mat-label>
+            <input matInput [ngModel]="search()" (ngModelChange)="search.set($event)" />
+            @if (search()) {
+              <button mat-icon-button matSuffix type="button" (click)="clearSearch()">
+                <mat-icon>close</mat-icon>
+              </button>
+            } @else {
+              <mat-icon matSuffix>search</mat-icon>
+            }
+          </mat-form-field>
+        }
 
-    <!-- Dynamic Columns -->
-    @for (col of columns(); track col.key) {
-      <ng-container [matColumnDef]="col.key">
-        <!-- Header -->
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          [mat-sort-header]="(sorting() || col.sortable) ? col.key : ''"
-          [disabled]="!(sorting() || col.sortable)"
-          [style.text-align]="col.headerAlign || col.align || 'left'"
-          [class.column-selected]="selectedColumn === col.key"
-          (click)="onColumnClick(col.key)"
-        >
-          {{ col.label }}
-        </th>
-
-        <!-- Row -->
-        <td
-          mat-cell
-          *matCellDef="let element"
-          (click)="onCellClick($event, element)"
-          [style.text-align]="col.align || 'left'"
-          [class.column-selected]="selectedColumn === col.key"
-        >
-          @if (col.template) {
-            <ng-container
-              *ngTemplateOutlet="
-                col.template;
-                context: { $implicit: element, row: element }
-              "
-            />
-          } @else {
-            {{ element[col.key] }}
-          }
-        </td>
-      </ng-container>
-    }
-
-    <!-- Expanded Detail Column -->
-    @if (expandableRows()) {
-      <ng-container matColumnDef="expandedDetail">
-        <td
-          mat-cell
-          *matCellDef="let element"
-          [attr.colspan]="displayedColumns.length"
-        >
-          <div
-            class="element-detail-wrapper"
-            [class.element-detail-wrapper-expanded]="
-              isRowExpanded(element, expandKey())
-            "
-          >
-            <div class="element-detail">
-              @if (expandedRowTemplate()) {
-                <ng-container
-                  *ngTemplateOutlet="
-                    expandedRowTemplate();
-                    context: { $implicit: element }
-                  "
-                />
+        @if (options().showColumnManager) {
+          <div class="table-toolbar__column-manager">
+            <span>Columns</span>
+            <div class="table-toolbar__column-chips">
+              @for (column of columns(); track column.key) {
+                <button
+                  type="button"
+                  class="table-chip"
+                  [class.table-chip--active]="visibleColumnKeys().includes(column.key)"
+                  (click)="toggleColumnVisibility(column.key)"
+                >
+                  {{ column.label }}
+                </button>
               }
             </div>
           </div>
-        </td>
-      </ng-container>
+        }
+      </div>
+    </header>
+  }
+
+  <div class="table-summary">
+    <div class="table-summary__record">{{ summaryLabel() }}</div>
+    @if (selection.selected.length) {
+      <div class="table-summary__record">{{ selection.selected.length }} selected</div>
     }
+    @for (stat of options().stats || []; track stat.label) {
+      <div class="table-summary__stat" [class]="'table-summary__stat--' + (stat.tone || 'primary')">
+        <strong>{{ stat.value }}</strong>
+        <span>{{ stat.label }}</span>
+      </div>
+    }
+  </div>
 
-    <!-- Header Row -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <div class="table-wrapper" [class.responsive]="options().responsive">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      (matSortChange)="announceSortChange($event)"
+      class="mat-elevation-z8"
+      [class.auto-width]="options().autoWidth"
+      [class.fixed-layout]="options().fixedLayout"
+      [class.table--dense]="options().dense"
+      [class.table--striped]="options().stripedRows"
+      multiTemplateDataRows
+    >
+      @if (headerCheckbox() || rowCheckbox()) {
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef style="width: 50px; min-width: 50px">
+            @if (headerCheckbox()) {
+              <mat-checkbox
+                (change)="toggleAllRows()"
+                [checked]="isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                [aria-label]="checkboxLabel()"
+              />
+            }
+          </th>
+          <td mat-cell *matCellDef="let row" style="width: 50px; min-width: 50px">
+            @if (rowCheckbox()) {
+              <mat-checkbox
+                (click)="$event.stopPropagation()"
+                (change)="toggleRow(row)"
+                [checked]="selection.isSelected(row)"
+                [aria-label]="checkboxLabel(row)"
+              />
+            }
+          </td>
+        </ng-container>
+      }
 
-    <!-- Regular Row -->
-    <tr
-      mat-row
-      *matRowDef="let row; columns: displayedColumns"
-      class="element-row"
-      [class.expanded-row]="expandableRows() && isRowExpanded(row, expandKey())"
-      [class.row-selected]="selectedRow === row"
-      [style.cursor]="expandableRows() ? 'pointer' : 'default'"
-      (click)="onRowSelect(row)"
-    ></tr>
+      @if (expandableRows()) {
+        <ng-container matColumnDef="expand">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            aria-label="row actions"
+            style="width: 50px; min-width: 50px"
+          >
+            &nbsp;
+          </th>
+          <td mat-cell *matCellDef="let row" style="width: 50px; min-width: 50px">
+            <button
+              mat-icon-button
+              aria-label="expand row"
+              (click)="toggleRowExpansion(row, expandKey()); $event.stopPropagation()"
+              class="expand-toggle-button"
+              [class.expand-toggle-button-expanded]="isRowExpanded(row, expandKey())"
+            >
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+      }
 
-    <!-- Expanded Detail Row -->
-    @if (expandableRows()) {
+      @for (col of visibleColumns(); track col.key) {
+        <ng-container [matColumnDef]="col.key" [sticky]="!!col.sticky || !!options().stickyHeader">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            [mat-sort-header]="(sorting() || col.sortable) ? col.key : ''"
+            [disabled]="!(sorting() || col.sortable)"
+            [style.text-align]="col.headerAlign || col.align || 'left'"
+            [style.width]="col.width || null"
+            [style.min-width]="col.minWidth || col.width || null"
+            [style.max-width]="col.maxWidth || null"
+            [class.column-selected]="selectedColumn === col.key"
+            [class.auto-width]="col.width === 'auto'"
+            [class.wrap-text]="col.wrapText"
+            [class.truncate-text]="col.truncateText"
+            [class]="col.className || ''"
+            (click)="onColumnClick(col.key)"
+          >
+            @if (col.headerTemplate) {
+              <ng-container
+                *ngTemplateOutlet="col.headerTemplate; context: { $implicit: col }"
+              />
+            } @else {
+              {{ col.label }}
+            }
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let element"
+            (click)="onCellClick($event, element)"
+            [style.text-align]="col.align || 'left'"
+            [style.width]="col.width || null"
+            [style.min-width]="col.minWidth || col.width || null"
+            [style.max-width]="col.maxWidth || null"
+            [class.column-selected]="selectedColumn === col.key"
+            [class.auto-width]="col.width === 'auto'"
+            [class.wrap-text]="col.wrapText"
+            [class.truncate-text]="col.truncateText"
+            [class]="col.className || ''"
+          >
+            @if (col.template) {
+              <ng-container
+                *ngTemplateOutlet="
+                  col.template;
+                  context: { $implicit: element, row: element }
+                "
+              />
+            } @else {
+              {{ element[col.key] }}
+            }
+          </td>
+        </ng-container>
+      }
+
+      @if (options().rowActions?.length) {
+        <ng-container matColumnDef="actions" [stickyEnd]="true">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let row" class="table-actions-cell" (click)="$event.stopPropagation()">
+            <div class="table-actions">
+              @for (action of options().rowActions || []; track action.id) {
+                <ng-button
+                  [type]="action.variant || 'icon'"
+                  [label]="action.label"
+                  [icon]="action.icon"
+                  [iconTone]="action.tone || 'inherit'"
+                  [tooltip]="action.label"
+                  (buttonClick)="onRowAction(action, row)"
+                ></ng-button>
+              }
+            </div>
+          </td>
+        </ng-container>
+      }
+
+      @if (expandableRows()) {
+        <ng-container matColumnDef="expandedDetail">
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="displayedColumns.length"
+          >
+            <div
+              class="element-detail-wrapper"
+              [class.element-detail-wrapper-expanded]="isRowExpanded(element, expandKey())"
+            >
+              <div class="element-detail">
+                @if (expandedRowTemplate()) {
+                  <ng-container
+                    *ngTemplateOutlet="
+                      expandedRowTemplate();
+                      context: { $implicit: element }
+                    "
+                  />
+                }
+              </div>
+            </div>
+          </td>
+        </ng-container>
+      }
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
       <tr
         mat-row
-        *matRowDef="let row; columns: ['expandedDetail']"
-        class="detail-row"
+        *matRowDef="let row; columns: displayedColumns"
+        class="element-row"
+        [class.expanded-row]="expandableRows() && isRowExpanded(row, expandKey())"
+        [class.row-selected]="selectedRow === row"
+        [style.cursor]="expandableRows() ? 'pointer' : 'default'"
+        (click)="onRowSelect(row)"
       ></tr>
-    }
-  </table>
-</div>
 
-<!-- Paginator -->
-@if (isPaginator()) {
-  <mat-paginator
-    [pageSize]="options().pageSize || 10"
-    [pageSizeOptions]="options().pageSizeOptions || [5, 10, 20]"
-    showFirstLastButtons
-    aria-label="Select page of users"
-  />
-}
+      @if (expandableRows()) {
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['expandedDetail']"
+          class="detail-row"
+        ></tr>
+      }
+    </table>
+
+    @if (!dataSource.filteredData.length) {
+      <div class="table-empty-state">
+        <div class="table-empty-state__icon">
+          <ng-icon name="table_view" tone="primary"></ng-icon>
+        </div>
+        <h4>{{ options().emptyTitle || 'No matching records' }}</h4>
+        <p>
+          {{
+            options().emptyDescription ||
+              'Try refining your filters, adjusting visible columns, or loading a different segment.'
+          }}
+        </p>
+        @if (search()) {
+          <ng-button type="outlined" label="Clear search" icon="refresh" (buttonClick)="clearSearch()"></ng-button>
+        }
+      </div>
+    }
+  </div>
+
+  @if (isPaginator()) {
+    <mat-paginator
+      [class.sticky-paginator]="options().stickyPaginator"
+      [pageSize]="options().pageSize || 10"
+      [pageSizeOptions]="options().pageSizeOptions || [5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of users"
+    />
+  }
+</section>

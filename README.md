@@ -1,124 +1,28 @@
-# NgCore
+# @ng-core/shared
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+This library provides a set of reusable Angular components and utilities for high-quality software development.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+## Installation
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+To get started, install the package via npm:
 
-## Run tasks
-
-To run the dev server for your app, use:
-
-```sh
-npx nx serve ng-core
+```bash
+npm install @ng-core/shared
 ```
 
-To create a production bundle:
+## Usage
 
-```sh
-npx nx build ng-core
+Minimal configuration to use the shared components in your Angular application:
+
+```typescript
+import { SharedModule } from '@ng-core/shared';
+
+@NgModule({
+  imports: [SharedModule],
+})
+export class AppModule {}
 ```
 
-To see all available targets to run for a project, run:
+## Developer
 
-```sh
-npx nx show project ng-core
-```
-
-## Shared UI library (`@ng-core/shared`)
-
-- **Catalog (grouped controls, gaps, naming):** [docs/CONTROLS-CATALOG.md](docs/CONTROLS-CATALOG.md)
-- **Build the publishable package:** `npm run build:shared` (output: `dist/libs/`)
-- **Storybook (local):** `npm run storybook`
-- **Storybook (static build):** `npm run build:storybook` (output: `dist/storybook/ng-core/`)
-
-### Publish to npm
-
-1. Log in once: `npm login`
-2. Bump `libs/package.json` **version** (semver).
-3. From the repo root: `npm run publish:shared`
-
-For CI, add an **`NPM_TOKEN`** secret and run the **Publish npm package** workflow (`.github/workflows/npm-publish.yml`). Use an [automation token](https://docs.npmjs.com/creating-and-viewing-access-tokens) with publish rights for the scope.
-
-To use a more **market-facing** package name later (for example `@your-org/angular-controls`), change the `"name"` in `libs/package.json` and publish a **new** major version with a migration note—do not rename lightly if consumers already depend on `@ng-core/shared`.
-
-### Host Storybook on GitHub Pages (static)
-
-1. Ensure the **Deploy Storybook to GitHub Pages** workflow (`.github/workflows/storybook-github-pages.yml`) has run (push to `main`/`master` or run it manually).
-2. In the GitHub repo: **Settings → Pages → Build and deployment → Branch:** `gh-pages` / **folder:** `/ (root)`.
-3. The site URL will be `https://<owner>.github.io/<repository>/`. The workflow runs `tools/patch-storybook-base-href.mjs` so asset URLs resolve under that subpath.
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
-```
-
-To generate a new library, use:
-
-```sh
-npx nx g @nx/angular:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+**Jitendra**

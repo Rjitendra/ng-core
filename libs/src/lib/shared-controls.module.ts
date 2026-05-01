@@ -9,6 +9,7 @@ import { ButtonComponent } from './components/button/ng-button.component';
 import { NgBadgeComponent } from './components/badge/ng-badge.component';
 import { NgBottomSheetComponent } from './components/bottom-sheet/ng-bottom-sheet.component';
 import { NgCardComponent } from './components/card/ng-card.component';
+import { NgChatbotComponent } from './components/chatbot/ng-chatbot.component';
 import { NgCheckboxComponent } from './components/checkbox/ng-checkbox.component';
 import { NgChipsComponent } from './components/chips/ng-chips.component';
 import { NgClarifyTextComponent } from './components/clarify-text/ng-clarify-text.component';
@@ -62,6 +63,7 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     NgBottomSheetComponent,
     ButtonComponent,
     NgCardComponent,
+    NgChatbotComponent,
     NgCheckboxComponent,
     NgChipsComponent,
     NgClarifyTextComponent,
@@ -114,6 +116,7 @@ import { APP_DIALOG_PROVIDERS } from './services/material-dialog.service';
     NgBottomSheetComponent,
     ButtonComponent,
     NgCardComponent,
+    NgChatbotComponent,
     NgCheckboxComponent,
     NgChipsComponent,
     NgClarifyTextComponent,
