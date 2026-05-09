@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgBottomSheetComponent } from './ng-bottom-sheet.component';
 
 const meta: Meta<NgBottomSheetComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgBottomSheetComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgBottomSheetComponent],
     }),
   ],
   parameters: {

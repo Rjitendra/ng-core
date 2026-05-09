@@ -1,7 +1,6 @@
 import { MatInputModule } from '@angular/material/input';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgFormFieldComponent } from './ng-form-field.component';
 
 const meta: Meta<NgFormFieldComponent> = {
@@ -10,7 +9,7 @@ const meta: Meta<NgFormFieldComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule, MatInputModule],
+      imports: [NgFormFieldComponent, MatInputModule],
     }),
   ],
   parameters: {

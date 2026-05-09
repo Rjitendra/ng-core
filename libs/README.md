@@ -1,6 +1,6 @@
 # @ng-core/shared
 
-Angular **standalone** components and `SharedControlsModule` built on **Angular Material** and the **CDK**.
+Angular **standalone** components built on **Angular Material** and the **CDK**.
 
 ## Documentation
 

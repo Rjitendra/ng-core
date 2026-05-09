@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import {
   NgTextboxComponent,
   TextboxAppearance,
@@ -13,7 +12,7 @@ import {
 @Component({
   selector: 'storybook-textbox-reactive',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SharedControlsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgTextboxComponent],
   template: `
     <div style="width:min(640px, 100%); display:grid; gap:16px;">
       <ng-textbox
@@ -36,7 +35,7 @@ class StorybookTextboxReactiveComponent {
 @Component({
   selector: 'storybook-textbox-template',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedControlsModule],
+  imports: [CommonModule, FormsModule, NgTextboxComponent],
   template: `
     <div style="width:min(640px, 100%); display:grid; gap:16px;">
       <ng-textbox
@@ -63,7 +62,7 @@ const meta: Meta<NgTextboxComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgTextboxComponent],
     }),
   ],
   parameters: {

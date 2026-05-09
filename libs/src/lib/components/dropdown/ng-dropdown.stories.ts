@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import {
   NgDropdownAppearance,
   NgDropdownComponent,
@@ -25,7 +24,7 @@ const planOptions: NgDropdownOption[] = [
 @Component({
   selector: 'storybook-dropdown-reactive',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SharedControlsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgDropdownComponent],
   template: `
     <div style="width:min(680px, 100%); display:grid; gap:16px;">
       <ng-dropdown
@@ -57,7 +56,7 @@ class StorybookDropdownReactiveComponent {
 @Component({
   selector: 'storybook-dropdown-template',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedControlsModule],
+  imports: [CommonModule, FormsModule, NgDropdownComponent],
   template: `
     <div style="width:min(680px, 100%); display:grid; gap:16px;">
       <ng-dropdown
@@ -123,7 +122,7 @@ const meta: Meta<NgDropdownComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgDropdownComponent],
     }),
   ],
   parameters: {

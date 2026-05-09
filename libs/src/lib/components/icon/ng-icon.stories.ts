@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { IconComponent, IconSize, IconTone } from './ng-icon.component';
 import { CUSTOM_ICON_OPTIONS, MATERIAL_ICON_OPTIONS } from './ng-icon.registry';
 
@@ -10,7 +9,7 @@ const meta: Meta<IconComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [IconComponent],
     }),
   ],
   parameters: {

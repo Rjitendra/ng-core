@@ -1,7 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgSelectComponent } from './ng-select.component';
 
 const meta: Meta<NgSelectComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgSelectComponent> = {
   component: NgSelectComponent,
   tags: ['autodocs'],
   decorators: [
-    moduleMetadata({ imports: [SharedControlsModule, ReactiveFormsModule] }),
+    moduleMetadata({ imports: [NgSelectComponent, ReactiveFormsModule] }),
   ],
   parameters: { layout: 'padded' },
   args: {
@@ -55,6 +54,6 @@ export const Reactive: Story = {
         hint="Reactive example"
       />
     `,
-    moduleMetadata: { imports: [SharedControlsModule, ReactiveFormsModule] },
+    moduleMetadata: { imports: [NgSelectComponent, ReactiveFormsModule] },
   }),
 };

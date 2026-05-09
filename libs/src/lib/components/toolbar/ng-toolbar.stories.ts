@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgToolbarComponent } from './ng-toolbar.component';
 
 const meta: Meta<NgToolbarComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgToolbarComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgToolbarComponent],
     }),
   ],
 };

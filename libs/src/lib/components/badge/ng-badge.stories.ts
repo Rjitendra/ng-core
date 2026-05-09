@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgBadgeComponent } from './ng-badge.component';
 
 const meta: Meta<NgBadgeComponent> = {
   title: 'Utils/Badge',
   component: NgBadgeComponent,
   tags: ['autodocs'],
-  decorators: [moduleMetadata({ imports: [SharedControlsModule] })],
+  decorators: [moduleMetadata({ imports: [NgBadgeComponent] })],
   args: {
     text: 'Active',
     variant: 'success',

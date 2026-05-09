@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import {
   NgChatbotComponent,
   NgChatbotMessage,
@@ -43,7 +42,7 @@ const meta: Meta<NgChatbotComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgChatbotComponent],
     }),
   ],
   parameters: {

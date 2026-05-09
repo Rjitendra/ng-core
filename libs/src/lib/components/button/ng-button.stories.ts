@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import {
   ButtonComponent,
   ButtonIconPosition,
@@ -14,7 +13,7 @@ const meta: Meta<ButtonComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [ButtonComponent],
     }),
   ],
   parameters: {

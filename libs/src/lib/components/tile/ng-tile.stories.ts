@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgTileComponent } from './ng-tile.component';
 
 const meta: Meta<NgTileComponent> = {
   title: 'Layout/Tile',
   component: NgTileComponent,
   tags: ['autodocs'],
-  decorators: [moduleMetadata({ imports: [SharedControlsModule] })],
+  decorators: [moduleMetadata({ imports: [NgTileComponent] })],
   parameters: { layout: 'padded' },
   args: {
     title: 'Deployment health',

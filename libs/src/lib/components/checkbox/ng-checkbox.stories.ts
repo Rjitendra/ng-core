@@ -3,13 +3,12 @@ import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgCheckboxComponent } from './ng-checkbox.component';
 
 @Component({
   selector: 'storybook-checkbox-reactive',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SharedControlsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgCheckboxComponent],
   template: `
     <div style="width:min(620px, 100%); display:grid; gap:16px;">
       <ng-checkbox
@@ -31,7 +30,7 @@ class StorybookCheckboxReactiveComponent {
 @Component({
   selector: 'storybook-checkbox-template',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedControlsModule],
+  imports: [CommonModule, FormsModule, NgCheckboxComponent],
   template: `
     <div style="width:min(620px, 100%); display:grid; gap:16px;">
       <ng-checkbox
@@ -57,7 +56,7 @@ const meta: Meta<NgCheckboxComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgCheckboxComponent],
     }),
   ],
   parameters: {

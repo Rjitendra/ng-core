@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgErrorComponent } from './ng-error.component';
 
 const meta: Meta<NgErrorComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgErrorComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgErrorComponent],
     }),
   ],
   parameters: {

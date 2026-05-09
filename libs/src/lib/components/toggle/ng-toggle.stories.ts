@@ -3,13 +3,12 @@ import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgToggleComponent } from './ng-toggle.component';
 
 @Component({
   selector: 'storybook-toggle-reactive',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SharedControlsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgToggleComponent],
   template: `
     <div style="width:min(620px, 100%); display:grid; gap:16px;">
       <ng-toggle
@@ -31,7 +30,7 @@ class StorybookToggleReactiveComponent {
 @Component({
   selector: 'storybook-toggle-template',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedControlsModule],
+  imports: [CommonModule, FormsModule, NgToggleComponent],
   template: `
     <div style="width:min(620px, 100%); display:grid; gap:16px;">
       <ng-toggle
@@ -57,7 +56,7 @@ const meta: Meta<NgToggleComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgToggleComponent],
     }),
   ],
   parameters: {

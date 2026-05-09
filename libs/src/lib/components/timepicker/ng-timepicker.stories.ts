@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgTimepickerComponent } from './ng-timepicker.component';
 
 const meta: Meta<NgTimepickerComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgTimepickerComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgTimepickerComponent],
     }),
   ],
 };

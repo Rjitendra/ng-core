@@ -1,6 +1,6 @@
 {
   "name": "@ng-core/shared",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Angular Material–based UI controls and patterns for line-of-business apps (forms, tables, layout, feedback).",
   "keywords": [
     "angular",
@@ -11,6 +11,8 @@
     "storybook"
   ],
   "license": "MIT",
+  "main": "index.js",
+  "types": "index.d.ts",
   "peerDependencies": {
     "@angular/common": "^21.2.0",
     "@angular/core": "^21.2.0",

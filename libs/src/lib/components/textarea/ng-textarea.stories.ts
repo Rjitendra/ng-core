@@ -1,7 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgTextareaComponent } from './ng-textarea.component';
 
 const meta: Meta<NgTextareaComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgTextareaComponent> = {
   component: NgTextareaComponent,
   tags: ['autodocs'],
   decorators: [
-    moduleMetadata({ imports: [SharedControlsModule, ReactiveFormsModule] }),
+    moduleMetadata({ imports: [NgTextareaComponent, ReactiveFormsModule] }),
   ],
   parameters: { layout: 'padded' },
   args: {
@@ -47,6 +46,6 @@ export const Reactive: Story = {
         ariaLabel=""
       />
     `,
-    moduleMetadata: { imports: [SharedControlsModule, ReactiveFormsModule] },
+    moduleMetadata: { imports: [NgTextareaComponent, ReactiveFormsModule] },
   }),
 };

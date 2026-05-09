@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgAdvancedCardComponent } from './ng-advanced-card.component';
 
 const meta: Meta<NgAdvancedCardComponent> = {
   title: 'Layout/Advanced Card',
   component: NgAdvancedCardComponent,
   tags: ['autodocs'],
-  decorators: [moduleMetadata({ imports: [SharedControlsModule] })],
+  decorators: [moduleMetadata({ imports: [NgAdvancedCardComponent] })],
   parameters: { layout: 'padded' },
   args: {
     title: 'Lease summary',

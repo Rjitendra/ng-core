@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgRipplesComponent } from './ng-ripples.component';
 
 const meta: Meta<NgRipplesComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgRipplesComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgRipplesComponent],
     }),
   ],
 };

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgTabsComponent } from './ng-tabs.component';
 
 const meta: Meta<NgTabsComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgTabsComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgTabsComponent],
     }),
   ],
 };

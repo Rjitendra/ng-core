@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgChipsComponent } from './ng-chips.component';
 
 const chipItems = [
@@ -16,7 +15,7 @@ const chipItems = [
 @Component({
   selector: 'storybook-chips-reactive',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SharedControlsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgChipsComponent],
   template: `
     <div style="display:grid; gap:16px; width:min(700px, 100%);">
       <ng-chips [items]="items" [formControl]="control"></ng-chips>
@@ -37,7 +36,7 @@ const meta: Meta<NgChipsComponent> = {
   component: NgChipsComponent,
   tags: ['autodocs'],
   decorators: [
-    moduleMetadata({ imports: [SharedControlsModule, FormsModule] }),
+    moduleMetadata({ imports: [NgChipsComponent, FormsModule] }),
   ],
   args: {
     items: chipItems,

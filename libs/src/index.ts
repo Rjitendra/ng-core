@@ -62,4 +62,3 @@ export * from './lib/services/app-dialog.types';
 export * from './lib/services/dialog.service';
 export * from './lib/services/loading.service';
 export * from './lib/services/material-dialog.service';
-export * from './lib/shared-controls.module';

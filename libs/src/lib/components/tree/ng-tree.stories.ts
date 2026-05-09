@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgTreeComponent, NgTreeNode } from './ng-tree.component';
 
 const sampleTree: NgTreeNode[] = [
@@ -61,7 +60,7 @@ const meta: Meta<NgTreeComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgTreeComponent],
     }),
   ],
   parameters: {

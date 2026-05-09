@@ -3,7 +3,6 @@ import { Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgLayoutComponent } from './ng-layout.component';
 
 @Component({
@@ -21,7 +20,7 @@ const meta: Meta<NgLayoutComponent> = {
   decorators: [
     moduleMetadata({
       imports: [
-        SharedControlsModule,
+        NgLayoutComponent,
         RouterTestingModule.withRoutes(routes),
         StoryPlaceholderComponent,
       ],

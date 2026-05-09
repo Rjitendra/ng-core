@@ -1,7 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgAutocompleteComponent } from './ng-autocomplete.component';
 
 const cities = [
@@ -15,7 +14,7 @@ const meta: Meta<NgAutocompleteComponent> = {
   component: NgAutocompleteComponent,
   tags: ['autodocs'],
   decorators: [
-    moduleMetadata({ imports: [SharedControlsModule, ReactiveFormsModule] }),
+    moduleMetadata({ imports: [NgAutocompleteComponent, ReactiveFormsModule] }),
   ],
   parameters: { layout: 'padded' },
   args: {
@@ -42,6 +41,6 @@ export const Reactive: Story = {
         [options]="options"
       />
     `,
-    moduleMetadata: { imports: [SharedControlsModule, ReactiveFormsModule] },
+    moduleMetadata: { imports: [NgAutocompleteComponent, ReactiveFormsModule] },
   }),
 };

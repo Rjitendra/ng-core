@@ -1,7 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgSliderComponent } from './ng-slider.component';
 
 const meta: Meta<NgSliderComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgSliderComponent> = {
   component: NgSliderComponent,
   tags: ['autodocs'],
   decorators: [
-    moduleMetadata({ imports: [SharedControlsModule, ReactiveFormsModule] }),
+    moduleMetadata({ imports: [NgSliderComponent, ReactiveFormsModule] }),
   ],
   parameters: { layout: 'padded' },
   args: {
@@ -41,6 +40,6 @@ export const Reactive: Story = {
         hint="Controls how much traffic is traced."
       />
     `,
-    moduleMetadata: { imports: [SharedControlsModule, ReactiveFormsModule] },
+    moduleMetadata: { imports: [NgSliderComponent, ReactiveFormsModule] },
   }),
 };

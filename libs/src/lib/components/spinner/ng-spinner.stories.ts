@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import {
   SpinnerColor,
   SpinnerComponent,
@@ -15,7 +14,7 @@ const meta: Meta<SpinnerComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [SpinnerComponent],
     }),
   ],
   parameters: {

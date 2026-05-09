@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgSortHeaderComponent } from './ng-sort-header.component';
 
 const meta: Meta<NgSortHeaderComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgSortHeaderComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgSortHeaderComponent],
     }),
   ],
 };

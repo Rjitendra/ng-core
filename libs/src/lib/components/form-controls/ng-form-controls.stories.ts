@@ -7,8 +7,13 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
-import { NgRadioOption } from '../radio/ng-radio-group.component';
+import { NgCheckboxComponent } from '../checkbox/ng-checkbox.component';
+import {
+  NgRadioGroupComponent,
+  NgRadioOption,
+} from '../radio/ng-radio-group.component';
+import { NgTextboxComponent } from '../textbox/ng-textbox.component';
+import { NgToggleComponent } from '../toggle/ng-toggle.component';
 
 const billingOptions: NgRadioOption[] = [
   {
@@ -31,7 +36,7 @@ const billingOptions: NgRadioOption[] = [
 @Component({
   selector: 'storybook-reactive-controls',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SharedControlsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgTextboxComponent, NgCheckboxComponent, NgToggleComponent, NgRadioGroupComponent],
   template: `
     <form
       [formGroup]="form"
@@ -96,7 +101,7 @@ class StorybookReactiveControlsComponent {
 @Component({
   selector: 'storybook-template-controls',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedControlsModule],
+  imports: [CommonModule, FormsModule, NgTextboxComponent, NgCheckboxComponent, NgToggleComponent, NgRadioGroupComponent],
   template: `
     <div style="display:grid; gap:18px; width:min(760px, 100%);">
       <ng-textbox

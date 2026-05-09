@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { LoadingService } from '../../services/loading.service';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgLoadingOverlayComponent } from './ng-loading-overlay.component';
 
 const meta: Meta<NgLoadingOverlayComponent> = {
@@ -25,7 +24,7 @@ const meta: Meta<NgLoadingOverlayComponent> = {
           providers: [{ provide: LoadingService, useValue: loadingService }],
         },
         moduleMetadata: {
-          imports: [SharedControlsModule],
+          imports: [NgLoadingOverlayComponent],
         },
       };
     },

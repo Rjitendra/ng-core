@@ -3,13 +3,12 @@ import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgDatepickerComponent } from './ng-datepicker.component';
 
 @Component({
   selector: 'storybook-datepicker-reactive',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SharedControlsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgDatepickerComponent],
   template: `
     <div style="display:grid; gap:16px; width:min(620px, 100%);">
       <ng-datepicker
@@ -33,7 +32,7 @@ const meta: Meta<NgDatepickerComponent> = {
   component: NgDatepickerComponent,
   tags: ['autodocs'],
   decorators: [
-    moduleMetadata({ imports: [SharedControlsModule, FormsModule] }),
+    moduleMetadata({ imports: [NgDatepickerComponent, FormsModule] }),
   ],
   parameters: { layout: 'padded' },
   args: {

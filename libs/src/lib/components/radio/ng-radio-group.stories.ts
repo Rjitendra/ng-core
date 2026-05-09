@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import {
   NgRadioGroupComponent,
   NgRadioOption,
@@ -31,7 +30,7 @@ const options: NgRadioOption[] = [
 @Component({
   selector: 'storybook-radio-reactive',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SharedControlsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgRadioGroupComponent],
   template: `
     <div style="width:min(720px, 100%); display:grid; gap:16px;">
       <ng-radio-group
@@ -56,7 +55,7 @@ class StorybookRadioReactiveComponent {
 @Component({
   selector: 'storybook-radio-template',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedControlsModule],
+  imports: [CommonModule, FormsModule, NgRadioGroupComponent],
   template: `
     <div style="width:min(720px, 100%); display:grid; gap:16px;">
       <ng-radio-group
@@ -88,7 +87,7 @@ const meta: Meta<NgRadioGroupComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgRadioGroupComponent],
     }),
   ],
   parameters: {

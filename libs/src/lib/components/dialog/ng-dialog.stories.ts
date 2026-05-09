@@ -2,15 +2,15 @@ import { Component, TemplateRef, ViewChild, inject } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { applicationConfig } from '@storybook/angular';
+import { ButtonComponent } from '../button/ng-button.component';
 import { NgDialogService } from '../../services/dialog.service';
 import { provideAppDialogs } from '../../services/material-dialog.service';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgDialogComponent } from './ng-dialog.component';
 
 @Component({
   selector: 'storybook-dialog-demo',
   standalone: true,
-  imports: [SharedControlsModule],
+  imports: [ButtonComponent],
   template: `
     <ng-template #customBody>
       <div style="display:grid; gap:10px; color:#475467;">

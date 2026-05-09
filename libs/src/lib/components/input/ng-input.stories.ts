@@ -2,7 +2,6 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { InputType } from '../../enums/input-type';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgInputComponent } from './ng-input.component';
 
 const meta: Meta<NgInputComponent> = {
@@ -10,7 +9,7 @@ const meta: Meta<NgInputComponent> = {
   component: NgInputComponent,
   tags: ['autodocs'],
   decorators: [
-    moduleMetadata({ imports: [SharedControlsModule, ReactiveFormsModule] }),
+    moduleMetadata({ imports: [NgInputComponent, ReactiveFormsModule] }),
   ],
   parameters: { layout: 'padded' },
   args: {
@@ -45,6 +44,6 @@ export const Reactive: Story = {
         hint="Shown in audit logs."
       />
     `,
-    moduleMetadata: { imports: [SharedControlsModule, ReactiveFormsModule] },
+    moduleMetadata: { imports: [NgInputComponent, ReactiveFormsModule] },
   }),
 };

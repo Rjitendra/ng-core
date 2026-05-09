@@ -1,6 +1,9 @@
-# @ng-core/shared
+# NG-Core Shared Library
 
-This library provides a set of reusable Angular components and utilities for high-quality software development.
+A high-quality library of reusable Angular components and utilities built on **Angular Material** and the **CDK**. Optimized for building consistent, accessible line-of-business applications.
+
+[![NPM Version](https://img.shields.io/npm/v/@ng-core/shared.svg)](https://www.npmjs.com/package/@ng-core/shared)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Installation
 
@@ -12,7 +15,9 @@ npm install @ng-core/shared
 
 ## Usage
 
-Minimal configuration to use the shared components in your Angular application:
+### Minimal Configuration
+
+Import the `SharedModule` into your Angular application's root or feature module:
 
 ```typescript
 import { SharedModule } from '@ng-core/shared';

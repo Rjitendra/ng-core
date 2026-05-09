@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgClarifyTextComponent } from './ng-clarify-text.component';
 
 const meta: Meta<NgClarifyTextComponent> = {
   title: 'Utils/Clarify Text',
   component: NgClarifyTextComponent,
   tags: ['autodocs'],
-  decorators: [moduleMetadata({ imports: [SharedControlsModule] })],
+  decorators: [moduleMetadata({ imports: [NgClarifyTextComponent] })],
   args: {
     label: 'Why this matters',
     clarifyText:

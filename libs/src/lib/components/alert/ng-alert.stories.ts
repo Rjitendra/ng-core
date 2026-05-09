@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import type { Meta, StoryObj } from '@storybook/angular';
 import { AlertService } from '../../services/alert.service';
-import { SharedControlsModule } from '../../shared-controls.module';
+import { ButtonComponent } from '../button/ng-button.component';
 import { AlertComponent } from './ng-alert.component';
 
 @Component({
   selector: 'storybook-alert-demo',
   standalone: true,
-  imports: [CommonModule, SharedControlsModule],
+  imports: [CommonModule, AlertComponent, ButtonComponent],
   template: `
     <div
       style="

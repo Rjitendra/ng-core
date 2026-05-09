@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgStepperComponent, StepConfig } from './ng-stepper.component';
 
 const steps: StepConfig[] = [
@@ -13,7 +12,7 @@ const meta: Meta<NgStepperComponent> = {
   title: 'Navigation/Stepper',
   component: NgStepperComponent,
   tags: ['autodocs'],
-  decorators: [moduleMetadata({ imports: [SharedControlsModule] })],
+  decorators: [moduleMetadata({ imports: [NgStepperComponent] })],
   parameters: { layout: 'padded' },
   args: {
     steps,

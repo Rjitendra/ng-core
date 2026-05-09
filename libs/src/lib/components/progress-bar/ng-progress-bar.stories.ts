@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import {
   NgProgressBarComponent,
   ProgressBarSize,
@@ -13,7 +12,7 @@ const meta: Meta<NgProgressBarComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgProgressBarComponent],
     }),
   ],
   parameters: {

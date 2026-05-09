@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
-import { SharedControlsModule } from '../../shared-controls.module';
 import { NgSidenavComponent } from './ng-sidenav.component';
 
 const meta: Meta<NgSidenavComponent> = {
@@ -9,7 +8,7 @@ const meta: Meta<NgSidenavComponent> = {
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      imports: [SharedControlsModule],
+      imports: [NgSidenavComponent],
     }),
   ],
   parameters: {
