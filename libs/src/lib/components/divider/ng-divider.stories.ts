@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgDividerComponent } from './ng-divider.component';
 
@@ -11,7 +12,7 @@ const meta: Meta<NgDividerComponent> = {
       imports: [NgDividerComponent],
     }),
   ],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgDividerComponent, { layout: 'padded' }),
 };
 
 export default meta;

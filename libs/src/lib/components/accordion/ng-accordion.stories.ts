@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgAccordionComponent } from './ng-accordion.component';
 
@@ -39,9 +40,9 @@ const meta: Meta<NgAccordionComponent> = {
       imports: [NgAccordionComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgAccordionComponent, {
     layout: 'padded',
-  },
+  }),
   args: {
     items,
     multi: false,

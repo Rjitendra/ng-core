@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import {
   SpinnerColor,
@@ -17,9 +18,9 @@ const meta: Meta<SpinnerComponent> = {
       imports: [SpinnerComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(SpinnerComponent, {
     layout: 'centered',
-  },
+  }),
   argTypes: {
     variant: {
       control: 'inline-radio',

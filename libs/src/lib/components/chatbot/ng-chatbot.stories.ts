@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import {
   NgChatbotComponent,
@@ -45,9 +46,9 @@ const meta: Meta<NgChatbotComponent> = {
       imports: [NgChatbotComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgChatbotComponent, {
     layout: 'padded',
-  },
+  }),
   argTypes: {
     status: {
       control: 'inline-radio',

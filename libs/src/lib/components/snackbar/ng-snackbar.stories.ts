@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgSnackbarComponent } from './ng-snackbar.component';
 
@@ -11,6 +12,7 @@ const meta: Meta<NgSnackbarComponent> = {
       imports: [NgSnackbarComponent],
     }),
   ],
+  parameters: withControlDocs(NgSnackbarComponent),
 };
 
 export default meta;

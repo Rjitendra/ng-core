@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { IconComponent, IconSize, IconTone } from './ng-icon.component';
 import { CUSTOM_ICON_OPTIONS, MATERIAL_ICON_OPTIONS } from './ng-icon.registry';
@@ -12,9 +13,9 @@ const meta: Meta<IconComponent> = {
       imports: [IconComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(IconComponent, {
     layout: 'centered',
-  },
+  }),
   argTypes: {
     name: {
       control: 'select',

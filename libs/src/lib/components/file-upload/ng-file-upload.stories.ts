@@ -1,5 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgFileUploadComponent } from './ng-file-upload.component';
 
@@ -10,7 +11,7 @@ const meta: Meta<NgFileUploadComponent> = {
   decorators: [
     moduleMetadata({ imports: [NgFileUploadComponent, ReactiveFormsModule] }),
   ],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgFileUploadComponent, { layout: 'padded' }),
   args: {
     label: 'Attachments',
     dragText: 'Drop lease PDFs here or click to browse',

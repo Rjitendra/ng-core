@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgStepperComponent, StepConfig } from './ng-stepper.component';
 
@@ -13,7 +14,7 @@ const meta: Meta<NgStepperComponent> = {
   component: NgStepperComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [NgStepperComponent] })],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgStepperComponent, { layout: 'padded' }),
   args: {
     steps,
     linear: false,

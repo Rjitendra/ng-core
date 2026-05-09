@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgBadgeComponent } from './ng-badge.component';
 
@@ -14,6 +15,7 @@ const meta: Meta<NgBadgeComponent> = {
     size: 'md',
     icon: 'check_circle',
   },
+  parameters: withControlDocs(NgBadgeComponent),
 };
 
 export default meta;

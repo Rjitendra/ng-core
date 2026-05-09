@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgToggleComponent } from './ng-toggle.component';
 
@@ -59,9 +60,9 @@ const meta: Meta<NgToggleComponent> = {
       imports: [NgToggleComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgToggleComponent, {
     layout: 'padded',
-  },
+  }),
   args: {
     label: 'Enable notifications',
     description: 'Send status updates to your team channels.',

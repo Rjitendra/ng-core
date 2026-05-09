@@ -1,6 +1,7 @@
 import { Component, TemplateRef, ViewChild, inject } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { applicationConfig } from '@storybook/angular';
 import { ButtonComponent } from '../button/ng-button.component';
 import { NgDialogService } from '../../services/dialog.service';
@@ -133,7 +134,7 @@ const meta: Meta<NgDialogComponent> = {
       providers: [provideAnimations(), provideAppDialogs()],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgDialogComponent, {
     layout: 'centered',
     docs: {
       source: {
@@ -167,7 +168,7 @@ export class DialogUsageExampleComponent {
 }`,
       },
     },
-  },
+  }),
 };
 
 export default meta;

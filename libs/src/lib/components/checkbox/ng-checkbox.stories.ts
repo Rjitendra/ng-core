@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgCheckboxComponent } from './ng-checkbox.component';
 
@@ -59,9 +60,9 @@ const meta: Meta<NgCheckboxComponent> = {
       imports: [NgCheckboxComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgCheckboxComponent, {
     layout: 'padded',
-  },
+  }),
   args: {
     label: 'I agree to the deployment checklist',
     description:

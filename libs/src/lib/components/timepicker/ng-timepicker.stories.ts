@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgTimepickerComponent } from './ng-timepicker.component';
 
@@ -11,6 +12,7 @@ const meta: Meta<NgTimepickerComponent> = {
       imports: [NgTimepickerComponent],
     }),
   ],
+  parameters: withControlDocs(NgTimepickerComponent),
 };
 
 export default meta;

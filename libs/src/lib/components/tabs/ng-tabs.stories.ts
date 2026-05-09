@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgTabsComponent } from './ng-tabs.component';
 
@@ -11,6 +12,7 @@ const meta: Meta<NgTabsComponent> = {
       imports: [NgTabsComponent],
     }),
   ],
+  parameters: withControlDocs(NgTabsComponent),
 };
 
 export default meta;

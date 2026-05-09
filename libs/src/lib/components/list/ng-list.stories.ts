@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgListComponent } from './ng-list.component';
 
@@ -11,9 +12,9 @@ const meta: Meta<NgListComponent> = {
       imports: [NgListComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgListComponent, {
     layout: 'padded',
-  },
+  }),
 };
 
 export default meta;

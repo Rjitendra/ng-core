@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import {
   NgRadioGroupComponent,
@@ -90,9 +91,9 @@ const meta: Meta<NgRadioGroupComponent> = {
       imports: [NgRadioGroupComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgRadioGroupComponent, {
     layout: 'padded',
-  },
+  }),
   argTypes: {
     orientation: {
       control: 'inline-radio',

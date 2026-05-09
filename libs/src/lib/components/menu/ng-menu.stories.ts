@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgMenuItemDirective } from './ng-menu-item.directive';
 import { NgMenuTriggerForDirective } from './ng-menu-trigger.directive';
@@ -34,7 +35,13 @@ const meta: Meta<NgMenuStoryHostComponent> = {
   component: NgMenuStoryHostComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [NgMenuStoryHostComponent] })],
-  parameters: { layout: 'centered' },
+  parameters: withControlDocs(NgMenuComponent, { layout: 'centered' }, {
+    symbols: ['NgMenuComponent', 'NgMenuItemDirective', 'NgMenuTriggerForDirective'],
+    template: `<button type="button" [ngMenuTriggerFor]="menu">Open menu</button>
+<ng-menu #menu="ngMenu">
+  <div ng-menu-item>First action</div>
+</ng-menu>`,
+  }),
 };
 
 export default meta;

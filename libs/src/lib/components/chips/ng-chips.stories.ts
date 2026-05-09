@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgChipsComponent } from './ng-chips.component';
 
@@ -44,6 +45,7 @@ const meta: Meta<NgChipsComponent> = {
     multiple: true,
     removable: true,
   },
+  parameters: withControlDocs(NgChipsComponent),
 };
 
 export default meta;

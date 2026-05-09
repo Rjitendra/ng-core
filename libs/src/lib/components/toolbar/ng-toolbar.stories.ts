@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgToolbarComponent } from './ng-toolbar.component';
 
@@ -11,6 +12,7 @@ const meta: Meta<NgToolbarComponent> = {
       imports: [NgToolbarComponent],
     }),
   ],
+  parameters: withControlDocs(NgToolbarComponent),
 };
 
 export default meta;

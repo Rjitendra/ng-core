@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgDatepickerComponent } from './ng-datepicker.component';
 
@@ -34,7 +35,7 @@ const meta: Meta<NgDatepickerComponent> = {
   decorators: [
     moduleMetadata({ imports: [NgDatepickerComponent, FormsModule] }),
   ],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgDatepickerComponent, { layout: 'padded' }),
   args: {
     label: 'Launch date',
     helperText: 'Choose the target rollout date.',

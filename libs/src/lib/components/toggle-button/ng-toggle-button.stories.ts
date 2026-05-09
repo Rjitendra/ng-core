@@ -1,5 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgToggleButtonComponent } from './ng-toggle-button.component';
 
@@ -10,7 +11,7 @@ const meta: Meta<NgToggleButtonComponent> = {
   decorators: [
     moduleMetadata({ imports: [NgToggleButtonComponent, FormsModule] }),
   ],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgToggleButtonComponent, { layout: 'padded' }),
   args: {
     options: [
       { label: 'Day', value: 'day' },

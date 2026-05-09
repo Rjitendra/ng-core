@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import {
   ButtonComponent,
@@ -16,9 +17,9 @@ const meta: Meta<ButtonComponent> = {
       imports: [ButtonComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(ButtonComponent, {
     layout: 'centered',
-  },
+  }),
   argTypes: {
     type: {
       control: 'select',

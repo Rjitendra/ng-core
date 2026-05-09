@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgTileComponent } from './ng-tile.component';
 
@@ -7,7 +8,7 @@ const meta: Meta<NgTileComponent> = {
   component: NgTileComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [NgTileComponent] })],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgTileComponent, { layout: 'padded' }),
   args: {
     title: 'Deployment health',
     subtitle: 'Last 24 hours',

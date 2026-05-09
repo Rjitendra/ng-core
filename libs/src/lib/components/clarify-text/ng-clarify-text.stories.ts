@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgClarifyTextComponent } from './ng-clarify-text.component';
 
@@ -12,6 +13,7 @@ const meta: Meta<NgClarifyTextComponent> = {
     clarifyText:
       'This setting controls whether users can self-serve access requests.',
   },
+  parameters: withControlDocs(NgClarifyTextComponent),
 };
 
 export default meta;

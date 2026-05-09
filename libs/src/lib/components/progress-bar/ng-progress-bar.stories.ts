@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import {
   NgProgressBarComponent,
@@ -15,9 +16,9 @@ const meta: Meta<NgProgressBarComponent> = {
       imports: [NgProgressBarComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgProgressBarComponent, {
     layout: 'padded',
-  },
+  }),
   argTypes: {
     variant: {
       control: 'select',

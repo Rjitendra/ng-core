@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgLabelComponent } from './ng-label.component';
 
@@ -16,6 +17,7 @@ const meta: Meta<NgLabelComponent> = {
     hint: 'Use a clear name your team will recognize.',
     required: true,
   },
+  parameters: withControlDocs(NgLabelComponent),
 };
 
 export default meta;

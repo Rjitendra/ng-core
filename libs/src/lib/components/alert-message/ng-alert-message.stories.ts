@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { AlertMessageComponent } from './ng-alert-message.component';
 
 const meta: Meta<AlertMessageComponent> = {
   title: 'Feedback/Alert Message',
   component: AlertMessageComponent,
   tags: ['autodocs'],
-  parameters: {
+  parameters: withControlDocs(AlertMessageComponent, {
     layout: 'padded',
-  },
+  }),
   args: {
     alertType: 'error',
     messageText:

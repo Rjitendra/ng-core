@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgPaginatorComponent } from './ng-paginator.component';
 
@@ -11,6 +12,7 @@ const meta: Meta<NgPaginatorComponent> = {
       imports: [NgPaginatorComponent],
     }),
   ],
+  parameters: withControlDocs(NgPaginatorComponent),
 };
 
 export default meta;

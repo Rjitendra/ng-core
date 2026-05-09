@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import {
   NgDropdownAppearance,
@@ -125,9 +126,9 @@ const meta: Meta<NgDropdownComponent> = {
       imports: [NgDropdownComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgDropdownComponent, {
     layout: 'padded',
-  },
+  }),
   argTypes: {
     appearance: {
       control: 'inline-radio',

@@ -1,5 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { InputType } from '../../enums/input-type';
 import { NgInputComponent } from './ng-input.component';
@@ -11,7 +12,7 @@ const meta: Meta<NgInputComponent> = {
   decorators: [
     moduleMetadata({ imports: [NgInputComponent, ReactiveFormsModule] }),
   ],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgInputComponent, { layout: 'padded' }),
   args: {
     label: 'Workspace slug',
     placeholder: 'e.g. atlas-prod',

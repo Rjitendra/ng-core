@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { LoadingService } from '../../services/loading.service';
 import { NgLoadingOverlayComponent } from './ng-loading-overlay.component';
 
@@ -29,9 +30,9 @@ const meta: Meta<NgLoadingOverlayComponent> = {
       };
     },
   ],
-  parameters: {
+  parameters: withControlDocs(NgLoadingOverlayComponent, {
     layout: 'fullscreen',
-  },
+  }),
   args: {
     spinnerKey: 'storybook',
     fullscreen: true,

@@ -1,5 +1,6 @@
 import { MatInputModule } from '@angular/material/input';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgFormFieldComponent } from './ng-form-field.component';
 
@@ -12,9 +13,9 @@ const meta: Meta<NgFormFieldComponent> = {
       imports: [NgFormFieldComponent, MatInputModule],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgFormFieldComponent, {
     layout: 'padded',
-  },
+  }),
   args: {
     label: 'Environment name',
     hint: 'Used in dashboards and audit logs.',

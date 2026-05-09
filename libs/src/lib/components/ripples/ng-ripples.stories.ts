@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgRipplesComponent } from './ng-ripples.component';
 
@@ -11,6 +12,7 @@ const meta: Meta<NgRipplesComponent> = {
       imports: [NgRipplesComponent],
     }),
   ],
+  parameters: withControlDocs(NgRipplesComponent),
 };
 
 export default meta;

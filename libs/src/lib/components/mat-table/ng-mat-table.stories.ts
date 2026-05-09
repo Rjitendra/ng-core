@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { TableColumn } from '../../models/mat-table';
 import { TableRow } from '../../models/table-row.model';
@@ -23,7 +24,7 @@ const meta: Meta<NgMatTableComponent> = {
   component: NgMatTableComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [NgMatTableComponent] })],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgMatTableComponent, { layout: 'padded' }),
   args: {
     columns,
     data,

@@ -1,5 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgSliderComponent } from './ng-slider.component';
 
@@ -10,7 +11,7 @@ const meta: Meta<NgSliderComponent> = {
   decorators: [
     moduleMetadata({ imports: [NgSliderComponent, ReactiveFormsModule] }),
   ],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgSliderComponent, { layout: 'padded' }),
   args: {
     label: 'Confidence threshold',
     min: 0,

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgLayoutComponent } from './ng-layout.component';
 
@@ -26,7 +27,7 @@ const meta: Meta<NgLayoutComponent> = {
       ],
     }),
   ],
-  parameters: { layout: 'fullscreen' },
+  parameters: withControlDocs(NgLayoutComponent, { layout: 'fullscreen' }),
   args: {
     brandTitle: 'ng-core',
     welcomeTitle: 'Storybook shell',

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgSortHeaderComponent } from './ng-sort-header.component';
 
@@ -11,6 +12,7 @@ const meta: Meta<NgSortHeaderComponent> = {
       imports: [NgSortHeaderComponent],
     }),
   ],
+  parameters: withControlDocs(NgSortHeaderComponent),
 };
 
 export default meta;

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgCardComponent } from './ng-card.component';
 
@@ -11,9 +12,9 @@ const meta: Meta<NgCardComponent> = {
       imports: [NgCardComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgCardComponent, {
     layout: 'padded',
-  },
+  }),
   args: {
     eyebrow: 'Workspace',
     title: 'Platform analytics',

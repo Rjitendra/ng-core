@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgBottomSheetComponent } from './ng-bottom-sheet.component';
 
@@ -11,9 +12,9 @@ const meta: Meta<NgBottomSheetComponent> = {
       imports: [NgBottomSheetComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgBottomSheetComponent, {
     layout: 'padded',
-  },
+  }),
 };
 
 export default meta;

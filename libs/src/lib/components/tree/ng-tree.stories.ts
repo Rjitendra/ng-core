@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgTreeComponent, NgTreeNode } from './ng-tree.component';
 
@@ -63,9 +64,9 @@ const meta: Meta<NgTreeComponent> = {
       imports: [NgTreeComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgTreeComponent, {
     layout: 'padded',
-  },
+  }),
   argTypes: {
     showCheckboxes: {
       control: 'boolean',

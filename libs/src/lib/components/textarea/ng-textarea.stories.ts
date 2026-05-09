@@ -1,5 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgTextareaComponent } from './ng-textarea.component';
 
@@ -10,7 +11,7 @@ const meta: Meta<NgTextareaComponent> = {
   decorators: [
     moduleMetadata({ imports: [NgTextareaComponent, ReactiveFormsModule] }),
   ],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgTextareaComponent, { layout: 'padded' }),
   args: {
     label: 'Release notes',
     placeholder: 'Summarize changes for operators…',

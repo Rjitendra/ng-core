@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgErrorComponent } from './ng-error.component';
 
@@ -11,9 +12,9 @@ const meta: Meta<NgErrorComponent> = {
       imports: [NgErrorComponent],
     }),
   ],
-  parameters: {
+  parameters: withControlDocs(NgErrorComponent, {
     layout: 'padded',
-  },
+  }),
   args: {
     error: 'This field is required.',
   },

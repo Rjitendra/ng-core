@@ -1,5 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgAutocompleteComponent } from './ng-autocomplete.component';
 
@@ -16,7 +17,7 @@ const meta: Meta<NgAutocompleteComponent> = {
   decorators: [
     moduleMetadata({ imports: [NgAutocompleteComponent, ReactiveFormsModule] }),
   ],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgAutocompleteComponent, { layout: 'padded' }),
   args: {
     label: 'City',
     placeholder: 'Start typing…',

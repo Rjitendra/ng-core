@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgAdvancedCardComponent } from './ng-advanced-card.component';
 
@@ -7,7 +8,7 @@ const meta: Meta<NgAdvancedCardComponent> = {
   component: NgAdvancedCardComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [NgAdvancedCardComponent] })],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgAdvancedCardComponent, { layout: 'padded' }),
   args: {
     title: 'Lease summary',
     subtitle: 'Q2 portfolio review',

@@ -1,5 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgSelectComponent } from './ng-select.component';
 
@@ -10,7 +11,7 @@ const meta: Meta<NgSelectComponent> = {
   decorators: [
     moduleMetadata({ imports: [NgSelectComponent, ReactiveFormsModule] }),
   ],
-  parameters: { layout: 'padded' },
+  parameters: withControlDocs(NgSelectComponent, { layout: 'padded' }),
   args: {
     label: 'Priority',
     placeholder: 'Choose priority',

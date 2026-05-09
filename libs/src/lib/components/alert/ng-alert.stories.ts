@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import type { Meta, StoryObj } from '@storybook/angular';
+import { withControlDocs } from '../../storybook/standalone-docs';
 import { AlertService } from '../../services/alert.service';
 import { ButtonComponent } from '../button/ng-button.component';
 import { AlertComponent } from './ng-alert.component';
@@ -137,9 +138,9 @@ const meta: Meta<AlertComponent> = {
   title: 'Feedback/Alert',
   component: AlertComponent,
   tags: ['autodocs'],
-  parameters: {
+  parameters: withControlDocs(AlertComponent, {
     layout: 'padded',
-  },
+  }),
 };
 
 export default meta;
