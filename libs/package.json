@@ -1,7 +1,7 @@
 {
-  "name": "@ng-core/shared",
+  "name": "@jitendrabehera/ng-core-controls",
   "version": "1.0.0",
-  "description": "Angular Material–based UI controls and patterns for line-of-business apps (forms, tables, layout, feedback).",
+  "description": "Angular Material-based UI controls and patterns for line-of-business apps (forms, tables, layout, feedback).",
   "keywords": [
     "angular",
     "angular-material",

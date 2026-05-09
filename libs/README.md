@@ -1,4 +1,4 @@
-# @ng-core/shared
+# @jitendrabehera/ng-core-controls
 
 Angular **standalone** components built on **Angular Material** and the **CDK**.
 
@@ -9,7 +9,7 @@ Angular **standalone** components built on **Angular Material** and the **CDK**.
 ## Install (from npm, after publish)
 
 ```bash
-npm install @ng-core/shared
+npm install @jitendrabehera/ng-core-controls
 ```
 
 Peer dependencies: Angular 21+, Angular Material, CDK, RxJS (see `package.json`).

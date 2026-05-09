@@ -2,7 +2,7 @@
 
 A high-quality library of reusable Angular components and utilities built on **Angular Material** and the **CDK**. Optimized for building consistent, accessible line-of-business applications.
 
-[![NPM Version](https://img.shields.io/npm/v/@ng-core/shared.svg)](https://www.npmjs.com/package/@ng-core/shared)
+[![NPM Version](https://img.shields.io/npm/v/@jitendrabehera/ng-core-controls.svg)](https://www.npmjs.com/package/@jitendrabehera/ng-core-controls)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Installation
@@ -10,22 +10,25 @@ A high-quality library of reusable Angular components and utilities built on **A
 To get started, install the package via npm:
 
 ```bash
-npm install @ng-core/shared
+npm install @jitendrabehera/ng-core-controls
 ```
 
 ## Usage
 
 ### Minimal Configuration
 
-Import the `SharedModule` into your Angular application's root or feature module:
+Import the standalone components you need directly into your Angular component:
 
 ```typescript
-import { SharedModule } from '@ng-core/shared';
+import { Component } from '@angular/core';
+import { ButtonComponent } from '@jitendrabehera/ng-core-controls';
 
-@NgModule({
-  imports: [SharedModule],
+@Component({
+  standalone: true,
+  imports: [ButtonComponent],
+  template: `<ng-button label="Save" type="filled"></ng-button>`,
 })
-export class AppModule {}
+export class ExampleComponent {}
 ```
 
 ## Developer

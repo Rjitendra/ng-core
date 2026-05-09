@@ -1,6 +1,6 @@
 # Shared controls catalog
 
-This document groups every control exported from `@ng-core/shared`, suggests where to deepen features, lists common gaps, and aligns **realistic naming** with what ships in code today.
+This document groups every control exported from `@jitendrabehera/ng-core-controls`, suggests where to deepen features, lists common gaps, and aligns **realistic naming** with what ships in code today.
 
 ## 1. Feedback and status
 
@@ -95,7 +95,7 @@ This document groups every control exported from `@ng-core/shared`, suggests whe
 
 - **Selectors** use the `ng-*` prefix (Angular style, short, stable in templates).
 - **Classes** today mix `Ng*` (most) with `AlertComponent` / `ButtonComponent` (older). **Recommendation for new work:** prefer `Ng*` + domain, e.g. `NgDataTableComponent` (if you ever rename `NgMatTableComponent`, do it with a deprecation alias export for one major).
-- **Package name:** published npm name is `@ng-core/shared` (see `libs/package.json`). For a more **product-realistic** public name on npm, consider a scoped name under your org, e.g. `@your-org/angular-controls`, and treat `@ng-core/shared` as an internal alias—only change after a semver major and changelog.
+- **Package name:** published npm name is `@jitendrabehera/ng-core-controls` (see `libs/package.json`).
 
 ---
 
@@ -118,5 +118,5 @@ This document groups every control exported from `@ng-core/shared`, suggests whe
 
 ## Hosting
 
-- **npm:** see root `README.md` section *Publishing `@ng-core/shared` to npm* and workflow `.github/workflows/npm-publish.yml`.
+- **npm:** see root `README.md` section for publishing `@jitendrabehera/ng-core-controls` and workflow `.github/workflows/npm-publish.yml`.
 - **GitHub static (Storybook):** workflow `.github/workflows/storybook-github-pages.yml` builds Storybook and pushes to branch `gh-pages`. Enable **Pages → Deploy from branch → gh-pages / root** in the repository settings.

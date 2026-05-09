@@ -138,7 +138,7 @@ const meta: Meta<NgDialogComponent> = {
     docs: {
       source: {
         code: `import { Component, inject } from '@angular/core';
-import { AppDialogService, NgButton } from '@ng-core/shared';
+import { AppDialogService, NgButton } from '@jitendrabehera/ng-core-controls';
 import { MyDialogComponent } from './my-dialog.component';
 
 @Component({

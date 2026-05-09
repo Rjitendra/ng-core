@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ng-core/shared": ["libs/src/index.ts"],
+      "@jitendrabehera/ng-core-controls": ["libs/src/index.ts"],
       "@ng-core/ui-button": ["libs/ui/src/index.ts"]
     }
   },

@@ -5,8 +5,10 @@
   "scripts": {
     "storybook": "nx run ng-core:storybook",
     "build:storybook": "nx run ng-core:build-storybook",
+    "clean:shared-dist": "node -e \"require('fs').rmSync('dist/libs', { recursive: true, force: true })\"",
     "build:shared": "nx run shared:build",
-    "publish:shared": "nx test shared && npm run build:shared && npm publish ./dist/libs --access public",
+    "pack:shared": "npm run clean:shared-dist && npm run build:shared && npm pack ./dist/libs --dry-run",
+    "publish:shared": "npm run clean:shared-dist && nx test shared && npm run build:shared && npm publish ./dist/libs --access public",
     "test": "nx test ng-core",
     "test:ui": "nx test ng-core --ui",
     "test:run": "nx test ng-core",
