@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: ng-core
+
+bases:
+  - ../base
+
+namePrefix: local-
+
+replicas:
+  - name: ng-core
+    count: 1
+
+images:
+  - name: ng-core
+    newName: ng-core
+    newTag: dev
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
+
+configMapGenerator:
+  - name: ng-core-config
+    behavior: merge
+    literals:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=debug
+
+resources:
+  - ingress.yaml
+
+commonLabels:
+  environment: local
+  tier: frontend

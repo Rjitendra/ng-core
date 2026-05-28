@@ -1,0 +1,45 @@
+services:
+  ng-core-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: ng-core-dev
+    ports:
+      - '4200:4200'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - NG_HOST=0.0.0.0
+    command: npm run start ng-core
+    stdin_open: true
+    tty: true
+    networks:
+      - ng-core-network
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:4200']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add nginx reverse proxy for production-like setup
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: ng-core-nginx
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - ng-core-app
+    networks:
+      - ng-core-network
+    profiles:
+      - prod-like
+
+networks:
+  ng-core-network:
+    driver: bridge

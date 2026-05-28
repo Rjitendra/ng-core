@@ -1,0 +1,28 @@
+# .gitignore additions for Docker and Kubernetes
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Kubernetes
+k8s/local/secrets.yaml
+k8s/prod/secrets.yaml
+.kubeconfig
+
+# Registry credentials
+.dockercfg
+.docker/config.json
+
+# Certificates
+*.pem
+*.key
+*.crt
+*.cert
+
+# Helm
+Chart.lock
+charts/
+
+# Temporary files
+*.tmp
+tmp/

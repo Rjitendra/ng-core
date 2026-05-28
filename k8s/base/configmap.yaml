@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ng-core-config
+  namespace: ng-core
+  labels:
+    app: ng-core
+    version: v1
+data:
+  # Angular environment configuration
+  ENVIRONMENT: 'production'
+  # Add any environment-specific variables here
+  API_BASE_URL: '' # To be overridden by overlays
+  LOG_LEVEL: 'info'

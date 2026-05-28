@@ -1,0 +1,26 @@
+# Development Dockerfile with hot reload support
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apk add --no-cache git python3 make g++
+
+# Copy package files
+COPY package.json package-lock.json* pnpm-lock.yaml* yarn.lock* ./
+
+# Install dependencies
+RUN if [ -f pnpm-lock.yaml ]; then npm install -g pnpm && pnpm install --frozen-lockfile; \
+    elif [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
+    elif [ -f package-lock.json ]; then npm ci; \
+    else npm install; \
+    fi
+
+# Copy source code
+COPY . .
+
+# Expose port for dev server
+EXPOSE 4200
+
+# Default command runs dev server
+CMD ["npm", "run", "start", "ng-core"]
