@@ -30,6 +30,37 @@ services:
       retries: 3
       start_period: 40s
 
+  ng-core-storybook:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: ng-core-storybook
+    ports:
+      - '4400:4400'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - NG_HOST=0.0.0.0
+    command: npm exec -- nx run ng-core:storybook --host=0.0.0.0 --port=4400
+    stdin_open: true
+    tty: true
+    networks:
+      - ng-core-network
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:4400').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
   # Optional: Add nginx reverse proxy for production-like setup
   nginx-proxy:
     image: nginx:alpine
