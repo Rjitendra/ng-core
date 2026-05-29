@@ -49,9 +49,6 @@ Dockerfile.dev
 docker-compose*.yml
 .dockerignore
 
-# Kubernetes
-k8s
-scripts
 
 # Misc
 tmp

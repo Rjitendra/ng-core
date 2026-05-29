@@ -17,7 +17,7 @@ RUN if [ -f pnpm-lock.yaml ]; then npm install -g pnpm && pnpm install --frozen-
 COPY . .
 
 # Build the application
-RUN npm run build ng-core -- --configuration production
+RUN npm exec -- nx run ng-core:build:production
 
 # Production stage - lightweight nginx server
 FROM nginx:alpine
@@ -29,7 +29,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy built application from builder stage
-COPY --from=builder /app/dist/apps/ng-core /usr/share/nginx/html
+COPY --from=builder /app/dist/apps/ng-core/browser /usr/share/nginx/html
 
 # Create non-root user for security
 RUN addgroup -g 101 -S nginx || true && \
