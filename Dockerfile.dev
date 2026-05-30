@@ -1,7 +1,10 @@
+# syntax=docker/dockerfile:1.7
 # Development Dockerfile with hot reload support
 FROM node:20-alpine
 
 WORKDIR /app
+
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
 # Install system dependencies
 RUN apk add --no-cache git python3 make g++ curl
@@ -10,10 +13,11 @@ RUN apk add --no-cache git python3 make g++ curl
 COPY package.json package-lock.json* pnpm-lock.yaml* yarn.lock* ./
 
 # Install dependencies
-RUN if [ -f pnpm-lock.yaml ]; then npm install -g pnpm && pnpm install --frozen-lockfile; \
+RUN --mount=type=cache,target=/root/.npm \
+    if [ -f pnpm-lock.yaml ]; then npm install -g pnpm && pnpm install --frozen-lockfile; \
     elif [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
-    elif [ -f package-lock.json ]; then npm ci; \
-    else npm install; \
+    elif [ -f package-lock.json ]; then npm ci --prefer-offline --no-audit --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000; \
+    else npm install --prefer-offline --no-audit --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000; \
     fi
 
 # Copy source code

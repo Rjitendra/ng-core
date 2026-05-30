@@ -34,3 +34,7 @@ export class ExampleComponent {}
 ## Developer
 
 **Jitendra**
+
+## Docker
+
+See [Docker Run Guide](docs/DOCKER.md) for full steps to run the app, Storybook, and production build with Docker Compose.
