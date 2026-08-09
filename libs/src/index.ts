@@ -67,4 +67,6 @@ export * from './lib/components/ag-grid/ng-ag-grid.component';
 export * from './lib/components/ag-grid/editors/ng-ag-grid-calendar-editor.component';
 export * from './lib/components/ag-grid/editors/ng-ag-grid-checkbox-editor.component';
 export * from './lib/components/ag-grid/editors/ng-ag-grid-textbox-editor.component';
+export * from './lib/components/ag-grid/renderers/ng-ag-grid-action-renderer.component';
 export * from './lib/components/ag-grid/renderers/ng-ag-grid-boolean-renderer.component';
+export * from './lib/components/ag-grid/renderers/ng-ag-grid-template-renderer.component';

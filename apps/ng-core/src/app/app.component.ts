@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   AgGridRow,
   GridOptions,
   NgAgGridColumn,
   NgAgGridComponent,
+  NgAgGridRowInvalid,
+  NgAgGridRowUpdate,
+  NgAgGridToolbarAction,
 } from '@jitendrabehera/ng-core-controls';
 
 @Component({
   standalone: true,
-  imports: [FormsModule, NgAgGridComponent],
+  imports: [CommonModule, FormsModule, NgAgGridComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -17,6 +21,25 @@ import {
 export class AppComponent {
   title = 'AG Grid Dynamic Demo';
   quickFilterText = '';
+  showHeaderCheckbox = true;
+  showRowCheckbox = true;
+  lastGridEvent = 'Grid ready for parent-driven data';
+
+  readonly resources = {
+    department: ['Product', 'Quality', 'Insights', 'Platform', 'Design', 'Security'],
+    location: [
+      'Austin',
+      'Bengaluru',
+      'Cairo',
+      'Chicago',
+      'Dubai',
+      'London',
+      'Madrid',
+      'Mumbai',
+      'Seattle',
+      'Singapore',
+    ],
+  };
 
   readonly columnDefs: NgAgGridColumn[] = [
     {
@@ -24,29 +47,36 @@ export class AppComponent {
       headerName: 'Employee ID',
       width: 140,
       pinned: 'left',
+      editable: false,
     },
     {
       field: 'name',
       headerName: 'Name',
       editorType: 'text',
       minWidth: 180,
+      required: true,
     },
     {
       field: 'role',
       headerName: 'Role',
       editorType: 'text',
       rowGroup: false,
+      required: true,
     },
     {
       field: 'department',
       headerName: 'Department',
       filter: 'agSetColumnFilter',
       enableRowGroup: true,
+      dropdown: true,
+      resourceKey: 'department',
     },
     {
       field: 'location',
       headerName: 'Location',
       filter: 'agSetColumnFilter',
+      dropdown: true,
+      resourceKey: 'location',
     },
     {
       field: 'salary',
@@ -54,6 +84,7 @@ export class AppComponent {
       filter: 'agNumberColumnFilter',
       type: 'rightAligned',
       aggFunc: 'sum',
+      templateKey: 'salary',
       valueFormatter: ({ value }) =>
         typeof value === 'number'
           ? new Intl.NumberFormat('en-US', {
@@ -68,6 +99,7 @@ export class AppComponent {
       headerName: 'Joining Date',
       editorType: 'calendar',
       sort: 'asc',
+      required: true,
     },
     {
       field: 'active',
@@ -202,6 +234,11 @@ export class AppComponent {
     rowGroupPanelShow: 'always',
     pivotPanelShow: 'always',
     suppressMenuHide: false,
+    masterDetail: false,
+    treeData: false,
+    enableRangeHandle: true,
+    rowDragManaged: true,
+    rowDragEntireRow: true,
     defaultCsvExportParams: {
       fileName: 'employees.csv',
     },
@@ -209,4 +246,26 @@ export class AppComponent {
       fileName: 'employees.xlsx',
     },
   };
+
+  onValidRowUpdate(event: NgAgGridRowUpdate) {
+    this.lastGridEvent = `Parent received valid row ${event.rowId}; API update can run now`;
+  }
+
+  onInvalidRow(event: NgAgGridRowInvalid) {
+    this.lastGridEvent = `Fix required fields: ${Object.values(event.errors).join(', ')}`;
+  }
+
+  onToolbarAction(action: NgAgGridToolbarAction) {
+    this.lastGridEvent = `Toolbar action: ${action}`;
+  }
+
+  onSelectedRows(rows: AgGridRow[]) {
+    this.lastGridEvent = `${rows.length} row(s) selected`;
+  }
+
+  onRowDoubleClick(row: AgGridRow | undefined) {
+    this.lastGridEvent = row
+      ? `Double clicked ${row['employeeId']}`
+      : 'Double clicked row';
+  }
 }

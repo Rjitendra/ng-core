@@ -44,6 +44,44 @@ h1 {
   background: #ffffff;
 }
 
+.grid-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  color: #334155;
+  font-size: 13px;
+}
+
+.grid-controls label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 650;
+}
+
+.grid-controls span {
+  color: #475569;
+}
+
+.salary-cell {
+  color: #111827;
+}
+
+.salary-cell__badge {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  margin-left: 8px;
+  padding: 0 7px;
+  border-radius: 999px;
+  color: #14532d;
+  background: #dcfce7;
+  font-size: 11px;
+  font-weight: 700;
+}
+
 @media (max-width: 720px) {
   .app-shell {
     padding: 18px;

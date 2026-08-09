@@ -1,3 +1,23 @@
+@if (showToolbar()) {
+  <div class="ng-ag-grid-toolbar">
+    @for (button of toolbarButtons(); track button.id) {
+      @if (button.visible !== false) {
+        <button
+          type="button"
+          class="ng-ag-grid-toolbar__button"
+          [disabled]="button.disabled"
+          (click)="onToolbarAction(button.id)"
+        >
+          @if (button.icon) {
+            <span class="ng-ag-grid-toolbar__icon">{{ button.icon }}</span>
+          }
+          <span>{{ button.label }}</span>
+        </button>
+      }
+    }
+  </div>
+}
+
 <ag-grid-angular
   class="ng-ag-grid"
   [class]="theme()"
@@ -7,9 +27,12 @@
   [defaultColDef]="resolvedDefaultColDef()"
   [gridOptions]="resolvedGridOptions()"
   [quickFilterText]="quickFilterText()"
-  (gridReady)="gridReady.emit($event)"
+  (gridReady)="onGridReady($event)"
   (cellValueChanged)="cellValueChanged.emit($event)"
-  (selectionChanged)="selectionChanged.emit($event)"
+  (selectionChanged)="onSelectionChanged($event)"
+  (rowSelected)="onRowSelected($event)"
+  (rowDoubleClicked)="rowDoubleClicked.emit($event)"
+  (cellDoubleClicked)="cellDoubleClicked.emit($event)"
   (filterChanged)="filterChanged.emit($event)"
   (sortChanged)="sortChanged.emit($event)"
 ></ag-grid-angular>

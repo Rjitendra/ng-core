@@ -15,11 +15,45 @@
     </label>
   </header>
 
+  <section class="grid-controls">
+    <label>
+      <input type="checkbox" [(ngModel)]="showHeaderCheckbox" />
+      Header checkbox
+    </label>
+    <label>
+      <input type="checkbox" [(ngModel)]="showRowCheckbox" />
+      Row checkbox
+    </label>
+    <span>{{ lastGridEvent }}</span>
+  </section>
+
+  <ng-template #salaryTemplate let-value let-row="row">
+    <strong class="salary-cell">
+      {{
+        value
+          | currency: 'USD' : 'symbol' : '1.0-0'
+      }}
+    </strong>
+    @if (row.performance >= 90) {
+      <span class="salary-cell__badge">Top</span>
+    }
+  </ng-template>
+
   <ng-ag-grid
     [rowData]="rowData"
     [columnDefs]="columnDefs"
     [gridOptions]="gridOptions"
     [quickFilterText]="quickFilterText"
+    [resources]="resources"
+    [cellTemplates]="{ salary: salaryTemplate }"
+    [showHeaderCheckbox]="showHeaderCheckbox"
+    [showRowCheckbox]="showRowCheckbox"
+    [requiredFields]="['name', 'role', 'joiningDate']"
     height="680px"
+    (rowValidUpdate)="onValidRowUpdate($event)"
+    (rowInvalid)="onInvalidRow($event)"
+    (toolbarAction)="onToolbarAction($event)"
+    (selectedRowsChange)="onSelectedRows($event)"
+    (rowDoubleClicked)="onRowDoubleClick($event.data)"
   ></ng-ag-grid>
 </main>
