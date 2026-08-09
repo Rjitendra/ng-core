@@ -63,12 +63,16 @@ export class NgTextboxComponent implements ControlValueAccessor {
   readonly rows = input<number>(4);
   readonly maxLength = input<number>();
   readonly autocomplete = input<string>();
-  readonly id = input<string>(`ng-textbox-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(
+    `ng-textbox-${Math.random().toString(36).slice(2, 9)}`,
+  );
 
   readonly value = signal<string>('');
   readonly touched = signal<boolean>(false);
   readonly disabledState = signal<boolean>(false);
-  readonly resolvedDisabled = computed(() => this.disabled() || this.disabledState());
+  readonly resolvedDisabled = computed(
+    () => this.disabled() || this.disabledState(),
+  );
   readonly describedBy = computed(() => {
     const ids: string[] = [];
     if (this.helperText()) {

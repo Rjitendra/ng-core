@@ -40,7 +40,9 @@ export class NgSliderComponent implements ControlValueAccessor {
   readonly showMinMax = input(true);
   readonly showValue = input(true);
   readonly color = input<'primary' | 'accent' | 'warn'>('primary');
-  readonly uniqueId = input(`ng-slider-${Math.random().toString(36).slice(2, 9)}`);
+  readonly uniqueId = input(
+    `ng-slider-${Math.random().toString(36).slice(2, 9)}`,
+  );
   readonly name = input('ng-slider');
   readonly clarifyText = input('');
   readonly hint = input('');
@@ -52,7 +54,9 @@ export class NgSliderComponent implements ControlValueAccessor {
 
   value = 0;
   private readonly disabledFromCva = signal(false);
-  readonly resolvedDisabled = computed(() => this.disabled() || this.disabledFromCva());
+  readonly resolvedDisabled = computed(
+    () => this.disabled() || this.disabledFromCva(),
+  );
 
   private onChange = (value: number) => {};
   private onTouched = () => {};

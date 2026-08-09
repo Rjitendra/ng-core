@@ -11,7 +11,9 @@
             type="button"
             class="ng-tree__toggle"
             [class.ng-tree__toggle--hidden]="!hasChildren(node)"
-            [attr.aria-label]="isExpanded(node) ? 'Collapse node' : 'Expand node'"
+            [attr.aria-label]="
+              isExpanded(node) ? 'Collapse node' : 'Expand node'
+            "
             [disabled]="!hasChildren(node)"
             (click)="toggleExpanded(node)"
           >
@@ -53,7 +55,10 @@
 
         @if (hasChildren(node) && isExpanded(node)) {
           <ng-container
-            *ngTemplateOutlet="treeNodes; context: { $implicit: childNodes(node), level: level + 1 }"
+            *ngTemplateOutlet="
+              treeNodes;
+              context: { $implicit: childNodes(node), level: level + 1 }
+            "
           ></ng-container>
         }
       </div>

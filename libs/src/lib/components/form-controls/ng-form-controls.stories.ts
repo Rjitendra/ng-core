@@ -36,7 +36,14 @@ const billingOptions: NgRadioOption[] = [
 @Component({
   selector: 'storybook-reactive-controls',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NgTextboxComponent, NgCheckboxComponent, NgToggleComponent, NgRadioGroupComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    NgTextboxComponent,
+    NgCheckboxComponent,
+    NgToggleComponent,
+    NgRadioGroupComponent,
+  ],
   template: `
     <form
       [formGroup]="form"
@@ -101,7 +108,14 @@ class StorybookReactiveControlsComponent {
 @Component({
   selector: 'storybook-template-controls',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgTextboxComponent, NgCheckboxComponent, NgToggleComponent, NgRadioGroupComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    NgTextboxComponent,
+    NgCheckboxComponent,
+    NgToggleComponent,
+    NgRadioGroupComponent,
+  ],
   template: `
     <div style="display:grid; gap:18px; width:min(760px, 100%);">
       <ng-textbox

@@ -14,10 +14,21 @@
       <div class="table-toolbar__controls">
         @if (options().showSearch !== false) {
           <mat-form-field appearance="outline" class="table-toolbar__search">
-            <mat-label>{{ options().searchPlaceholder || 'Search rows' }}</mat-label>
-            <input matInput [ngModel]="search()" (ngModelChange)="search.set($event)" />
+            <mat-label>{{
+              options().searchPlaceholder || 'Search rows'
+            }}</mat-label>
+            <input
+              matInput
+              [ngModel]="search()"
+              (ngModelChange)="search.set($event)"
+            />
             @if (search()) {
-              <button mat-icon-button matSuffix type="button" (click)="clearSearch()">
+              <button
+                mat-icon-button
+                matSuffix
+                type="button"
+                (click)="clearSearch()"
+              >
                 <mat-icon>close</mat-icon>
               </button>
             } @else {
@@ -34,7 +45,9 @@
                 <button
                   type="button"
                   class="table-chip"
-                  [class.table-chip--active]="visibleColumnKeys().includes(column.key)"
+                  [class.table-chip--active]="
+                    visibleColumnKeys().includes(column.key)
+                  "
                   (click)="toggleColumnVisibility(column.key)"
                 >
                   {{ column.label }}
@@ -50,10 +63,15 @@
   <div class="table-summary">
     <div class="table-summary__record">{{ summaryLabel() }}</div>
     @if (selection.selected.length) {
-      <div class="table-summary__record">{{ selection.selected.length }} selected</div>
+      <div class="table-summary__record">
+        {{ selection.selected.length }} selected
+      </div>
     }
     @for (stat of options().stats || []; track stat.label) {
-      <div class="table-summary__stat" [class]="'table-summary__stat--' + (stat.tone || 'primary')">
+      <div
+        class="table-summary__stat"
+        [class]="'table-summary__stat--' + (stat.tone || 'primary')"
+      >
         <strong>{{ stat.value }}</strong>
         <span>{{ stat.label }}</span>
       </div>
@@ -75,7 +93,11 @@
     >
       @if (headerCheckbox() || rowCheckbox()) {
         <ng-container matColumnDef="select">
-          <th mat-header-cell *matHeaderCellDef style="width: 50px; min-width: 50px">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            style="width: 50px; min-width: 50px"
+          >
             @if (headerCheckbox()) {
               <mat-checkbox
                 (change)="toggleAllRows()"
@@ -85,7 +107,11 @@
               />
             }
           </th>
-          <td mat-cell *matCellDef="let row" style="width: 50px; min-width: 50px">
+          <td
+            mat-cell
+            *matCellDef="let row"
+            style="width: 50px; min-width: 50px"
+          >
             @if (rowCheckbox()) {
               <mat-checkbox
                 (click)="$event.stopPropagation()"
@@ -108,13 +134,21 @@
           >
             &nbsp;
           </th>
-          <td mat-cell *matCellDef="let row" style="width: 50px; min-width: 50px">
+          <td
+            mat-cell
+            *matCellDef="let row"
+            style="width: 50px; min-width: 50px"
+          >
             <button
               mat-icon-button
               aria-label="expand row"
-              (click)="toggleRowExpansion(row, expandKey()); $event.stopPropagation()"
+              (click)="
+                toggleRowExpansion(row, expandKey()); $event.stopPropagation()
+              "
               class="expand-toggle-button"
-              [class.expand-toggle-button-expanded]="isRowExpanded(row, expandKey())"
+              [class.expand-toggle-button-expanded]="
+                isRowExpanded(row, expandKey())
+              "
             >
               <mat-icon>keyboard_arrow_down</mat-icon>
             </button>
@@ -123,11 +157,14 @@
       }
 
       @for (col of visibleColumns(); track col.key) {
-        <ng-container [matColumnDef]="col.key" [sticky]="!!col.sticky || !!options().stickyHeader">
+        <ng-container
+          [matColumnDef]="col.key"
+          [sticky]="!!col.sticky || !!options().stickyHeader"
+        >
           <th
             mat-header-cell
             *matHeaderCellDef
-            [mat-sort-header]="(sorting() || col.sortable) ? col.key : ''"
+            [mat-sort-header]="sorting() || col.sortable ? col.key : ''"
             [disabled]="!(sorting() || col.sortable)"
             [style.text-align]="col.headerAlign || col.align || 'left'"
             [style.width]="col.width || null"
@@ -142,7 +179,10 @@
           >
             @if (col.headerTemplate) {
               <ng-container
-                *ngTemplateOutlet="col.headerTemplate; context: { $implicit: col }"
+                *ngTemplateOutlet="
+                  col.headerTemplate;
+                  context: { $implicit: col }
+                "
               />
             } @else {
               {{ col.label }}
@@ -180,7 +220,12 @@
       @if (options().rowActions?.length) {
         <ng-container matColumnDef="actions" [stickyEnd]="true">
           <th mat-header-cell *matHeaderCellDef>Actions</th>
-          <td mat-cell *matCellDef="let row" class="table-actions-cell" (click)="$event.stopPropagation()">
+          <td
+            mat-cell
+            *matCellDef="let row"
+            class="table-actions-cell"
+            (click)="$event.stopPropagation()"
+          >
             <div class="table-actions">
               @for (action of options().rowActions || []; track action.id) {
                 <ng-button
@@ -206,7 +251,9 @@
           >
             <div
               class="element-detail-wrapper"
-              [class.element-detail-wrapper-expanded]="isRowExpanded(element, expandKey())"
+              [class.element-detail-wrapper-expanded]="
+                isRowExpanded(element, expandKey())
+              "
             >
               <div class="element-detail">
                 @if (expandedRowTemplate()) {
@@ -229,7 +276,9 @@
         mat-row
         *matRowDef="let row; columns: displayedColumns"
         class="element-row"
-        [class.expanded-row]="expandableRows() && isRowExpanded(row, expandKey())"
+        [class.expanded-row]="
+          expandableRows() && isRowExpanded(row, expandKey())
+        "
         [class.row-selected]="selectedRow === row"
         [style.cursor]="expandableRows() ? 'pointer' : 'default'"
         (click)="onRowSelect(row)"
@@ -257,7 +306,12 @@
           }}
         </p>
         @if (search()) {
-          <ng-button type="outlined" label="Clear search" icon="refresh" (buttonClick)="clearSearch()"></ng-button>
+          <ng-button
+            type="outlined"
+            label="Clear search"
+            icon="refresh"
+            (buttonClick)="clearSearch()"
+          ></ng-button>
         }
       </div>
     }

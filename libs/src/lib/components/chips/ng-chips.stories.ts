@@ -36,9 +36,7 @@ const meta: Meta<NgChipsComponent> = {
   title: 'Controls/Chips',
   component: NgChipsComponent,
   tags: ['autodocs'],
-  decorators: [
-    moduleMetadata({ imports: [NgChipsComponent, FormsModule] }),
-  ],
+  decorators: [moduleMetadata({ imports: [NgChipsComponent, FormsModule] })],
   args: {
     items: chipItems,
     selectable: true,

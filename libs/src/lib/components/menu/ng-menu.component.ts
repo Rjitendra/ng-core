@@ -25,7 +25,8 @@ import {
 export class NgMenuComponent {
   readonly panelClass = input('');
 
-  private readonly menuTpl = viewChild.required<TemplateRef<unknown>>('menuTemplate');
+  private readonly menuTpl =
+    viewChild.required<TemplateRef<unknown>>('menuTemplate');
 
   constructor(public viewContainerRef: ViewContainerRef) {}
 

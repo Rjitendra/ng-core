@@ -14,7 +14,12 @@
     [subscriptSizing]="'dynamic'"
   >
     @if (prefixIcon()) {
-      <ng-icon matPrefix [name]="prefixIcon()!" size="sm" tone="muted"></ng-icon>
+      <ng-icon
+        matPrefix
+        [name]="prefixIcon()!"
+        size="sm"
+        tone="muted"
+      ></ng-icon>
     }
 
     @if (multiline()) {
@@ -52,7 +57,12 @@
     }
 
     @if (suffixIcon()) {
-      <ng-icon matSuffix [name]="suffixIcon()!" size="sm" tone="muted"></ng-icon>
+      <ng-icon
+        matSuffix
+        [name]="suffixIcon()!"
+        size="sm"
+        tone="muted"
+      ></ng-icon>
     }
 
     @if (showError()) {

@@ -7,7 +7,11 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -54,12 +58,16 @@ export class NgDatepickerComponent implements ControlValueAccessor {
   readonly max = input<Date | null>(null);
   readonly touchUi = input<boolean>(false);
   readonly startView = input<'month' | 'year' | 'multi-year'>('month');
-  readonly id = input<string>(`ng-datepicker-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(
+    `ng-datepicker-${Math.random().toString(36).slice(2, 9)}`,
+  );
 
   readonly value = signal<Date | null>(null);
   readonly touched = signal<boolean>(false);
   readonly disabledState = signal<boolean>(false);
-  readonly resolvedDisabled = computed(() => this.disabled() || this.disabledState());
+  readonly resolvedDisabled = computed(
+    () => this.disabled() || this.disabledState(),
+  );
 
   private onChange: (value: Date | null) => void = () => undefined;
   private onTouched: () => void = () => undefined;

@@ -35,13 +35,21 @@ const meta: Meta<NgMenuStoryHostComponent> = {
   component: NgMenuStoryHostComponent,
   tags: ['autodocs'],
   decorators: [moduleMetadata({ imports: [NgMenuStoryHostComponent] })],
-  parameters: withControlDocs(NgMenuComponent, { layout: 'centered' }, {
-    symbols: ['NgMenuComponent', 'NgMenuItemDirective', 'NgMenuTriggerForDirective'],
-    template: `<button type="button" [ngMenuTriggerFor]="menu">Open menu</button>
+  parameters: withControlDocs(
+    NgMenuComponent,
+    { layout: 'centered' },
+    {
+      symbols: [
+        'NgMenuComponent',
+        'NgMenuItemDirective',
+        'NgMenuTriggerForDirective',
+      ],
+      template: `<button type="button" [ngMenuTriggerFor]="menu">Open menu</button>
 <ng-menu #menu="ngMenu">
   <div ng-menu-item>First action</div>
 </ng-menu>`,
-  }),
+    },
+  ),
 };
 
 export default meta;

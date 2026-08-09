@@ -95,7 +95,11 @@ export class NgChipsComponent implements ControlValueAccessor {
   }
 
   removeChip(item: NgChipItem, event: MatChipEvent) {
-    if (this.isDisabled() || item.disabled || !(item.removable ?? this.removable())) {
+    if (
+      this.isDisabled() ||
+      item.disabled ||
+      !(item.removable ?? this.removable())
+    ) {
       return;
     }
 

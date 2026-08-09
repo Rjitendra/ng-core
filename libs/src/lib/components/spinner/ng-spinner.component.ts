@@ -3,7 +3,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export type SpinnerVariant = 'circular' | 'dots' | 'pulse';
 export type SpinnerSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-export type SpinnerColor = 'primary' | 'neutral' | 'light' | 'success' | 'danger';
+export type SpinnerColor =
+  | 'primary'
+  | 'neutral'
+  | 'light'
+  | 'success'
+  | 'danger';
 export type SpinnerMode = 'indeterminate' | 'determinate';
 
 @Component({

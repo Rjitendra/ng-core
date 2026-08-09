@@ -34,7 +34,10 @@ function selectorFromComponent(component: unknown): string | undefined {
     ɵdir?: AngularDefinition;
   };
 
-  return angularComponent.ɵcmp?.selectors?.[0]?.[0] ?? angularComponent.ɵdir?.selectors?.[0]?.[0];
+  return (
+    angularComponent.ɵcmp?.selectors?.[0]?.[0] ??
+    angularComponent.ɵdir?.selectors?.[0]?.[0]
+  );
 }
 
 function templateFromSelector(selector: string): string {
@@ -52,7 +55,11 @@ function buildSource(
   template?: string,
 ): string {
   const imports = symbolNames.join(', ');
-  const exampleTemplate = template ?? (selector ? templateFromSelector(selector) : '<!-- Add your markup here -->');
+  const exampleTemplate =
+    template ??
+    (selector
+      ? templateFromSelector(selector)
+      : '<!-- Add your markup here -->');
 
   return `import { Component } from '@angular/core';
 import { ${imports} } from '${packageName}';
@@ -71,9 +78,16 @@ export function withControlDocs(
   options: StandaloneDocsOptions = {},
 ): StorybookDocsParameters {
   const packageName = options.packageName ?? DEFAULT_PACKAGE_NAME;
-  const symbolNames = options.symbols ?? [((component as { name?: string }).name || 'YourComponent')];
+  const symbolNames = options.symbols ?? [
+    (component as { name?: string }).name || 'YourComponent',
+  ];
   const selector = options.selector ?? selectorFromComponent(component);
-  const source = buildSource(symbolNames, selector, packageName, options.template);
+  const source = buildSource(
+    symbolNames,
+    selector,
+    packageName,
+    options.template,
+  );
 
   const descriptionLines = [
     'Every control in this library is standalone.',

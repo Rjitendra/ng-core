@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ButtonComponent } from '../button/ng-button.component';
 
@@ -32,17 +37,40 @@ export interface NgToolbarAction {
       </div>
     </mat-toolbar>
   `,
-  styles: [`
-    .ng-toolbar {
-      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
-      min-height:unset; padding:18px 20px; border-radius:22px;
-      background:linear-gradient(90deg, #111827, #1d4ed8); color:white;
-    }
-    .ng-toolbar__brand { display:grid; gap:4px; }
-    .ng-toolbar__brand p, .ng-toolbar__brand h3 { margin:0; }
-    .ng-toolbar__brand p { color:#93c5fd; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; }
-    .ng-toolbar__actions { display:flex; gap:10px; flex-wrap:wrap; }
-  `],
+  styles: [
+    `
+      .ng-toolbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        min-height: unset;
+        padding: 18px 20px;
+        border-radius: 22px;
+        background: linear-gradient(90deg, #111827, #1d4ed8);
+        color: white;
+      }
+      .ng-toolbar__brand {
+        display: grid;
+        gap: 4px;
+      }
+      .ng-toolbar__brand p,
+      .ng-toolbar__brand h3 {
+        margin: 0;
+      }
+      .ng-toolbar__brand p {
+        color: #93c5fd;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .ng-toolbar__actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgToolbarComponent {
@@ -50,8 +78,18 @@ export class NgToolbarComponent {
   readonly title = input('Premium toolbar');
   readonly actions = input<NgToolbarAction[]>([
     { value: 'share', label: 'Share', icon: 'share', type: 'text' },
-    { value: 'preview', label: 'Preview', icon: 'visibility', type: 'outlined' },
-    { value: 'publish', label: 'Publish', icon: 'rocket_launch', type: 'filled' },
+    {
+      value: 'preview',
+      label: 'Preview',
+      icon: 'visibility',
+      type: 'outlined',
+    },
+    {
+      value: 'publish',
+      label: 'Publish',
+      icon: 'rocket_launch',
+      type: 'filled',
+    },
   ]);
 
   readonly actionClicked = output<string>();

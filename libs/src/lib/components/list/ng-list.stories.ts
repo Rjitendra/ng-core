@@ -26,11 +26,34 @@ export const ClientInbox: Story = {
   args: {
     eyebrow: 'Client success',
     title: 'VIP inbox',
-    supportingText: 'High-touch accounts surfaced with clearer urgency and delivery metadata.',
+    supportingText:
+      'High-touch accounts surfaced with clearer urgency and delivery metadata.',
     items: [
-      { id: 'a', title: 'Executive briefing request', subtitle: 'Board deck requested for Monday morning.', meta: '2 hrs ago', icon: 'groups', tone: 'primary', selected: true },
-      { id: 'b', title: 'Renewal pricing review', subtitle: 'Finance attached updated multi-year scenarios.', meta: 'Today', icon: 'payments', tone: 'success' },
-      { id: 'c', title: 'Escalation follow-up', subtitle: 'Engineering confirmed a patch window.', meta: 'Pending', icon: 'priority_high', tone: 'warning' },
+      {
+        id: 'a',
+        title: 'Executive briefing request',
+        subtitle: 'Board deck requested for Monday morning.',
+        meta: '2 hrs ago',
+        icon: 'groups',
+        tone: 'primary',
+        selected: true,
+      },
+      {
+        id: 'b',
+        title: 'Renewal pricing review',
+        subtitle: 'Finance attached updated multi-year scenarios.',
+        meta: 'Today',
+        icon: 'payments',
+        tone: 'success',
+      },
+      {
+        id: 'c',
+        title: 'Escalation follow-up',
+        subtitle: 'Engineering confirmed a patch window.',
+        meta: 'Pending',
+        icon: 'priority_high',
+        tone: 'warning',
+      },
     ],
   },
 };

@@ -62,3 +62,9 @@ export * from './lib/services/app-dialog.types';
 export * from './lib/services/dialog.service';
 export * from './lib/services/loading.service';
 export * from './lib/services/material-dialog.service';
+
+export * from './lib/components/ag-grid/ng-ag-grid.component';
+export * from './lib/components/ag-grid/editors/ng-ag-grid-calendar-editor.component';
+export * from './lib/components/ag-grid/editors/ng-ag-grid-checkbox-editor.component';
+export * from './lib/components/ag-grid/editors/ng-ag-grid-textbox-editor.component';
+export * from './lib/components/ag-grid/renderers/ng-ag-grid-boolean-renderer.component';

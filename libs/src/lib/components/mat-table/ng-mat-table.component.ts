@@ -121,7 +121,9 @@ export class NgMatTableComponent implements AfterViewInit {
           .map((column) => column.key);
         if (
           this.visibleColumnKeys().length === 0 ||
-          this.visibleColumnKeys().some((key) => !cols.find((col) => col.key === key))
+          this.visibleColumnKeys().some(
+            (key) => !cols.find((col) => col.key === key),
+          )
         ) {
           this.visibleColumnKeys.set(initialVisible);
         }
@@ -131,10 +133,15 @@ export class NgMatTableComponent implements AfterViewInit {
           ...this.visibleColumns().map((c) => c.key),
           ...(opts.rowActions?.length ? ['actions'] : []),
         ];
-        this.selection = new SelectionModel<TableRow>(opts.multiSelect ?? true, []);
+        this.selection = new SelectionModel<TableRow>(
+          opts.multiSelect ?? true,
+          [],
+        );
         this.dataSource.data = [...data];
         this.dataSource.filterPredicate = (row, filter) =>
-          this.resolveSearchText(row, opts.searchKeys).includes(filter.trim().toLowerCase());
+          this.resolveSearchText(row, opts.searchKeys).includes(
+            filter.trim().toLowerCase(),
+          );
         this.dataSource.filter = searchTerm.trim().toLowerCase();
       });
     });
@@ -185,7 +192,11 @@ export class NgMatTableComponent implements AfterViewInit {
 
   onCellClick(event: Event, row: TableRow) {
     const target = event.target as HTMLElement;
-    if (target.closest('button') || target.closest('a') || target.closest('ng-icon')) {
+    if (
+      target.closest('button') ||
+      target.closest('a') ||
+      target.closest('ng-icon')
+    ) {
       event.stopPropagation();
       return;
     }

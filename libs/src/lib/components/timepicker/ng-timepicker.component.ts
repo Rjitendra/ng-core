@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+  signal,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -39,18 +45,37 @@ import { MatTimepickerModule } from '@angular/material/timepicker';
       </mat-form-field>
     </section>
   `,
-  styles: [`
-    .ng-timepicker { display:grid; gap:12px; padding:20px; border-radius:24px; background:white; border:1px solid #e2e8f0; }
-    .ng-timepicker > p { margin:0; color:#2563eb; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; }
-    .ng-timepicker__field { width:min(340px, 100%); }
-  `],
+  styles: [
+    `
+      .ng-timepicker {
+        display: grid;
+        gap: 12px;
+        padding: 20px;
+        border-radius: 24px;
+        background: white;
+        border: 1px solid #e2e8f0;
+      }
+      .ng-timepicker > p {
+        margin: 0;
+        color: #2563eb;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .ng-timepicker__field {
+        width: min(340px, 100%);
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgTimepickerComponent {
   readonly eyebrow = input('Schedule controls');
   readonly label = input('Choose a time');
   readonly placeholder = input('Select a time');
-  readonly hint = input('Optimized for concierge bookings, delivery windows, and appointment flows.');
+  readonly hint = input(
+    'Optimized for concierge bookings, delivery windows, and appointment flows.',
+  );
   readonly interval = input<string | number>(15);
   readonly min = input<Date | null>(null);
   readonly max = input<Date | null>(null);

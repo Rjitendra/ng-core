@@ -8,7 +8,10 @@ import {
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
+import {
+  MatCheckboxChange,
+  MatCheckboxModule,
+} from '@angular/material/checkbox';
 import { IconComponent } from '../icon/ng-icon.component';
 
 export interface NgTreeNode {
@@ -59,7 +62,9 @@ export class NgTreeComponent {
   readonly selectedIdsChange = output<string[]>();
   readonly nodeClick = output<NgTreeNode>();
 
-  private readonly indexedTree = computed(() => this.buildTreeIndex(this.nodes()));
+  private readonly indexedTree = computed(() =>
+    this.buildTreeIndex(this.nodes()),
+  );
   private readonly selection = signal<Set<string>>(new Set());
   private readonly expanded = signal<Set<string>>(new Set());
 
@@ -75,7 +80,9 @@ export class NgTreeComponent {
 
   readonly selectionState = computed<NgTreeSelectionChange>(() => {
     const tree = this.indexedTree();
-    const selectedIds = tree.allSelectableIds.filter((id) => this.selection().has(id));
+    const selectedIds = tree.allSelectableIds.filter((id) =>
+      this.selection().has(id),
+    );
 
     return {
       selectedIds,
@@ -118,7 +125,9 @@ export class NgTreeComponent {
       return false;
     }
 
-    const selectedCount = selectableIds.filter((id) => this.selection().has(id)).length;
+    const selectedCount = selectableIds.filter((id) =>
+      this.selection().has(id),
+    ).length;
     return selectedCount > 0 && selectedCount < selectableIds.length;
   }
 
@@ -228,7 +237,7 @@ export class NgTreeComponent {
       }
 
       const nextIds = this.cascadeSelection()
-        ? tree.subtreeSelectableMap.get(id) ?? []
+        ? (tree.subtreeSelectableMap.get(id) ?? [])
         : [id];
 
       for (const nextId of nextIds) {
@@ -254,7 +263,10 @@ export class NgTreeComponent {
     const allSelectableIds: string[] = [];
     const expandedIds: string[] = [];
 
-    const visit = (entries: NgTreeNode[], parentId: string | null): string[] => {
+    const visit = (
+      entries: NgTreeNode[],
+      parentId: string | null,
+    ): string[] => {
       const selectableIds: string[] = [];
 
       for (const node of entries) {
@@ -270,7 +282,9 @@ export class NgTreeComponent {
           selectableIds.push(node.id);
         }
 
-        const childSelectableIds = node.children?.length ? visit(node.children, node.id) : [];
+        const childSelectableIds = node.children?.length
+          ? visit(node.children, node.id)
+          : [];
 
         const ownSelectableIds = this.isSelectable(node) ? [node.id] : [];
         const subtreeIds = [...ownSelectableIds, ...childSelectableIds];

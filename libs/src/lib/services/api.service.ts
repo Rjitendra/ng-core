@@ -19,12 +19,23 @@ import { finalize } from 'rxjs/operators';
 import { LoadingService, LoadingSpinnerOptions } from './loading.service';
 
 export type ApiPrimitive = string | number | boolean;
-export type ApiParamValue = ApiPrimitive | readonly ApiPrimitive[] | null | undefined;
+export type ApiParamValue =
+  | ApiPrimitive
+  | readonly ApiPrimitive[]
+  | null
+  | undefined;
 export type ApiQueryParams = Record<string, ApiParamValue>;
 export type ApiHeaders = Record<string, string | number | boolean>;
 export type ApiResponseType = 'json' | 'text' | 'blob' | 'arraybuffer';
 export type ApiObserve = 'body' | 'response' | 'events';
-export type ApiMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'HEAD' | 'OPTIONS';
+export type ApiMethod =
+  | 'GET'
+  | 'POST'
+  | 'PUT'
+  | 'PATCH'
+  | 'DELETE'
+  | 'HEAD'
+  | 'OPTIONS';
 
 export interface ApiError {
   message: string;
@@ -80,7 +91,7 @@ export interface ResolvedApiRequestOptions extends ApiRequestOptions {
 }
 
 export const API_CLIENT_CONFIG = new InjectionToken<ApiClientConfig>(
-  'API_CLIENT_CONFIG'
+  'API_CLIENT_CONFIG',
 );
 
 @Injectable({
@@ -91,14 +102,17 @@ export class ApiService {
   private readonly config = inject(API_CLIENT_CONFIG, { optional: true });
   private readonly loadingService = inject(LoadingService);
 
-  get<TResponse>(endpoint: string, options?: ApiRequestOptions): Observable<TResponse> {
+  get<TResponse>(
+    endpoint: string,
+    options?: ApiRequestOptions,
+  ): Observable<TResponse> {
     return this.request<TResponse>('GET', endpoint, options);
   }
 
   post<TResponse, TBody = unknown>(
     endpoint: string,
     body?: TBody,
-    options?: ApiBodyRequestOptions<TBody>
+    options?: ApiBodyRequestOptions<TBody>,
   ): Observable<TResponse> {
     return this.request<TResponse>('POST', endpoint, { ...options, body });
   }
@@ -106,7 +120,7 @@ export class ApiService {
   put<TResponse, TBody = unknown>(
     endpoint: string,
     body?: TBody,
-    options?: ApiBodyRequestOptions<TBody>
+    options?: ApiBodyRequestOptions<TBody>,
   ): Observable<TResponse> {
     return this.request<TResponse>('PUT', endpoint, { ...options, body });
   }
@@ -114,14 +128,14 @@ export class ApiService {
   patch<TResponse, TBody = unknown>(
     endpoint: string,
     body?: TBody,
-    options?: ApiBodyRequestOptions<TBody>
+    options?: ApiBodyRequestOptions<TBody>,
   ): Observable<TResponse> {
     return this.request<TResponse>('PATCH', endpoint, { ...options, body });
   }
 
   delete<TResponse>(
     endpoint: string,
-    options?: ApiBodyRequestOptions<unknown>
+    options?: ApiBodyRequestOptions<unknown>,
   ): Observable<TResponse> {
     return this.request<TResponse>('DELETE', endpoint, options);
   }
@@ -129,7 +143,7 @@ export class ApiService {
   request<TResponse>(
     method: ApiMethod,
     endpoint: string,
-    options: ApiBodyRequestOptions<unknown> = {}
+    options: ApiBodyRequestOptions<unknown> = {},
   ): Observable<TResponse> {
     const request = this.resolveRequestOptions(method, endpoint, options);
     const spinnerKey = this.showSpinner(request.spinner);
@@ -155,14 +169,14 @@ export class ApiService {
         if (spinnerKey) {
           this.loadingService.hide(spinnerKey);
         }
-      })
+      }),
     ) as Observable<TResponse>;
   }
 
   private resolveRequestOptions(
     method: ApiMethod,
     endpoint: string,
-    options: ApiBodyRequestOptions<unknown>
+    options: ApiBodyRequestOptions<unknown>,
   ): ResolvedApiRequestOptions {
     const baseUrl = options.baseUrl ?? this.config?.baseUrl ?? '';
     const normalizedEndpoint = options.endpoint ?? endpoint;
@@ -192,7 +206,7 @@ export class ApiService {
     }
 
     return this.loadingService.show(
-      typeof spinner === 'boolean' ? {} : spinner
+      typeof spinner === 'boolean' ? {} : spinner,
     );
   }
 
@@ -201,8 +215,12 @@ export class ApiService {
       return endpoint;
     }
 
-    const trimmedBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
-    const trimmedEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+    const trimmedBaseUrl = baseUrl.endsWith('/')
+      ? baseUrl.slice(0, -1)
+      : baseUrl;
+    const trimmedEndpoint = endpoint.startsWith('/')
+      ? endpoint.slice(1)
+      : endpoint;
     return `${trimmedBaseUrl}/${trimmedEndpoint}`;
   }
 
@@ -250,7 +268,10 @@ export class ApiService {
 
   private handleError(error: unknown, request: ResolvedApiRequestOptions) {
     const mappedError = this.mapToApiError(error, request);
-    const finalError = request.mapError?.(mappedError) ?? this.config?.errorMapper?.(mappedError) ?? mappedError;
+    const finalError =
+      request.mapError?.(mappedError) ??
+      this.config?.errorMapper?.(mappedError) ??
+      mappedError;
 
     const context: ApiErrorContext = {
       error: finalError,
@@ -266,7 +287,10 @@ export class ApiService {
     return throwError(() => finalError);
   }
 
-  private mapToApiError(error: unknown, request: ResolvedApiRequestOptions): ApiError {
+  private mapToApiError(
+    error: unknown,
+    request: ResolvedApiRequestOptions,
+  ): ApiError {
     if (error instanceof TimeoutError) {
       return {
         message: `Request timed out after ${request.timeoutMs}ms.`,
@@ -291,7 +315,8 @@ export class ApiService {
         statusText: error.statusText,
         url: error.url,
         method: request.method,
-        code: typeof error.error?.code === 'string' ? error.error.code : undefined,
+        code:
+          typeof error.error?.code === 'string' ? error.error.code : undefined,
         details: error.error,
         originalError: error,
       };
@@ -309,7 +334,9 @@ export class ApiService {
   }
 }
 
-export function provideApiClient(config?: ApiClientConfig): EnvironmentProviders {
+export function provideApiClient(
+  config?: ApiClientConfig,
+): EnvironmentProviders {
   return makeEnvironmentProviders([
     provideHttpClient(),
     {

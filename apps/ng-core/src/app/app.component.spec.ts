@@ -1,12 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
-import { RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, NxWelcomeComponent, RouterModule.forRoot([])],
+      imports: [AppComponent],
     }).compileComponents();
   });
 
@@ -15,13 +13,13 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome ng-core'
+      'AG Grid Dynamic Demo',
     );
   });
 
-  it(`should have as title 'ng-core'`, () => {
+  it(`should have dynamic mock rows`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ng-core');
+    expect(app.rowData.length).toBeGreaterThan(0);
   });
 });

@@ -5,7 +5,11 @@ import {
   input,
   output,
 } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @Component({

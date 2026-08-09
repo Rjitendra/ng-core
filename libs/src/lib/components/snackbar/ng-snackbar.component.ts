@@ -29,29 +29,63 @@ interface NgSnackbarPayload {
   standalone: true,
   imports: [CommonModule, IconComponent],
   template: `
-    <div class="ng-snackbar-panel" [class]="'ng-snackbar-panel--' + data.variant">
+    <div
+      class="ng-snackbar-panel"
+      [class]="'ng-snackbar-panel--' + data.variant"
+    >
       <ng-icon [name]="iconName()"></ng-icon>
       <div class="ng-snackbar-panel__copy">
         <strong>{{ data.title }}</strong>
         <span>{{ data.message }}</span>
       </div>
       @if (data.actionLabel) {
-        <button type="button" class="ng-snackbar-panel__action" (click)="snackBarRef.dismissWithAction()">
+        <button
+          type="button"
+          class="ng-snackbar-panel__action"
+          (click)="snackBarRef.dismissWithAction()"
+        >
           {{ data.actionLabel }}
         </button>
       }
     </div>
   `,
-  styles: [`
-    .ng-snackbar-panel { display:flex; align-items:center; gap:14px; min-width:320px; }
-    .ng-snackbar-panel__copy { display:grid; gap:2px; flex:1; }
-    .ng-snackbar-panel__copy span { opacity:.84; }
-    .ng-snackbar-panel__action { border:none; background:transparent; color:inherit; font-weight:700; cursor:pointer; }
-    .ng-snackbar-panel--success { color:#dcfce7; }
-    .ng-snackbar-panel--warning { color:#fef3c7; }
-    .ng-snackbar-panel--error { color:#fee2e2; }
-    .ng-snackbar-panel--info { color:#e0f2fe; }
-  `],
+  styles: [
+    `
+      .ng-snackbar-panel {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        min-width: 320px;
+      }
+      .ng-snackbar-panel__copy {
+        display: grid;
+        gap: 2px;
+        flex: 1;
+      }
+      .ng-snackbar-panel__copy span {
+        opacity: 0.84;
+      }
+      .ng-snackbar-panel__action {
+        border: none;
+        background: transparent;
+        color: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .ng-snackbar-panel--success {
+        color: #dcfce7;
+      }
+      .ng-snackbar-panel--warning {
+        color: #fef3c7;
+      }
+      .ng-snackbar-panel--error {
+        color: #fee2e2;
+      }
+      .ng-snackbar-panel--info {
+        color: #e0f2fe;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class NgSnackbarPanelComponent {
@@ -83,15 +117,43 @@ class NgSnackbarPanelComponent {
         <h3>{{ title() }}</h3>
         <span>{{ message() }}</span>
       </div>
-      <ng-button type="tonal" label="Preview snackbar" icon="notifications" (buttonClick)="open()"></ng-button>
+      <ng-button
+        type="tonal"
+        label="Preview snackbar"
+        icon="notifications"
+        (buttonClick)="open()"
+      ></ng-button>
     </section>
   `,
-  styles: [`
-    .ng-snackbar { display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; padding:22px; border-radius:24px; background:#111827; color:white; }
-    .ng-snackbar p { margin:0 0 6px; color:#67e8f9; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; }
-    .ng-snackbar h3, .ng-snackbar span { margin:0; }
-    .ng-snackbar span { color:#cbd5e1; }
-  `],
+  styles: [
+    `
+      .ng-snackbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 22px;
+        border-radius: 24px;
+        background: #111827;
+        color: white;
+      }
+      .ng-snackbar p {
+        margin: 0 0 6px;
+        color: #67e8f9;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .ng-snackbar h3,
+      .ng-snackbar span {
+        margin: 0;
+      }
+      .ng-snackbar span {
+        color: #cbd5e1;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgSnackbarComponent {
@@ -99,11 +161,15 @@ export class NgSnackbarComponent {
 
   readonly eyebrow = input('System feedback');
   readonly title = input('Changes synced');
-  readonly message = input('Your premium workspace settings are now live across shared devices.');
+  readonly message = input(
+    'Your premium workspace settings are now live across shared devices.',
+  );
   readonly actionLabel = input('Undo');
   readonly variant = input<NgSnackbarVariant>('success');
   readonly duration = input(5000);
-  readonly horizontalPosition = input<'start' | 'center' | 'end' | 'left' | 'right'>('right');
+  readonly horizontalPosition = input<
+    'start' | 'center' | 'end' | 'left' | 'right'
+  >('right');
   readonly verticalPosition = input<'top' | 'bottom'>('top');
 
   readonly actionTriggered = output<void>();

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { isObservable } from 'rxjs';
 import { Alert, AlertInfo } from '../../models/alert';
@@ -59,7 +64,9 @@ export class AlertComponent {
   }
 
   removeAlert(index: number): void {
-    this.alerts = this.alerts.filter((_, currentIndex) => currentIndex !== index);
+    this.alerts = this.alerts.filter(
+      (_, currentIndex) => currentIndex !== index,
+    );
   }
 
   private removeAlertById(id?: string): void {
@@ -84,11 +91,17 @@ export class AlertComponent {
 
       error.message
         .pipe(takeUntilDestroyed(this.destroyRef))
-        .subscribe((message) => this.updateAlertMessage(alert.id, index, message));
+        .subscribe((message) =>
+          this.updateAlertMessage(alert.id, index, message),
+        );
     });
   }
 
-  private updateAlertMessage(id: string | undefined, index: number, message: string): void {
+  private updateAlertMessage(
+    id: string | undefined,
+    index: number,
+    message: string,
+  ): void {
     if (!id) {
       return;
     }
@@ -98,8 +111,9 @@ export class AlertComponent {
         return alert;
       }
 
-      const errors = alert.errors.map((error: AlertInfo, currentIndex: number) =>
-        currentIndex === index ? { ...error, message } : error
+      const errors = alert.errors.map(
+        (error: AlertInfo, currentIndex: number) =>
+          currentIndex === index ? { ...error, message } : error,
       );
 
       return { ...alert, errors };

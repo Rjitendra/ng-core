@@ -23,7 +23,9 @@
 }
 
 :host(.ng-card--interactive) .ng-card {
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
   cursor: pointer;
 }
 

@@ -1,6 +1,14 @@
-<mat-accordion [multi]="multi()" [displayMode]="displayMode()" class="ng-accordion">
+<mat-accordion
+  [multi]="multi()"
+  [displayMode]="displayMode()"
+  class="ng-accordion"
+>
   @for (item of items(); track item.id) {
-    <mat-expansion-panel [disabled]="item.disabled" [expanded]="item.expanded" [hideToggle]="hideToggle()">
+    <mat-expansion-panel
+      [disabled]="item.disabled"
+      [expanded]="item.expanded"
+      [hideToggle]="hideToggle()"
+    >
       <mat-expansion-panel-header>
         <mat-panel-title>
           <span class="ng-accordion__title-row">

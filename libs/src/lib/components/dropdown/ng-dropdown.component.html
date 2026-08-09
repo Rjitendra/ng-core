@@ -15,7 +15,12 @@
     [subscriptSizing]="'dynamic'"
   >
     @if (prefixIcon()) {
-      <ng-icon matPrefix [name]="prefixIcon()!" size="sm" tone="muted"></ng-icon>
+      <ng-icon
+        matPrefix
+        [name]="prefixIcon()!"
+        size="sm"
+        tone="muted"
+      ></ng-icon>
     }
 
     <mat-select
@@ -33,7 +38,10 @@
     >
       @if (searchable()) {
         <mat-option class="ng-dropdown__search-option" [disabled]="true">
-          <div class="ng-dropdown__search-shell" (click)="$event.stopPropagation()">
+          <div
+            class="ng-dropdown__search-shell"
+            (click)="$event.stopPropagation()"
+          >
             <ng-icon name="search" size="sm" tone="muted"></ng-icon>
             <input
               class="ng-dropdown__search-input"
@@ -59,17 +67,28 @@
         @for (group of filteredGroups(); track trackGroup($index, group)) {
           @if (group.label) {
             <mat-optgroup [label]="group.label" [disabled]="group.disabled">
-              @for (option of group.options; track trackOption($index, option)) {
+              @for (
+                option of group.options;
+                track trackOption($index, option)
+              ) {
                 <mat-option [value]="option.value" [disabled]="option.disabled">
                   <div class="ng-dropdown__option">
                     <span class="ng-dropdown__option-row">
                       @if (option.icon) {
-                        <ng-icon [name]="option.icon" size="sm" tone="muted"></ng-icon>
+                        <ng-icon
+                          [name]="option.icon"
+                          size="sm"
+                          tone="muted"
+                        ></ng-icon>
                       }
-                      <span class="ng-dropdown__option-label">{{ option.label }}</span>
+                      <span class="ng-dropdown__option-label">{{
+                        option.label
+                      }}</span>
                     </span>
                     @if (option.description) {
-                      <span class="ng-dropdown__option-description">{{ option.description }}</span>
+                      <span class="ng-dropdown__option-description">{{
+                        option.description
+                      }}</span>
                     }
                   </div>
                 </mat-option>
@@ -81,12 +100,20 @@
                 <div class="ng-dropdown__option">
                   <span class="ng-dropdown__option-row">
                     @if (option.icon) {
-                      <ng-icon [name]="option.icon" size="sm" tone="muted"></ng-icon>
+                      <ng-icon
+                        [name]="option.icon"
+                        size="sm"
+                        tone="muted"
+                      ></ng-icon>
                     }
-                    <span class="ng-dropdown__option-label">{{ option.label }}</span>
+                    <span class="ng-dropdown__option-label">{{
+                      option.label
+                    }}</span>
                   </span>
                   @if (option.description) {
-                    <span class="ng-dropdown__option-description">{{ option.description }}</span>
+                    <span class="ng-dropdown__option-description">{{
+                      option.description
+                    }}</span>
                   }
                 </div>
               </mat-option>
@@ -99,7 +126,11 @@
 
       <mat-select-trigger>
         @if (multiple()) {
-          {{ selectedLabels().length ? selectedLabels().join(', ') : placeholder() }}
+          {{
+            selectedLabels().length
+              ? selectedLabels().join(', ')
+              : placeholder()
+          }}
         } @else {
           {{ selectedLabels()[0] || placeholder() }}
         }
@@ -117,7 +148,12 @@
         <ng-icon name="close" size="sm" tone="muted"></ng-icon>
       </button>
     } @else if (suffixIcon()) {
-      <ng-icon matSuffix [name]="suffixIcon()!" size="sm" tone="muted"></ng-icon>
+      <ng-icon
+        matSuffix
+        [name]="suffixIcon()!"
+        size="sm"
+        tone="muted"
+      ></ng-icon>
     }
 
     @if (showError()) {

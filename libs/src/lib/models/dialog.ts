@@ -1,12 +1,7 @@
 import { TemplateRef } from '@angular/core';
 import { DialogConfig } from '../services/app-dialog.types';
 
-export type NgDialogType =
-  | 'info'
-  | 'warning'
-  | 'error'
-  | 'success'
-  | 'confirm';
+export type NgDialogType = 'info' | 'warning' | 'error' | 'success' | 'confirm';
 
 export type NgDialogPresentation = 'modal' | 'message' | 'popover' | 'sidebar';
 

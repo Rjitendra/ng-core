@@ -28,6 +28,7 @@ export const DealRoom: Story = {
     title: 'Strategic account navigation',
     contentEyebrow: 'Deal intelligence',
     contentTitle: 'Northwind expansion playbook',
-    contentDescription: 'Bring pricing, stakeholders, and next-best actions into a navigation shell that feels like software, not a demo.',
+    contentDescription:
+      'Bring pricing, stakeholders, and next-best actions into a navigation shell that feels like software, not a demo.',
   },
 };

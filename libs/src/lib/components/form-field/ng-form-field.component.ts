@@ -9,7 +9,12 @@ export type NgFormFieldAppearance = 'outline' | 'fill';
 @Component({
   selector: 'ng-form-field',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, NgErrorComponent, NgLabelComponent],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    NgErrorComponent,
+    NgLabelComponent,
+  ],
   templateUrl: './ng-form-field.component.html',
   styleUrl: './ng-form-field.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,7 +27,9 @@ export class NgFormFieldComponent {
   readonly required = input<boolean>(false);
   readonly optional = input<boolean>(false);
   readonly appearance = input<NgFormFieldAppearance>('outline');
-  readonly id = input<string>(`ng-form-field-${Math.random().toString(36).slice(2, 9)}`);
+  readonly id = input<string>(
+    `ng-form-field-${Math.random().toString(36).slice(2, 9)}`,
+  );
 
   hasError() {
     const value = this.errorText();

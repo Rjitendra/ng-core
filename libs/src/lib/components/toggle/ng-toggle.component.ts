@@ -7,7 +7,10 @@ import {
   signal,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {
+  MatSlideToggleChange,
+  MatSlideToggleModule,
+} from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'ng-toggle',

@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons');
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/azure-blue.css';
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-quartz.css';
 
 html,
 body {

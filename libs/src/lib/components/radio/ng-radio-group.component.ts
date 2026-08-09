@@ -6,7 +6,11 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { NgLabelComponent } from '../label/ng-label.component';
 
@@ -44,7 +48,9 @@ export class NgRadioGroupComponent<T = string> implements ControlValueAccessor {
   readonly options = input<NgRadioOption<T>[]>([]);
   readonly orientation = input<NgRadioOrientation>('vertical');
   readonly disabled = input<boolean>(false);
-  readonly name = input<string>(`ng-radio-${Math.random().toString(36).slice(2, 9)}`);
+  readonly name = input<string>(
+    `ng-radio-${Math.random().toString(36).slice(2, 9)}`,
+  );
 
   readonly value = signal<T | null>(null);
   readonly disabledState = signal<boolean>(false);

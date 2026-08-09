@@ -1,6 +1,6 @@
 :host {
   height: 100vh;
-  font-family: "Roboto", sans-serif; /* better readability than monospace */
+  font-family: 'Roboto', sans-serif; /* better readability than monospace */
 }
 /* --- Navigation Menu --- */
 .custom-menu-list-item {
@@ -73,7 +73,7 @@
         font-size: 1.2vw;
         font-weight: bold;
         color: #fff;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         margin: 0 16px;
       }
       .rotate {
@@ -303,7 +303,7 @@
         gap: 8px;
 
         &::before {
-          content: "";
+          content: '';
           width: 20px;
           height: 20px;
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -315,7 +315,7 @@
         }
 
         &::after {
-          content: ">>";
+          content: '>>';
           position: absolute;
           left: 2px;
           color: white;
@@ -328,7 +328,7 @@
       // When collapsed, show expand arrows (>>)
       &.collapsed {
         span::after {
-          content: ">>";
+          content: '>>';
           left: 2px;
           font-size: 14px;
         }
@@ -337,7 +337,7 @@
       // When expanded, show collapse arrows (<<)
       &.expanded {
         span::after {
-          content: "<<";
+          content: '<<';
           left: 3px;
           font-size: 14px;
         }
@@ -407,7 +407,7 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-size: 0.85rem;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   align-items: center;
   p {
     height: 100%;

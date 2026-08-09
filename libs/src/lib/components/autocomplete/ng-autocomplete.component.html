@@ -1,7 +1,11 @@
 <mat-form-field [appearance]="appearance()" class="ng-autocomplete-field">
   @if (label()) {
     <mat-label>
-      <ng-label [text]="label()" [required]="required()" [hint]="hint() || undefined" />
+      <ng-label
+        [text]="label()"
+        [required]="required()"
+        [hint]="hint() || undefined"
+      />
     </mat-label>
   }
 

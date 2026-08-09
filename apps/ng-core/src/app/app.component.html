@@ -1,1 +1,25 @@
-<app-nx-welcome></app-nx-welcome> <router-outlet></router-outlet>
+<main class="app-shell">
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Parent app data</p>
+      <h1>{{ title }}</h1>
+    </div>
+
+    <label class="quick-filter">
+      <span>Quick filter</span>
+      <input
+        type="search"
+        [(ngModel)]="quickFilterText"
+        placeholder="Search all rows"
+      />
+    </label>
+  </header>
+
+  <ng-ag-grid
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [gridOptions]="gridOptions"
+    [quickFilterText]="quickFilterText"
+    height="680px"
+  ></ng-ag-grid>
+</main>

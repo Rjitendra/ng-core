@@ -12,7 +12,10 @@ describe('AlertMessageComponent', () => {
 
     fixture = TestBed.createComponent(AlertMessageComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('messageText', 'Saved successfully\nRefresh the page');
+    fixture.componentRef.setInput(
+      'messageText',
+      'Saved successfully\nRefresh the page',
+    );
     fixture.detectChanges();
   });
 

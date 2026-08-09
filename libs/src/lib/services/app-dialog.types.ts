@@ -24,12 +24,12 @@ export interface DialogConfig<TData = unknown> {
 
 export const APP_DIALOG_DATA = new InjectionToken<unknown>('APP_DIALOG_DATA');
 export const APP_DIALOG_REF = new InjectionToken<AppDialogRef<unknown>>(
-  'APP_DIALOG_REF'
+  'APP_DIALOG_REF',
 );
 
 export abstract class AppDialogService {
   abstract open<TComponent, TData = unknown, TResult = unknown>(
     component: Type<TComponent>,
-    config?: DialogConfig<TData>
+    config?: DialogConfig<TData>,
   ): AppDialogRef<TResult>;
 }

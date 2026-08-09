@@ -19,7 +19,9 @@
   gap: 8px;
   padding: 8px 10px 8px calc(var(--ng-tree-level-indent) + 8px);
   border-radius: 16px;
-  transition: background-color 180ms ease, box-shadow 180ms ease;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .ng-tree__row:hover {

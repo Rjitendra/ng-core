@@ -23,7 +23,8 @@ export const Default: Story = {};
 export const WarningAlert: Story = {
   args: {
     title: 'Payment method expiring',
-    message: 'Update your enterprise billing card to avoid service interruption next week.',
+    message:
+      'Update your enterprise billing card to avoid service interruption next week.',
     actionLabel: 'Update now',
     variant: 'warning',
   },

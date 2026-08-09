@@ -46,7 +46,9 @@ export class ButtonComponent {
   readonly tooltip = input<string>();
   readonly cssClass = input<string>();
   readonly buttonType = input<'button' | 'submit' | 'reset'>('button');
-  readonly iconTone = input<'inherit' | 'primary' | 'muted' | 'success' | 'danger' | 'warning' | 'light'>('inherit');
+  readonly iconTone = input<
+    'inherit' | 'primary' | 'muted' | 'success' | 'danger' | 'warning' | 'light'
+  >('inherit');
 
   readonly buttonClick = output<void>();
 
@@ -75,7 +77,10 @@ export class ButtonComponent {
       return this.iconTone();
     }
 
-    return this.type() === 'filled' || this.type() === 'fab' || this.type() === 'mini-fab' || this.type() === 'extended'
+    return this.type() === 'filled' ||
+      this.type() === 'fab' ||
+      this.type() === 'mini-fab' ||
+      this.type() === 'extended'
       ? 'light'
       : 'inherit';
   }

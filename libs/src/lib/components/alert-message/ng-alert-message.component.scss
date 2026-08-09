@@ -8,7 +8,11 @@
   --ng-alert-text: #1e3a8a;
   --ng-alert-muted: #334155;
   align-items: flex-start;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--ng-alert-bg) 92%, white) 0%, var(--ng-alert-bg) 100%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ng-alert-bg) 92%, white) 0%,
+    var(--ng-alert-bg) 100%
+  );
   border: 1px solid color-mix(in srgb, var(--ng-alert-accent) 18%, white);
   border-radius: 20px;
   box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
@@ -51,7 +55,11 @@
 }
 
 .ng-alert-message__accent {
-  background: linear-gradient(180deg, var(--ng-alert-accent) 0%, color-mix(in srgb, var(--ng-alert-accent) 82%, black) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--ng-alert-accent) 0%,
+    color-mix(in srgb, var(--ng-alert-accent) 82%, black) 100%
+  );
 }
 
 .ng-alert-message__body {

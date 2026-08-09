@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 import { NgCheckboxComponent } from '../checkbox/ng-checkbox.component';
 import { NgDropdownComponent } from '../dropdown/ng-dropdown.component';
 import { NgRadioGroupComponent } from '../radio/ng-radio-group.component';
@@ -23,9 +28,16 @@ import { NgToggleComponent } from '../toggle/ng-toggle.component';
     <form [formGroup]="form">
       <ng-textbox formControlName="name"></ng-textbox>
       <ng-checkbox formControlName="agree" label="Agree"></ng-checkbox>
-      <ng-dropdown formControlName="region" [options]="regionOptions" [clearable]="true"></ng-dropdown>
+      <ng-dropdown
+        formControlName="region"
+        [options]="regionOptions"
+        [clearable]="true"
+      ></ng-dropdown>
       <ng-toggle formControlName="enabled" label="Enabled"></ng-toggle>
-      <ng-radio-group formControlName="plan" [options]="options"></ng-radio-group>
+      <ng-radio-group
+        formControlName="plan"
+        [options]="options"
+      ></ng-radio-group>
     </form>
   `,
 })
@@ -62,9 +74,17 @@ class ReactiveHostComponent {
   template: `
     <ng-textbox [(ngModel)]="name" name="name"></ng-textbox>
     <ng-checkbox [(ngModel)]="agree" name="agree" label="Agree"></ng-checkbox>
-    <ng-dropdown [(ngModel)]="region" name="region" [options]="regionOptions"></ng-dropdown>
+    <ng-dropdown
+      [(ngModel)]="region"
+      name="region"
+      [options]="regionOptions"
+    ></ng-dropdown>
     <ng-toggle [(ngModel)]="enabled" name="enabled" label="Enabled"></ng-toggle>
-    <ng-radio-group [(ngModel)]="plan" name="plan" [options]="options"></ng-radio-group>
+    <ng-radio-group
+      [(ngModel)]="plan"
+      name="plan"
+      [options]="options"
+    ></ng-radio-group>
   `,
 })
 class TemplateHostComponent {
@@ -110,7 +130,9 @@ describe('Form controls integration', () => {
     });
     fixture.detectChanges();
 
-    const textInput = fixture.nativeElement.querySelector('input[matinput]') as HTMLInputElement;
+    const textInput = fixture.nativeElement.querySelector(
+      'input[matinput]',
+    ) as HTMLInputElement;
     expect(textInput.value).toBe('Nova');
   });
 
@@ -119,7 +141,8 @@ describe('Form controls integration', () => {
       imports: [TemplateHostComponent],
     }).compileComponents();
 
-    const fixture: ComponentFixture<TemplateHostComponent> = TestBed.createComponent(TemplateHostComponent);
+    const fixture: ComponentFixture<TemplateHostComponent> =
+      TestBed.createComponent(TemplateHostComponent);
     fixture.detectChanges();
 
     const component = fixture.componentInstance;
@@ -134,7 +157,11 @@ describe('Form controls integration', () => {
     @Component({
       standalone: true,
       imports: [CommonModule, ReactiveFormsModule, NgDropdownComponent],
-      template: `<ng-dropdown [formControl]="control" [multiple]="true" [options]="options"></ng-dropdown>`,
+      template: `<ng-dropdown
+        [formControl]="control"
+        [multiple]="true"
+        [options]="options"
+      ></ng-dropdown>`,
     })
     class MultiSelectHostComponent {
       readonly control = new FormControl(['us']);

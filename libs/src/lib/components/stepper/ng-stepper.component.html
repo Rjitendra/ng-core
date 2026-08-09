@@ -39,12 +39,22 @@
           <div class="spacer"></div>
 
           @if (i < steps().length - 1) {
-            <button type="button" mat-flat-button color="primary" (click)="goForward()">
+            <button
+              type="button"
+              mat-flat-button
+              color="primary"
+              (click)="goForward()"
+            >
               {{ nextText() }}
               <mat-icon>chevron_right</mat-icon>
             </button>
           } @else {
-            <button type="button" mat-flat-button color="primary" (click)="complete()">
+            <button
+              type="button"
+              mat-flat-button
+              color="primary"
+              (click)="complete()"
+            >
               {{ completeText() }}
             </button>
           }

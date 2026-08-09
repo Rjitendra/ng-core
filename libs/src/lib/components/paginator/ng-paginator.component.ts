@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  output,
+} from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -25,13 +31,37 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
       ></mat-paginator>
     </section>
   `,
-  styles: [`
-    .ng-paginator { display:grid; gap:16px; padding:18px 20px; border-radius:24px; background:linear-gradient(180deg, #f8fafc, #eef2ff); }
-    .ng-paginator__summary { display:flex; justify-content:space-between; gap:16px; align-items:end; flex-wrap:wrap; }
-    .ng-paginator__eyebrow { margin:0; color:#7c3aed; letter-spacing:.12em; text-transform:uppercase; font-size:.75rem; }
-    .ng-paginator__summary h3 { margin:4px 0 0; }
-    .ng-paginator__summary strong { color:#312e81; }
-  `],
+  styles: [
+    `
+      .ng-paginator {
+        display: grid;
+        gap: 16px;
+        padding: 18px 20px;
+        border-radius: 24px;
+        background: linear-gradient(180deg, #f8fafc, #eef2ff);
+      }
+      .ng-paginator__summary {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: end;
+        flex-wrap: wrap;
+      }
+      .ng-paginator__eyebrow {
+        margin: 0;
+        color: #7c3aed;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+      .ng-paginator__summary h3 {
+        margin: 4px 0 0;
+      }
+      .ng-paginator__summary strong {
+        color: #312e81;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgPaginatorComponent {

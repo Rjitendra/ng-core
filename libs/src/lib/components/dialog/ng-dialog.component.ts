@@ -17,8 +17,11 @@ import {
   styleUrl: './ng-dialog.component.scss',
 })
 export class NgDialogComponent {
-  readonly data = (inject(APP_DIALOG_DATA, { optional: true }) as NgDialogData) ?? {};
-  private readonly dialogRef = inject(APP_DIALOG_REF) as AppDialogRef<NgDialogResult>;
+  readonly data =
+    (inject(APP_DIALOG_DATA, { optional: true }) as NgDialogData) ?? {};
+  private readonly dialogRef = inject(
+    APP_DIALOG_REF,
+  ) as AppDialogRef<NgDialogResult>;
 
   dialogType(): string {
     return this.data.type ?? 'info';

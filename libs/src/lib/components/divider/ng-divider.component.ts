@@ -6,7 +6,11 @@ import { MatDividerModule } from '@angular/material/divider';
   standalone: true,
   imports: [MatDividerModule],
   template: `
-    <mat-divider [vertical]="vertical()" [inset]="inset()" [class]="cssClass()"></mat-divider>
+    <mat-divider
+      [vertical]="vertical()"
+      [inset]="inset()"
+      [class]="cssClass()"
+    ></mat-divider>
   `,
   styles: [
     `

@@ -1,7 +1,11 @@
 <div class="ng-slider">
   @if (label()) {
     <div class="slider-label">
-      <ng-label [text]="label()" [required]="required()" [hint]="hint() || undefined" />
+      <ng-label
+        [text]="label()"
+        [required]="required()"
+        [hint]="hint() || undefined"
+      />
       @if (clarifyText()) {
         <ng-clarify-text
           [clarifyText]="clarifyText()"

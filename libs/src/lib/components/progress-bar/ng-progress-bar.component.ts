@@ -1,8 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
-import { MatProgressBarModule, ProgressBarMode } from '@angular/material/progress-bar';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+} from '@angular/core';
+import {
+  MatProgressBarModule,
+  ProgressBarMode,
+} from '@angular/material/progress-bar';
 
-export type ProgressBarVariant = 'primary' | 'neutral' | 'success' | 'warning' | 'danger';
+export type ProgressBarVariant =
+  | 'primary'
+  | 'neutral'
+  | 'success'
+  | 'warning'
+  | 'danger';
 export type ProgressBarSize = 'sm' | 'md' | 'lg';
 
 @Component({
@@ -38,10 +51,12 @@ export class NgProgressBarComponent {
   readonly animated = input<boolean>(false);
 
   readonly normalizedValue = computed(() =>
-    Math.max(0, Math.min(100, this.value()))
+    Math.max(0, Math.min(100, this.value())),
   );
   readonly normalizedBufferValue = computed(() =>
-    Math.max(0, Math.min(100, this.bufferValue()))
+    Math.max(0, Math.min(100, this.bufferValue())),
   );
-  readonly displayValue = computed(() => `${Math.round(this.normalizedValue())}%`);
+  readonly displayValue = computed(
+    () => `${Math.round(this.normalizedValue())}%`,
+  );
 }

@@ -13,7 +13,9 @@
 
     <div class="ng-alert-message__content">
       @if (heading()) {
-        <div class="ng-alert-message__heading error-header">{{ heading() }}</div>
+        <div class="ng-alert-message__heading error-header">
+          {{ heading() }}
+        </div>
       }
 
       @if (detailLines().length) {

@@ -9,7 +9,11 @@
     ></ng-label>
   }
 
-  <mat-form-field class="ng-form-field__control" [appearance]="appearance()" [subscriptSizing]="'dynamic'">
+  <mat-form-field
+    class="ng-form-field__control"
+    [appearance]="appearance()"
+    [subscriptSizing]="'dynamic'"
+  >
     <ng-content></ng-content>
 
     @if (hasError()) {

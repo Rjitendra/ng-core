@@ -32,6 +32,8 @@ describe('AlertComponent', () => {
     service.info({ errors: [{ message: of('Loaded from stream') }] });
     fixture.detectChanges();
 
-    expect(component.getMessageText(component.alerts[0])).toContain('Loaded from stream');
+    expect(component.getMessageText(component.alerts[0])).toContain(
+      'Loaded from stream',
+    );
   });
 });

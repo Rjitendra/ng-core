@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { ButtonComponent, ButtonVariant } from '../button/ng-button.component';
 import { IconComponent } from '../icon/ng-icon.component';
 import { MessageButton } from '../../models/alert';

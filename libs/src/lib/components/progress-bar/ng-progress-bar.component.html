@@ -1,5 +1,7 @@
 <div class="ng-progress-bar">
-  @if (label() || (showValue() && mode() !== 'indeterminate' && mode() !== 'query')) {
+  @if (
+    label() || (showValue() && mode() !== 'indeterminate' && mode() !== 'query')
+  ) {
     <div class="ng-progress-bar__header">
       @if (label()) {
         <span class="ng-progress-bar__label">{{ label() }}</span>

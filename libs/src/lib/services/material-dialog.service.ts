@@ -7,7 +7,11 @@ import {
   importProvidersFrom,
   makeEnvironmentProviders,
 } from '@angular/core';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import {
   APP_DIALOG_DATA,
   APP_DIALOG_REF,
@@ -22,12 +26,12 @@ import {
 export class MaterialDialogService implements AppDialogService {
   constructor(
     private readonly matDialog: MatDialog,
-    private readonly injector: Injector
+    private readonly injector: Injector,
   ) {}
 
   open<TComponent, TData = unknown, TResult = unknown>(
     component: Type<TComponent>,
-    config?: DialogConfig<TData>
+    config?: DialogConfig<TData>,
   ): AppDialogRef<TResult> {
     let matDialogRef!: MatDialogRef<unknown, TResult>;
 

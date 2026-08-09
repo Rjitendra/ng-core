@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from '../spinner/ng-spinner.component';
 import { LoadingService } from '../../services/loading.service';
@@ -23,6 +29,10 @@ export class NgLoadingOverlayComponent {
       return this.loadingService.primarySpinner();
     }
 
-    return this.loadingService.activeSpinners().find((spinner) => spinner.key === key) ?? null;
+    return (
+      this.loadingService
+        .activeSpinners()
+        .find((spinner) => spinner.key === key) ?? null
+    );
   });
 }

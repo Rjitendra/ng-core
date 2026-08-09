@@ -9,7 +9,11 @@
     >
       <div class="ng-dialog-title-group">
         <div class="ng-dialog-icon-wrap">
-          <ng-icon [name]="resolvedIcon()" class="dialog-icon" size="lg"></ng-icon>
+          <ng-icon
+            [name]="resolvedIcon()"
+            class="dialog-icon"
+            size="lg"
+          ></ng-icon>
         </div>
         <div class="ng-dialog-title-copy">
           @if (data.title) {
@@ -22,7 +26,12 @@
       </div>
 
       @if (data.showCloseButton !== false) {
-        <button type="button" class="ng-dialog-close" (click)="onClose()" aria-label="Close dialog">
+        <button
+          type="button"
+          class="ng-dialog-close"
+          (click)="onClose()"
+          aria-label="Close dialog"
+        >
           <ng-icon name="close" size="sm"></ng-icon>
         </button>
       }
@@ -47,7 +56,10 @@
       <ng-content></ng-content>
     </div>
 
-    <div class="ng-dialog-actions" [class.ng-dialog-actions--sidebar]="isSidebar()">
+    <div
+      class="ng-dialog-actions"
+      [class.ng-dialog-actions--sidebar]="isSidebar()"
+    >
       @if (data.showCancel !== false) {
         <ng-button
           buttonType="button"

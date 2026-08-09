@@ -3,11 +3,7 @@ import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
-import {
-  ApiError,
-  ApiService,
-  provideApiClient,
-} from './api.service';
+import { ApiError, ApiService, provideApiClient } from './api.service';
 import { LoadingService } from './loading.service';
 
 describe('ApiService', () => {
@@ -56,7 +52,7 @@ describe('ApiService', () => {
       });
 
     const req = httpMock.expectOne(
-      'https://api.example.com/projects?page=1&tags=ui&tags=core'
+      'https://api.example.com/projects?page=1&tags=ui&tags=core',
     );
 
     expect(req.request.method).toBe('GET');
@@ -74,17 +70,19 @@ describe('ApiService', () => {
     expect(postReq.request.body).toEqual({ name: 'Shared' });
     postReq.flush({});
 
-    const patchReq = httpMock.expectOne((request) =>
-      request.method === 'PATCH' &&
-      request.url === 'https://api.example.com/projects/1'
+    const patchReq = httpMock.expectOne(
+      (request) =>
+        request.method === 'PATCH' &&
+        request.url === 'https://api.example.com/projects/1',
     );
     expect(patchReq.request.method).toBe('PATCH');
     expect(patchReq.request.body).toEqual({ active: true });
     patchReq.flush({});
 
-    const deleteReq = httpMock.expectOne((request) =>
-      request.method === 'DELETE' &&
-      request.url === 'https://api.example.com/projects/1'
+    const deleteReq = httpMock.expectOne(
+      (request) =>
+        request.method === 'DELETE' &&
+        request.url === 'https://api.example.com/projects/1',
     );
     expect(deleteReq.request.method).toBe('DELETE');
     expect(deleteReq.request.body).toEqual({ hardDelete: true });
@@ -116,7 +114,7 @@ describe('ApiService', () => {
       {
         status: 403,
         statusText: 'Forbidden',
-      }
+      },
     );
 
     expect(localHandler).toHaveBeenCalled();
@@ -130,14 +128,16 @@ describe('ApiService', () => {
   });
 
   it('should show and hide a customizable spinner around the request lifecycle', () => {
-    service.get('/projects', {
-      spinner: {
-        key: 'projects',
-        label: 'Loading projects',
-        variant: 'dots',
-        color: 'success',
-      },
-    }).subscribe();
+    service
+      .get('/projects', {
+        spinner: {
+          key: 'projects',
+          label: 'Loading projects',
+          variant: 'dots',
+          color: 'success',
+        },
+      })
+      .subscribe();
 
     expect(loadingService.isLoading()).toBe(true);
     expect(loadingService.primarySpinner()).toMatchObject({

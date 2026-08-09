@@ -1,0 +1,15 @@
+<ag-grid-angular
+  class="ng-ag-grid"
+  [class]="theme()"
+  [style.height]="height()"
+  [rowData]="rowData()"
+  [columnDefs]="resolvedColumnDefs()"
+  [defaultColDef]="resolvedDefaultColDef()"
+  [gridOptions]="resolvedGridOptions()"
+  [quickFilterText]="quickFilterText()"
+  (gridReady)="gridReady.emit($event)"
+  (cellValueChanged)="cellValueChanged.emit($event)"
+  (selectionChanged)="selectionChanged.emit($event)"
+  (filterChanged)="filterChanged.emit($event)"
+  (sortChanged)="sortChanged.emit($event)"
+></ag-grid-angular>

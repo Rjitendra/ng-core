@@ -29,7 +29,12 @@ export interface NgSortHeaderRow {
         </div>
         <span>Sortable premium metrics</span>
       </div>
-      <table mat-table [dataSource]="dataSource" matSort class="ng-sort-header__table">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        class="ng-sort-header__table"
+      >
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Account</th>
           <td mat-cell *matCellDef="let row">{{ row.name }}</td>
@@ -51,14 +56,44 @@ export interface NgSortHeaderRow {
       </table>
     </section>
   `,
-  styles: [`
-    .ng-sort-header { display:grid; gap:16px; padding:20px; border-radius:24px; background:white; border:1px solid #e2e8f0; }
-    .ng-sort-header__header { display:flex; justify-content:space-between; gap:12px; align-items:end; flex-wrap:wrap; }
-    .ng-sort-header__header p { margin:0; color:#0891b2; letter-spacing:.12em; text-transform:uppercase; font-size:.75rem; }
-    .ng-sort-header__header h3 { margin:6px 0 0; }
-    .ng-sort-header__header span { color:#64748b; font-weight:600; }
-    .ng-sort-header__table { overflow:hidden; border-radius:18px; background:#f8fafc; }
-  `],
+  styles: [
+    `
+      .ng-sort-header {
+        display: grid;
+        gap: 16px;
+        padding: 20px;
+        border-radius: 24px;
+        background: white;
+        border: 1px solid #e2e8f0;
+      }
+      .ng-sort-header__header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: end;
+        flex-wrap: wrap;
+      }
+      .ng-sort-header__header p {
+        margin: 0;
+        color: #0891b2;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+      .ng-sort-header__header h3 {
+        margin: 6px 0 0;
+      }
+      .ng-sort-header__header span {
+        color: #64748b;
+        font-weight: 600;
+      }
+      .ng-sort-header__table {
+        overflow: hidden;
+        border-radius: 18px;
+        background: #f8fafc;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgSortHeaderComponent {

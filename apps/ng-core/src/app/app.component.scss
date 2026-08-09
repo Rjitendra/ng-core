@@ -1,0 +1,56 @@
+.app-shell {
+  min-height: 100vh;
+  padding: 32px;
+  background: #f8fafc;
+  color: #111827;
+}
+
+.app-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 750;
+}
+
+.quick-filter {
+  display: grid;
+  gap: 6px;
+  width: min(320px, 100%);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.quick-filter input {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font: inherit;
+  background: #ffffff;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 18px;
+  }
+
+  .app-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

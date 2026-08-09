@@ -1,6 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { NgDialogComponent } from './ng-dialog.component';
-import { APP_DIALOG_DATA, APP_DIALOG_REF } from '../../services/app-dialog.types';
+import {
+  APP_DIALOG_DATA,
+  APP_DIALOG_REF,
+} from '../../services/app-dialog.types';
 
 describe('NgDialogComponent', () => {
   it('should close with confirm payload', async () => {

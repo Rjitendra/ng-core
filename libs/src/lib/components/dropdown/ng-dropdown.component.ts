@@ -11,7 +11,10 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
-import { MatOptionModule, MatOptionSelectionChange } from '@angular/material/core';
+import {
+  MatOptionModule,
+  MatOptionSelectionChange,
+} from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { IconComponent } from '../icon/ng-icon.component';
 import { NgErrorComponent, NgErrorValue } from '../error/ng-error.component';
@@ -74,9 +77,7 @@ const SELECT_ALL_SENTINEL = '__ng_dropdown_select_all__';
     '[class.ng-dropdown--lg]': "size() === 'lg'",
   },
 })
-export class NgDropdownComponent<T = string>
-  implements ControlValueAccessor
-{
+export class NgDropdownComponent<T = string> implements ControlValueAccessor {
   readonly selectAllSentinel = SELECT_ALL_SENTINEL;
   readonly label = input<string>();
   readonly hint = input<string>();
@@ -99,8 +100,11 @@ export class NgDropdownComponent<T = string>
   readonly searchPlaceholder = input<string>('Search options');
   readonly noResultsText = input<string>('No options found');
   readonly panelClass = input<string | string[]>();
-  readonly compareWith = input<(first: T | null, second: T | null) => boolean>();
-  readonly id = input<string>(`ng-dropdown-${Math.random().toString(36).slice(2, 9)}`);
+  readonly compareWith =
+    input<(first: T | null, second: T | null) => boolean>();
+  readonly id = input<string>(
+    `ng-dropdown-${Math.random().toString(36).slice(2, 9)}`,
+  );
 
   readonly value = signal<T | T[] | null>(null);
   readonly touched = signal<boolean>(false);
@@ -111,7 +115,9 @@ export class NgDropdownComponent<T = string>
   readonly selectionChange = output<T | T[] | null>();
   readonly openedChange = output<boolean>();
 
-  readonly resolvedDisabled = computed(() => this.disabled() || this.disabledState());
+  readonly resolvedDisabled = computed(
+    () => this.disabled() || this.disabledState(),
+  );
   readonly normalizedGroups = computed<NgResolvedDropdownGroup<T>[]>(() => {
     if (this.groups().length) {
       return this.groups().map((group) => ({
@@ -161,14 +167,16 @@ export class NgDropdownComponent<T = string>
     return this.normalizedGroups()
       .map((group) => ({
         ...group,
-        options: group.options.filter((option) => this.matchesSearch(option, query)),
+        options: group.options.filter((option) =>
+          this.matchesSearch(option, query),
+        ),
       }))
       .filter((group) => group.options.length > 0);
   });
   readonly selectableOptions = computed(() =>
     this.filteredGroups()
       .flatMap((group) => group.options)
-      .filter((option) => !option.disabled)
+      .filter((option) => !option.disabled),
   );
   readonly selectedValues = computed<T[]>(() => {
     const current = this.value();
@@ -179,9 +187,15 @@ export class NgDropdownComponent<T = string>
     return Array.isArray(current) ? current : [];
   });
   readonly selectedLabels = computed(() => {
-    const allOptions = this.normalizedGroups().flatMap((group) => group.options);
+    const allOptions = this.normalizedGroups().flatMap(
+      (group) => group.options,
+    );
     return this.selectedValues()
-      .map((value) => allOptions.find((option) => this.isSameValue(option.value, value))?.label)
+      .map(
+        (value) =>
+          allOptions.find((option) => this.isSameValue(option.value, value))
+            ?.label,
+      )
       .filter((value): value is string => !!value);
   });
   readonly allSelected = computed(() => {
@@ -189,7 +203,9 @@ export class NgDropdownComponent<T = string>
       return false;
     }
 
-    const selectableValues = this.selectableOptions().map((option) => option.value);
+    const selectableValues = this.selectableOptions().map(
+      (option) => option.value,
+    );
     return (
       selectableValues.length > 0 &&
       selectableValues.every((value) => this.selectedValues().includes(value))
@@ -205,17 +221,21 @@ export class NgDropdownComponent<T = string>
     }
     return ids.join(' ') || null;
   });
-  readonly resolvedCompareWith = computed<(first: T | null, second: T | null) => boolean>(
-    () => this.compareWith() ?? ((first, second) => first === second)
+  readonly resolvedCompareWith = computed<
+    (first: T | null, second: T | null) => boolean
+  >(() => this.compareWith() ?? ((first, second) => first === second));
+  readonly resolvedPanelClass = computed<string | string[]>(
+    () => this.panelClass() ?? [],
   );
-  readonly resolvedPanelClass = computed<string | string[]>(() => this.panelClass() ?? []);
 
   private onChange: (value: T | T[] | null) => void = () => undefined;
   private onTouched: () => void = () => undefined;
 
   writeValue(value: T | T[] | null): void {
     if (this.multiple()) {
-      this.value.set(Array.isArray(value) ? value : value === null ? [] : [value]);
+      this.value.set(
+        Array.isArray(value) ? value : value === null ? [] : [value],
+      );
       return;
     }
 
@@ -236,9 +256,9 @@ export class NgDropdownComponent<T = string>
 
   updateValue(value: T | T[] | null) {
     if (this.multiple()) {
-      const nextValues = (Array.isArray(value) ? value : value ? [value] : []).filter(
-        (item): item is T => item !== (SELECT_ALL_SENTINEL as T)
-      );
+      const nextValues = (
+        Array.isArray(value) ? value : value ? [value] : []
+      ).filter((item): item is T => item !== (SELECT_ALL_SENTINEL as T));
 
       this.value.set(nextValues);
       this.onChange(nextValues);

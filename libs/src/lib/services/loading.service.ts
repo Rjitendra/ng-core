@@ -56,7 +56,7 @@ export class LoadingService {
   readonly activeSpinners = computed(() =>
     Object.values(this.trackers())
       .filter((tracker) => tracker.count > 0)
-      .map((tracker) => tracker.state)
+      .map((tracker) => tracker.state),
   );
 
   readonly isLoading = computed(() => this.activeSpinners().length > 0);

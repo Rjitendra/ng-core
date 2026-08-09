@@ -27,7 +27,12 @@
     <ng-divider />
     <div class="card-footer">
       @if (footerIcon()) {
-        <ng-icon [name]="footerIcon()!" size="sm" tone="muted" class="footer-icon" />
+        <ng-icon
+          [name]="footerIcon()!"
+          size="sm"
+          tone="muted"
+          class="footer-icon"
+        />
       }
       <span class="footer-text">{{ footerText() }}</span>
       @if (showTimestamp() && timestamp()) {

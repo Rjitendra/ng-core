@@ -58,7 +58,9 @@ export class NgAutocompleteComponent implements ControlValueAccessor, OnInit {
   readonly disabled = input(false);
   readonly required = input(false);
   readonly appearance = input<'fill' | 'outline'>('outline');
-  readonly uniqueId = input(`ng-autocomplete-${Math.random().toString(36).slice(2, 9)}`);
+  readonly uniqueId = input(
+    `ng-autocomplete-${Math.random().toString(36).slice(2, 9)}`,
+  );
   readonly clarifyText = input('');
   readonly hint = input('');
 

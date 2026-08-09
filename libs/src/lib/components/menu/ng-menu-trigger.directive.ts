@@ -1,4 +1,8 @@
-import { ConnectionPositionPair, Overlay, OverlayRef } from '@angular/cdk/overlay';
+import {
+  ConnectionPositionPair,
+  Overlay,
+  OverlayRef,
+} from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
   Directive,
@@ -54,7 +58,10 @@ export class NgMenuTriggerForDirective implements OnDestroy {
       backdropClass: 'cdk-overlay-transparent-backdrop',
     });
 
-    const portal = new TemplatePortal(menu.menuTemplate(), menu.viewContainerRef);
+    const portal = new TemplatePortal(
+      menu.menuTemplate(),
+      menu.viewContainerRef,
+    );
     this.overlayRef.attach(portal);
 
     this.subscription.add(

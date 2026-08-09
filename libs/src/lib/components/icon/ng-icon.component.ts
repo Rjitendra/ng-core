@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CUSTOM_ICON_REGISTRY, CustomIconName } from './ng-icon.registry';

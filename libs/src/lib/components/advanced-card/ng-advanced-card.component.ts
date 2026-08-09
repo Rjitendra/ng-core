@@ -1,5 +1,10 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { ButtonComponent } from '../button/ng-button.component';
 import { NgCardComponent } from '../card/ng-card.component';
 import { NgDividerComponent } from '../divider/ng-divider.component';

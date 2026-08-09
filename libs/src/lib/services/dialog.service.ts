@@ -1,9 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { NgDialogComponent } from '../components/dialog/ng-dialog.component';
-import {
-  NgDialogData,
-  NgDialogResult,
-} from '../models/dialog';
+import { NgDialogData, NgDialogResult } from '../models/dialog';
 import { AppDialogRef, AppDialogService } from './app-dialog.types';
 
 @Injectable({
@@ -57,7 +54,7 @@ export class NgDialogService {
               ? { top: '0', right: '0' }
               : undefined),
         data: config,
-      }
+      },
     );
   }
 
@@ -87,7 +84,7 @@ export class NgDialogService {
   }
 
   confirmDialog(
-    config: Omit<NgDialogData, 'type' | 'presentation'>
+    config: Omit<NgDialogData, 'type' | 'presentation'>,
   ): AppDialogRef<NgDialogResult> {
     return this.open({
       ...config,
@@ -98,7 +95,7 @@ export class NgDialogService {
   }
 
   messageDialog(
-    config: Omit<NgDialogData, 'presentation'>
+    config: Omit<NgDialogData, 'presentation'>,
   ): AppDialogRef<NgDialogResult> {
     return this.open({
       ...config,
@@ -110,7 +107,7 @@ export class NgDialogService {
   }
 
   popoverDialog(
-    config: Omit<NgDialogData, 'presentation'>
+    config: Omit<NgDialogData, 'presentation'>,
   ): AppDialogRef<NgDialogResult> {
     return this.open({
       ...config,
@@ -122,7 +119,7 @@ export class NgDialogService {
   }
 
   sidebarDialog(
-    config: Omit<NgDialogData, 'presentation'>
+    config: Omit<NgDialogData, 'presentation'>,
   ): AppDialogRef<NgDialogResult> {
     return this.open({
       ...config,

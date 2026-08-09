@@ -5,7 +5,12 @@
       <!-- <img src="icons/ng-learning.svg" class="logo-img" alt="NG Logo" height="100" width="100" /> -->
       <span class="brand-name">{{ brandTitle() }}</span>
       @if (navItems().length) {
-        <button type="button" class="menu-button" mat-icon-button (click)="toggleSidenav()">
+        <button
+          type="button"
+          class="menu-button"
+          mat-icon-button
+          (click)="toggleSidenav()"
+        >
           <mat-icon [class.rotate]="isRotated">menu</mat-icon>
         </button>
       }
@@ -108,7 +113,7 @@
           [matMenuTriggerData]="{ menudata: item }"
         >
           <mat-icon class="small-icon">{{
-            item.icon || "help_outline"
+            item.icon || 'help_outline'
           }}</mat-icon>
         </button>
       </div>
@@ -120,7 +125,7 @@
         <div class="list-item">
           @if (isExpanded) {
             <mat-icon class="small-icon">{{
-              item.icon || "help_outline"
+              item.icon || 'help_outline'
             }}</mat-icon>
           }
           @if (isExpanded) {
@@ -142,7 +147,7 @@
             [matMenuTriggerData]="{ menudata: item }"
           >
             <mat-icon class="small-icon">{{
-              item.icon || "help_outline"
+              item.icon || 'help_outline'
             }}</mat-icon>
           </button>
         </div>
@@ -156,7 +161,7 @@
         >
           <div class="list-item">
             <mat-icon class="small-icon">{{
-              item.icon || "help_outline"
+              item.icon || 'help_outline'
             }}</mat-icon>
             @if (isExpanded) {
               <span>{{ item.name }}</span>

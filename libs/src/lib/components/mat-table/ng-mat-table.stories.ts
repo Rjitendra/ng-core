@@ -12,11 +12,46 @@ const columns: TableColumn[] = [
 ];
 
 const data: TableRow[] = [
-  { name: 'Avery Johnson', role: 'Admin', status: 'Active', region: 'North America', revenue: '$182k', lastTouch: '2 hours ago' },
-  { name: 'Blair Chen', role: 'Analyst', status: 'Away', region: 'APAC', revenue: '$94k', lastTouch: 'Yesterday' },
-  { name: 'Casey Rivera', role: 'Viewer', status: 'Active', region: 'EMEA', revenue: '$136k', lastTouch: '5 minutes ago' },
-  { name: 'Dev Patel', role: 'Manager', status: 'Pending', region: 'North America', revenue: '$241k', lastTouch: '1 hour ago' },
-  { name: 'Elena Garcia', role: 'Admin', status: 'Active', region: 'LATAM', revenue: '$73k', lastTouch: 'Today' },
+  {
+    name: 'Avery Johnson',
+    role: 'Admin',
+    status: 'Active',
+    region: 'North America',
+    revenue: '$182k',
+    lastTouch: '2 hours ago',
+  },
+  {
+    name: 'Blair Chen',
+    role: 'Analyst',
+    status: 'Away',
+    region: 'APAC',
+    revenue: '$94k',
+    lastTouch: 'Yesterday',
+  },
+  {
+    name: 'Casey Rivera',
+    role: 'Viewer',
+    status: 'Active',
+    region: 'EMEA',
+    revenue: '$136k',
+    lastTouch: '5 minutes ago',
+  },
+  {
+    name: 'Dev Patel',
+    role: 'Manager',
+    status: 'Pending',
+    region: 'North America',
+    revenue: '$241k',
+    lastTouch: '1 hour ago',
+  },
+  {
+    name: 'Elena Garcia',
+    role: 'Admin',
+    status: 'Active',
+    region: 'LATAM',
+    revenue: '$73k',
+    lastTouch: 'Today',
+  },
 ];
 
 const meta: Meta<NgMatTableComponent> = {
@@ -35,7 +70,8 @@ const meta: Meta<NgMatTableComponent> = {
     expandableRows: false,
     options: {
       title: 'Premium data table',
-      subtitle: 'Search, manage columns, sort, paginate, and trigger row-level actions from one surface.',
+      subtitle:
+        'Search, manage columns, sort, paginate, and trigger row-level actions from one surface.',
       pageSize: 5,
       pageSizeOptions: [5, 10],
       multiSelect: true,
@@ -73,18 +109,37 @@ export const WithRowSelection: Story = {
 export const AdvancedWorkspaceTable: Story = {
   args: {
     columns: [
-      { key: 'name', label: 'Account', sortable: true, sticky: true, minWidth: '180px' },
+      {
+        key: 'name',
+        label: 'Account',
+        sortable: true,
+        sticky: true,
+        minWidth: '180px',
+      },
       { key: 'role', label: 'Owner', sortable: true, minWidth: '140px' },
       { key: 'status', label: 'Health', sortable: true, minWidth: '120px' },
       { key: 'region', label: 'Region', sortable: true, minWidth: '120px' },
-      { key: 'revenue', label: 'ARR', sortable: true, headerAlign: 'right', align: 'right', minWidth: '110px' },
-      { key: 'lastTouch', label: 'Last touch', sortable: true, minWidth: '120px' },
+      {
+        key: 'revenue',
+        label: 'ARR',
+        sortable: true,
+        headerAlign: 'right',
+        align: 'right',
+        minWidth: '110px',
+      },
+      {
+        key: 'lastTouch',
+        label: 'Last touch',
+        sortable: true,
+        minWidth: '120px',
+      },
     ],
     rowCheckbox: true,
     headerCheckbox: true,
     options: {
       title: 'Client portfolio command center',
-      subtitle: 'An advanced pack example with sticky columns, column manager, global search, stats, selection, and row actions.',
+      subtitle:
+        'An advanced pack example with sticky columns, column manager, global search, stats, selection, and row actions.',
       pageSize: 5,
       pageSizeOptions: [5, 10, 20],
       multiSelect: true,
@@ -107,7 +162,8 @@ export const AdvancedWorkspaceTable: Story = {
         { id: 'open', label: 'Open', icon: 'north_east', variant: 'icon' },
       ],
       emptyTitle: 'No accounts match this view',
-      emptyDescription: 'Try clearing the search or restoring hidden columns to widen the result set.',
+      emptyDescription:
+        'Try clearing the search or restoring hidden columns to widen the result set.',
     },
   },
 };
